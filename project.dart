@@ -7,7 +7,9 @@ void main()
 {
   query("#pop-up").hidden=true;
   drawDemo();
-  showPopUpWindow("Questioning");
+  var a = new List();
+  a=["ans1","ans2","ans3","ans4"];
+  showPopUpWindow("Question" , a );
 }
 void drawDemo(){
   CanvasElement canvas = query("#canvas");
@@ -19,12 +21,16 @@ void drawDemo(){
   context.fillStyle=BLACK;
   context.fillText("This should be the map",200 , 200);
 }
-void showPopUpWindow(String question)
+void showPopUpWindow(String question , List answers)
 {
   final popUp= document.query("#pop-up");
   popUp.hidden=false;
-  popUp.text=question;
- 
+  document.query("#question").text=question;
+  document.query("#answer1").text=answers[0];
+  document.query("#answer2").text=answers[1];
+  document.query("#answer3").text=answers[2];
+  document.query("#answer4").text=answers[3];
+  
 }
 /*
 void main() {

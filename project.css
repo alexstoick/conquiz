@@ -12,7 +12,7 @@ body {
 }
 
 p {
-  color: #333;
+  color: #333;  
 }
 header {
 	text-align:center;
@@ -24,7 +24,18 @@ header {
   border: 1px solid #ccc;
   background-color: #fff;
 }
-
+.right,.left{
+	border: 1px solid #ccc;
+	text-align:center;
+	width:360px;
+	height:30px;
+}
+.right{
+	float:right;
+}
+.left{	
+	float:left
+}
 div#pop-up { 
   position: absolute;
   width: 760px;
@@ -36,4 +47,11 @@ div#pop-up {
   color: #000000;
   border: 1px solid #1a1a1a;
   font-size: 90%;
+}
+
+p#question{
+	padding:0px;
+	text-align:center;
+	font-family: 'Open Sans', sans-serif;
+    font-size: 30px;
 }
