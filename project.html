@@ -6,15 +6,18 @@
     <title>Project</title>
     <link rel="stylesheet" href="project.css">
   </head>
-  <body>
+  <body >
   	<header>
-    <h1>Conquiztador</h1>
-    <p>Hello world from Dart!</p>
+    	<h1>Conquiztador</h1>
     </header>
-    <div id="container">
-      <p id="text"></p>
-    </div>
-
+    <canvas id="canvas" width="960" height="500" class="center" ></canvas>
+	<div id="pop-up">
+		<p id="question"></p>
+		<p id="answer1" class="left"></p>
+		<p id="answer2" class="right"></p>
+		<p id="answer3" class="left"></p>
+		<p id="answer4" class="right"></p>
+	</div>
     <script type="application/dart" src="project.dart"></script>
     <script src="http://dart.googlecode.com/svn/branches/bleeding_edge/dart/client/dart.js"></script>
   </body>
