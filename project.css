@@ -37,11 +37,12 @@ header {
 	float:left
 }
 div#pop-up { 
+  margin-left:auto;
+  margin-right:auto;
   position: absolute;
   width: 760px;
   height:200px;
-  padding: 10px;
-  left:100px;
+  padding: 10px;								
   top:200px;
   background: #eeeeee;
   color: #000000;
