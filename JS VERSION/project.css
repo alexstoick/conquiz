@@ -27,8 +27,10 @@ header {
 .right,.left{
 	border: 1px solid #ccc;
 	text-align:center;
-	width:360px;
+	width:430px;
 	height:30px;
+  padding:0px;
+  margin:10px;
 }
 .right{
 	float:right;
@@ -37,16 +39,17 @@ header {
 	float:left
 }
 div#pop-up { 
+  display:none;
   margin-left:auto;
   margin-right:auto;
   position: absolute;
-  width: 760px;
+  width: 952px;
   height:200px;
-  padding: 10px;								
+  padding: 0px;								
   top:200px;
   background: #eeeeee;
   color: #000000;
-  border: 1px solid #1a1a1a;
+  border: 4px solid #1a1a1a;
   font-size: 90%;
 }
 
