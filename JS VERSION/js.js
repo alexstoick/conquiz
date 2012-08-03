@@ -7,7 +7,8 @@ function main(){
 	{
 		$("#addQuestion").click(spawn);
 		function spawn(){
-			showPopUp('Question',["Answer1","Answer2","Answer3","Answer4"],this);
+			showPopUp('Compozitori: În ce oraş a decedat Camille Saint-Saëns, compozitor francez din epoca romantică?'
+                      ,[" Alger1"," Alger2"," Alger3"," Alger4"],this);
 		};
 	}
 	function showPopUp(intrebare,answers){
@@ -28,7 +29,7 @@ function main(){
 		var drawingCanvas = document.getElementById('canvas');
 		var context = drawingCanvas.getContext('2d');
 		context.rect(0, 0, 960, 500);
-  		context.fillStyle = "#FFFF00";
+  		context.fillStyle = "#221E1D";
   		context.fill();
 	};
 

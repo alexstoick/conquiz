@@ -1,25 +1,32 @@
 <!DOCTYPE html>
-
 <html>
-  <head>
-    <meta charset="utf-8">
-    <title>Project</title>
-    <link rel="stylesheet" href="project.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
-    <script type="text/javascript" src="js.js"></script>
-  </head>
-  <body>
-    <header>
-      <h1>Conquiztador</h1>
-    </header>
-     <canvas id="canvas" width="960" height="500" class="center" ></canvas>
-     <div id="pop-up">
-     <p id="question">Hello World</p>
-     <p id="answer1" class="left"></p>
-     <p id="answer2" class="right"></p>
-     <p id="answer3" class="left"></p>
-     <p id="answer4" class="right"></p>
-     </div>
-     <button type="button" id="addQuestion">Click Me!</button>
-  </body>
+    <head>
+        <meta charset="utf-8">
+        <title>Project</title>
+        <link rel="stylesheet" href="project.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+        <script src="js.js"></script>
+    </head>
+    <body>
+        <div class="container">
+            <header>
+                <div class="left">
+                    <h1>Conquiztador</h1>
+                </div>
+                <div class="right">
+                    <h1>Login</h1>
+                </div>
+            </header>
+            <canvas id="canvas" width="960" height="500" class="center" ></canvas>
+            <button type="button" id="addQuestion">Click Me!</button>
+            <div id="pop-up">
+                <p id="question">Hello World</p>
+                <p id="answer1" class="left answer"></p>
+                <p id="answer2" class="right answer"></p>  
+                <p id="answer3" class="left answer"></p>
+                <p id="answer4" class="right answer"></p>
+            </div>
+        </div>
+    </body>
+       
 </html>
