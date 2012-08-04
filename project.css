@@ -31,7 +31,7 @@ header {
     
 }
 /*POP-UP*/
-div#pop-up { 
+#pop-up4a { 
     display:none;
     position:absolute;
     width: 960px;
@@ -40,9 +40,9 @@ div#pop-up {
     top:200px;
     background: #ECEAE0;
     color: #E9633B;
- 
     line-height: 100%;
 }
+
 .answer{
   
     text-align:center;
