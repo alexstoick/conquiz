@@ -44,8 +44,6 @@ function main() {
     function clickedAnswer()
 		{
 			submitAnswer($(this).text(),timer);
-            clearInterval(interval);
-            clearTiemeout(timeout);
 		};
     function submitAnswer(chosen , timeInMS )
     {
