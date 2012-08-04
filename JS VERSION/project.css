@@ -58,3 +58,27 @@ p#question{
     font-size: 30px;
     padding:auto;
 }
+/*Score*/
+#score
+{
+    display: inline;
+    float: left;
+    margin: 0;
+    padding: 0;
+}
+#casuta
+{
+    display:inline;
+    margin: 5px;
+    padding: 5px;
+    text-align: center;
+    width: 220px;
+    background-color: #ECEAE0;
+    color: #63AA9C;
+    float:left
+    
+;    
+    -webkit-border-radius: 8px;  
+    -moz-border-radius: 8px;  
+    border-radius: 8px;
+}
