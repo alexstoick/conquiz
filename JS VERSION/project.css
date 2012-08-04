@@ -2,16 +2,20 @@
 body {    
 }
 .container{
-    font-family: 'Open Sans', sans-serif;
-    font-size: 14px;
+    font-family: 'PT Sans', sans-serif;
+    font-size: 30px;
     font-weight: normal;
     line-height: 1.2em;
     margin: 15px;
     width:960px;
     margin:auto;
     margin-top:15px;
+    line-height: 100%;
 }
 p {
+    line-height: 100%;
+    padding: 0px;
+    margin: 5px;
 }
 /*UTILITARE*/
 .right{
@@ -22,7 +26,7 @@ p {
 }
 /*HEADER AND LOGIN*/
 header {
-    color:#E9633B;
+    color: #E9633B;
     background-color: #ECEAE0;
     
 }
@@ -37,6 +41,7 @@ div#pop-up {
     background: #ECEAE0;
     color: #E9633B;
  
+    line-height: 100%;
 }
 .answer{
   
@@ -44,13 +49,12 @@ div#pop-up {
     width:430px;
     height:30px;
     padding:0px;
-    margin:10px;
-    background:#63AA9C;
+    margin: 10px;
+    background: #63AA9C;
 }
 p#question{
     padding:0px;
     text-align:center;
-    font-family: 'Open Sans', sans-serif;
     font-size: 30px;
     padding:auto;
 }
