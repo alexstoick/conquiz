@@ -64,8 +64,8 @@ p#question{
 {
     display: inline;
     float: left;
-    margin: 0;
-    padding: 0;
+    margin: 0px;
+    padding: 0px;
 }
 #casuta {
     display: inline;
@@ -82,6 +82,17 @@ p#question{
 }
 /*Login*/
 .login{
-    margin-top:20px;
-    display:inline;
+    margin-top: 30px;
+    font-size: 30px;
+}
+#usernameForm{
+    border: solid 1px #E5E5E5;
+    height: 30px;
+    font-size: 25px;
+    color: #E9633B;
+    box-shadow: rgba(0,0,0, 0.1) 0px 0px 8px;   -moz-box-shadow: rgba(0,0,0, 0.1) 0px 0px 8px;   -webkit-box-shadow: rgba(0,0,0, 0.1) 0px 0px 8px;   
+}
+.form{
+}
+.loginForm{
 }
