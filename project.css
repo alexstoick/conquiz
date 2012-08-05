@@ -1,5 +1,6 @@
 /*MAIN SHIT*/
 body {    
+    
 }
 .container{
     font-family: 'PT Sans', sans-serif;
@@ -66,19 +67,21 @@ p#question{
     margin: 0;
     padding: 0;
 }
-#casuta
-{
-    display:inline;
+#casuta {
+    display: inline;
     margin: 5px;
     padding: 5px;
     text-align: center;
     width: 220px;
     background-color: #ECEAE0;
     color: #63AA9C;
-    float:left
-    
-;    
-    -webkit-border-radius: 8px;  
-    -moz-border-radius: 8px;  
-    border-radius: 8px;
+    float: left;
+    border-radius:8px;
+    -webkit-border-radius: 8px;
+    -moz-border-radius: 8px;
+}
+/*Login*/
+.login{
+    margin-top:20px;
+    display:inline;
 }
