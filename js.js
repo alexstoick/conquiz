@@ -1,4 +1,7 @@
 
+var username;
+var room="room1" ; ////TO BE IMPLEMENTED !!!
+
 function main() {
 	//MAIN SETUP
 	function setUp(){
@@ -9,13 +12,13 @@ function main() {
 	}
 	//DEMO SHOULD BE REMOVED
 	function tryButton() {
-	$("#addQuestion").click(spawn);   
+	$("#addQuestion").click(spawn).hide();   
     	}
 	function spawn(){	  
 		showPopUp('Compozitori: În ce oraş a decedat Camille Saint-Saëns, compozitor francez din epoca romantică?', ["Alger1", "Alger2", "Alger3", "Alger4"],this);
 	} 
 	//LOGIN  
-	var username; 	
+
     	function addLogin(){
 		$("#submitUsername").click(login)
     	}
@@ -23,6 +26,7 @@ function main() {
     	{
 		username = document.getElementById("usernameForm").value ;
 		$(".login").text("Hello "+username);
+		$("#addQuestion").show();
     	}
 	
     //timer related
@@ -48,7 +52,6 @@ function main() {
 		$('#answer2').text(answers[1]);
 		$('#answer3').text(answers[2]);
 		$('#answer4').text(answers[3]);
-		
 	}
     //Answer related
     function clickedAnswer()
@@ -61,6 +64,8 @@ function main() {
 	   $('#pop-up4a').hide();
 	   clearInterval(interval);
 	   clearTimeout(timeout);
+	   url = "/messageHandler?room="+room+"&userid="+username+"&answer="+chosen+"&time="+timeInMS ;
+	   makeRequest ( url , true ) ;
     }
     //map related
 	function drawCanvas()
