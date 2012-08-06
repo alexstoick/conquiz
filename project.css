@@ -96,3 +96,11 @@ p#question{
 }
 .loginForm{
 }
+#canvasRaphael
+{
+    width:960px;
+    height:500px;
+    margin:0px;
+    padding:0px;
+    float:left;
+}
