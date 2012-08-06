@@ -39,7 +39,7 @@ header {
     height:200px;
     padding: 0px;		
     top:200px;
-    background: #ECEAE0;
+    background: #D8D6CD;
     color: #E9633B;
     line-height: 100%;
 }
@@ -102,5 +102,5 @@ p#question{
     height:500px;
     margin:0px;
     padding:0px;
-    float:left;
+    overflow: hidden;
 }
