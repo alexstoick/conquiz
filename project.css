@@ -1,5 +1,6 @@
 /*MAIN SHIT*/
 body {    
+    
 }
 .container{
     font-family: 'PT Sans', sans-serif;
@@ -38,7 +39,7 @@ header {
     height:200px;
     padding: 0px;		
     top:200px;
-    background: #ECEAE0;
+    background: #D8D6CD;
     color: #E9633B;
     line-height: 100%;
 }
@@ -63,22 +64,43 @@ p#question{
 {
     display: inline;
     float: left;
-    margin: 0;
-    padding: 0;
+    margin: 0px;
+    padding: 0px;
 }
-#casuta
-{
-    display:inline;
+#casuta {
+    display: inline;
     margin: 5px;
     padding: 5px;
     text-align: center;
     width: 220px;
     background-color: #ECEAE0;
     color: #63AA9C;
-    float:left
-    
-;    
-    -webkit-border-radius: 8px;  
-    -moz-border-radius: 8px;  
-    border-radius: 8px;
+    float: left;
+    border-radius:8px;
+    -webkit-border-radius: 8px;
+    -moz-border-radius: 8px;
+}
+/*Login*/
+.login{
+    margin-top: 30px;
+    font-size: 30px;
+}
+#usernameForm{
+    border: solid 1px #E5E5E5;
+    height: 30px;
+    font-size: 25px;
+    color: #E9633B;
+    box-shadow: rgba(0,0,0, 0.1) 0px 0px 8px;   -moz-box-shadow: rgba(0,0,0, 0.1) 0px 0px 8px;   -webkit-box-shadow: rgba(0,0,0, 0.1) 0px 0px 8px;   
+}
+.form{
+}
+.loginForm{
+}
+#canvasRaphael
+{
+    width:960px;
+    height:500px;
+    margin:0px;
+    padding:0px;
+    overflow: hidden;
 }
