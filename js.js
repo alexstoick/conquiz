@@ -104,6 +104,7 @@ function main() {
 			zonesCanvas[i].attr(defaultAttributes);
 			zonesCanvas[i].click(function(){
 				console.log("Hello from zone" + this.id);
+				paper.getById ( this.id ).attr ( {fill:'#FFF000'} ) ;
 			});
 		}
 	}
