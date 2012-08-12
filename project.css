@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 /*MAIN SHIT*/
 body {    
     
@@ -106,4 +107,111 @@ p#question{
     margin:0px;
     padding:0px;
     overflow: hidden;
+=======
+/*MAIN SHIT*/
+body {    
+    
+}
+.container{
+    font-family: 'PT Sans', sans-serif;
+    font-size: 30px;
+    font-weight: normal;
+    line-height: 1.2em;
+    margin: 15px;
+    width:960px;
+    margin:auto;
+    margin-top:15px;
+    line-height: 100%;
+}
+p {
+    line-height: 100%;
+    padding: 0px;
+    margin: 5px;
+}
+/*UTILITARE*/
+.right{
+    float:right;
+}
+.left{	
+    float:left
+}
+/*HEADER AND LOGIN*/
+header {
+    color: #E9633B;
+    background-color: #ECEAE0;
+    
+}
+/*POP-UP*/
+#pop-up4a { 
+    display:none;
+    position:absolute;
+    width: 960px;
+    height:200px;
+    padding: 0px;		
+    top:200px;
+    background: #D8D6CD;
+    color: #E9633B;
+    line-height: 100%;
+}
+
+.answer{
+  
+    text-align:center;
+    width:430px;
+    height:30px;
+    padding:0px;
+    margin: 10px;
+    background: #63AA9C;
+}
+p#question{
+    padding:0px;
+    text-align:center;
+    font-size: 30px;
+    padding:auto;
+}
+/*Score*/
+#score
+{
+    display: inline;
+    float: left;
+    margin: 0px;
+    padding: 0px;
+}
+#casuta {
+    display: inline;
+    margin: 5px;
+    padding: 5px;
+    text-align: center;
+    width: 220px;
+    background-color: #ECEAE0;
+    color: #63AA9C;
+    float: left;
+    border-radius:8px;
+    -webkit-border-radius: 8px;
+    -moz-border-radius: 8px;
+}
+/*Login*/
+.login{
+    margin-top: 30px;
+    font-size: 30px;
+}
+#usernameForm{
+    border: solid 1px #E5E5E5;
+    height: 30px;
+    font-size: 25px;
+    color: #E9633B;
+    box-shadow: rgba(0,0,0, 0.1) 0px 0px 8px;   -moz-box-shadow: rgba(0,0,0, 0.1) 0px 0px 8px;   -webkit-box-shadow: rgba(0,0,0, 0.1) 0px 0px 8px;   
+}
+.form{
+}
+.loginForm{
+}
+#canvasRaphael
+{
+    width:960px;
+    height:500px;
+    margin:0px;
+    padding:0px;
+    overflow: hidden;
+>>>>>>> 1614598108db1e863e2dbaae33c3bc2d72a9d30e
 }
