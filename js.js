@@ -107,11 +107,31 @@ function main() {
 			});
 		}
 	}
+	//rooms
+	var roomsAvailabe=5;
+	var chosenRoom=0;
+	function roomSetUp()
+	{
+		for(var i=1;i<=roomsAvailabe;i++)
+		{
+			$('.roomSelect').append('<p class="roomUI">room '+i+'</p>');
+
+			$('.roomSelect .roomUI:nth-child('+(i)+')').click(selectedRoom).attr({'isRoom':i});
+		}
+	}
+	function selectedRoom(){
+		chosenRoom=$(this).attr('isRoom');
+		console.log(chosenRoom);
+		$('.roomSelect').fadeOut();
+		$('.shouldBeHiddenBeforeEnteringAGame').fadeIn();
+
+	}
    	//SETUP
 	drawCanvas();
 	tryButton();
 	addLogin();
 	setUp();
+	roomSetUp();
    
 
 }

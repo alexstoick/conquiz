@@ -107,3 +107,10 @@ p#question{
     padding:0px;
     overflow: hidden;
 }
+.shouldBeHiddenBeforeEnteringAGame{
+    display:none;
+}
+.roomSelect{
+    overflow: hidden;
+    width:100%;
+}
