@@ -8,6 +8,9 @@
         <script src="js.js"></script>
         <script src="raphael-min.js"></script>
       <link href='http://fonts.googleapis.com/css?family=PT+Sans' rel='stylesheet' type='text/css'>
+      <script src="/socket.io/socket.io.js"></script>
+      <script src='javaUtils.js'></script>
+
     </head>
     <body>
         <div class="container">
@@ -29,16 +32,18 @@
                 <li id="casuta">username:score</li>
                 <li id="casuta">username:score</li>
             </ul>
-            <button type="button" id="addQuestion">Clickme!</button>
+            <!--<button type="button" id="addQuestion">Clickme!</button>-->
+            <button type="button" id="javaTest" onclick="connect()">Connect</button>
+            <button type="button" id="javaTest2" onclick="sendTestMessage()">Test message</button>
             <div id="pop-up4a">
                 <p id="question"></p>
                 <p id="answer1" class="left answer"></p>
-                <p id="answer2" class="right answer"></p>  
+                <p id="answer2" class="right answer"></p>
                 <p id="answer3" class="left answer"></p>
                 <p id="answer4" class="right answer"></p>
             </div>
-          
+            <pre id="log" style="font-size:20px" >Log:<br /> </pre>
         </div>
     </body>
-       
+
 </html>
