@@ -7,6 +7,7 @@
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
         <script src="js.js"></script>
         <script src="raphael-min.js"></script>
+        <script src="javaUtils.js"></script>
       <link href='http://fonts.googleapis.com/css?family=PT+Sans' rel='stylesheet' type='text/css'>
     </head>
     <body>
@@ -37,12 +38,14 @@
             <div id="pop-up4a">
                 <p id="question"></p>
                 <p id="answer1" class="left answer"></p>
-                <p id="answer2" class="right answer"></p>  
+                <p id="answer2" class="right answer"></p>
                 <p id="answer3" class="left answer"></p>
                 <p id="answer4" class="right answer"></p>
             </div>
-          
+            <button type="button" id="javaTest" onclick="connect()">Connect</button>
+            <button type="button" id="javaTest2" onclick="sendTestMessage()">Test message</button>
+            <pre id="log" style="font-size:20px" >Log:<br /> </pre>
         </div>
     </body>
-       
+
 </html>

@@ -12,12 +12,12 @@ function main() {
 	}
 	//DEMO SHOULD BE REMOVED
 	function tryButton() {
-	$("#addQuestion").click(spawn).hide();   
+	$("#addQuestion").click(spawn).hide();
     	}
-	function spawn(){	  
+	function spawn(){
 		showPopUp('Compozitori: În ce oraş a decedat Camille Saint-Saëns, compozitor francez din epoca romantică?', ["Alger1", "Alger2", "Alger3", "Alger4"],this);
-	} 
-	//LOGIN  
+	}
+	//LOGIN
 
     	function addLogin(){
 		$("#submitUsername").click(login)
@@ -28,7 +28,7 @@ function main() {
 		$(".login").text("Hello "+username);
 		$("#addQuestion").show();
     	}
-	
+
     //timer related
     var timer, interval, timeout;
     function addTime() {
@@ -64,8 +64,8 @@ function main() {
 	   $('#pop-up4a').hide();
 	   clearInterval(interval);
 	   clearTimeout(timeout);
-	   url = "/messageHandler?room="+room+"&userid="+username+"&answer="+chosen+"&time="+timeInMS ;
-	   makeRequest ( url , true ) ;
+	   //url = "/messageHandler?room="+room+"&userid="+username+"&answer="+chosen+"&time="+timeInMS ;
+	   //makeRequest ( url , true ) ;
     }
     //map related
      var zones=[];
@@ -73,7 +73,7 @@ function main() {
 	function drawCanvas()
 	{
 		// MIGHT MODIFY starting point by 1 px
-		// M inseamna goTo x y 
+		// M inseamna goTo x y
 		// NEVER NEVER modifica altceva inafara de primele 2 cifre daca nu vrei decat sa muti pozitia
 		//zones[0] inseamna zona 1 NO SHIT
 		var defaultAttributes= {
@@ -83,7 +83,7 @@ function main() {
             'stroke-linejoin': 'round'
         }
 		var paper = new Raphael(document.getElementById('canvasRaphael'),"100%", "100%");
-		paper.rect(0,0,960,500).attr({fill:'#221E1D'})  
+		paper.rect(0,0,960,500).attr({fill:'#221E1D'})
 		zones[0]="M 144 125 l 160 0 l 0 50 l -160 75 z";
 		zones[1]="M 304 175 l 0 150 l -160 -75 z";
 		zones[2]="M 144 425 l 160 0 l 0 -100 l -160 -75 z";
@@ -104,6 +104,7 @@ function main() {
 			zonesCanvas[i].attr(defaultAttributes);
 			zonesCanvas[i].click(function(){
 				console.log("Hello from zone" + this.id);
+                sendMapUpdate(this.id);
 			});
 		}
 	}
@@ -132,7 +133,7 @@ function main() {
 	addLogin();
 	setUp();
 	roomSetUp();
-   
+
 
 }
 $(document).ready(function() {
