@@ -107,6 +107,7 @@ p#question{
     margin:0px;
     padding:0px;
     overflow: hidden;
+<<<<<<< HEAD
 =======
 /*MAIN SHIT*/
 body {    
@@ -214,4 +215,13 @@ p#question{
     padding:0px;
     overflow: hidden;
 >>>>>>> 1614598108db1e863e2dbaae33c3bc2d72a9d30e
+=======
+}
+.shouldBeHiddenBeforeEnteringAGame{
+    display:none;
+}
+.roomSelect{
+    overflow: hidden;
+    width:100%;
+>>>>>>> vladBrach
 }
