@@ -22,5 +22,6 @@ function clickedZone(zoneID,hh){
 }
 
 function selectedRoom ( roomId ){
+	//se apelaza de fiecare data cand se alege o camera
 	room=roomId;
 }
