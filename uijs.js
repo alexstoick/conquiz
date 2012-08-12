@@ -1,50 +1,19 @@
-
-var username;
-var room="room1" ; ////TO BE IMPLEMENTED !!!
-
-function main() {
-	//MAIN SETUP
-	function setUp(){
-		$('#answer1').click(clickedAnswer);
-		$('#answer2').click(clickedAnswer);
-		$('#answer3').click(clickedAnswer);
-		$('#answer4').click(clickedAnswer);
-	}
-	//DEMO SHOULD BE REMOVED
+$(document).ready(function() {
+   main();
+ });
+function main()
+{
+	//DEMO STUFF
+	//tryButton
 	function tryButton() {
 	$("#addQuestion").click(spawn).hide();
     	}
 	function spawn(){
-		showPopUp('Compozitori: În ce oraş a decedat Camille Saint-Saëns, compozitor francez din epoca romantică?', ["Alger1", "Alger2", "Alger3", "Alger4"],this);
+		UIshowPopUp('Compozitori: În ce oraş a decedat Camille Saint-Saëns, compozitor francez din epoca romantică?', ["Alger1", "Alger2", "Alger3", "Alger4"],this);
 	}
-	//LOGIN
-
-    	function addLogin(){
-		$("#submitUsername").click(login)
-    	}
-    	function login()
-    	{
-		username = document.getElementById("usernameForm").value ;
-		$(".login").text("Hello "+username);
-		$("#addQuestion").show();
-    	}
-
-    //timer related
-    var timer, interval, timeout;
-    function addTime() {
-	   timer += 10;
-    }
-    function passedTime() {
-	   clearInterval(interval);
-	   submitAnswer(0,10000);
-    }
-    function setUpTimer() {
-	   timer    =0;
-	   interval =setInterval(addTime,10);
-	   timeout  =setTimeout(passedTime,10000);
-    }
-    //show Questions related
-	function showPopUp (intrebare,answers) {
+	//DEMO STUFF ENDS
+	//Question  & Answer UI SETUP
+	function UIshowPopUp (intrebare,answers) {
 	   	setUpTimer();
 		$('#pop-up4a').show();
 		$('#question').text(intrebare);
@@ -53,22 +22,48 @@ function main() {
 		$('#answer3').text(answers[2]);
 		$('#answer4').text(answers[3]);
 	}
-    //Answer related
-    function clickedAnswer()
-		{
-			submitAnswer($(this).text(),timer);
-		}
-    function submitAnswer(chosen , timeInMS )
-    {
-	   console.log(chosen,timeInMS);
-	   $('#pop-up4a').hide();
-	   clearInterval(interval);
-	   clearTimeout(timeout);
-	   //url = "/messageHandler?room="+room+"&userid="+username+"&answer="+chosen+"&time="+timeInMS ;
-	   //makeRequest ( url , true ) ;
-    }
-    //map related
-     var zones=[];
+	function setUpQuestion(){
+		$('#answer1').click(clickedAnswer);
+		$('#answer2').click(clickedAnswer);
+		$('#answer3').click(clickedAnswer);
+		$('#answer4').click(clickedAnswer);
+	}	
+	function UIClickedAnswer(){
+		$('#pop-up4a').hide();
+		clearInterval(interval);
+		clearTimeout(timeout);
+	}
+	function clickedAnswer()
+	{
+		UIClickedAnswer();
+		submitAnswer($(this).text(),timer);
+	}
+	//timer related
+	var timer, interval, timeout;
+     function addTime() {
+		timer += 10;
+    	}
+    	function passedTime() {
+		clearInterval(interval);
+		submitAnswer(0,10000);
+    	}
+    	function setUpTimer() {
+		timer    =0;
+	     interval =setInterval(addTime,10);
+	     timeout  =setTimeout(passedTime,10000);
+     }
+     //LOGIN RELATED
+     function addLogin(){
+		$("#submitUsername").click(login)
+    	}
+    	function login()
+    	{
+		username = document.getElementById("usernameForm").value ;
+		$(".login").text("Hello "+username);
+		$("#addQuestion").show();
+    	}
+    	//MAP RELATED
+    	var zones=[];
      var zonesCanvas=[];
 	function drawCanvas()
 	{
@@ -82,7 +77,7 @@ function main() {
             'stroke-width': 3,
             'stroke-linejoin': 'round'
         }
-		var paper = new Raphael(document.getElementById('canvasRaphael'),"100%", "100%");
+		paper = new Raphael(document.getElementById('canvasRaphael'),"100%", "100%");
 		paper.rect(0,0,960,500).attr({fill:'#221E1D'})
 		zones[0]="M 144 125 l 160 0 l 0 50 l -160 75 z";
 		zones[1]="M 304 175 l 0 150 l -160 -75 z";
@@ -103,39 +98,36 @@ function main() {
 			zonesCanvas[i]=paper.path(zones[i]);
 			zonesCanvas[i].attr(defaultAttributes);
 			zonesCanvas[i].click(function(){
-				console.log("Hello from zone" + this.id);
-                sendMapUpdate(this.id);
+				clickedZone(this.id);
 			});
 		}
 	}
-	//rooms
-	var roomsAvailabe=5;
-	var chosenRoom=0;
+	//ROOM RELATED
 	function roomSetUp()
 	{
 		for(var i=1;i<=roomsAvailabe;i++)
 		{
 			$('.roomSelect').append('<p class="roomUI">room '+i+'</p>');
 
-			$('.roomSelect .roomUI:nth-child('+(i)+')').click(selectedRoom).attr({'isRoom':i});
+			$('.roomSelect .roomUI:nth-child('+(i)+')').click(chosenRoom).attr({'isRoom':i});
 		}
 	}
-	function selectedRoom(){
-		chosenRoom=$(this).attr('isRoom');
-		console.log(chosenRoom);
+	function chosenRoom()
+	{
+		var roomId=$(this).attr('isRoom');
+		selectedRoom(roomId);
+		UIselectedRoom();
+
+	}
+	function UIselectedRoom(){
 		$('.roomSelect').fadeOut();
 		$('.shouldBeHiddenBeforeEnteringAGame').fadeIn();
 
 	}
-   	//SETUP
-	drawCanvas();
+	//Call all Functions
+	setUpQuestion();
 	tryButton();
+	drawCanvas();
 	addLogin();
-	setUp();
 	roomSetUp();
-
-
 }
-$(document).ready(function() {
-   main();
- });
