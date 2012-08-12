@@ -107,9 +107,16 @@ function main()
 	{
 		for(var i=1;i<=roomsAvailabe;i++)
 		{
-			$('.roomSelect').append('<p class="roomUI">room '+i+'</p>');
-
-			$('.roomSelect .roomUI:nth-child('+(i)+')').click(chosenRoom).attr({'isRoom':i});
+			$('.roomSelect').append('<div class="roomUI"><p>ROOM '+i+'</p></div>');
+			var currentItem=$('.roomSelect .roomUI:nth-child('+(i)+')');
+			currentItem.click(chosenRoom).attr({'isRoom':i});
+			currentItem.append('<div class="userBlock"></div>');
+			currentItem.hover(function(){
+				$('.userBlock:eq('+($(this).attr('isRoom')-1)+')').toggle();
+			});
+			var usersItem=$('.userBlock:eq('+(i-1)+')');
+			for(var j=1;j<=4;j++)
+				usersItem.append('<p>username'+j+'<p>');
 		}
 	}
 	function chosenRoom()
@@ -120,8 +127,8 @@ function main()
 
 	}
 	function UIselectedRoom(){
-		$('.roomSelect').fadeOut();
-		$('.shouldBeHiddenBeforeEnteringAGame').fadeIn();
+		$('.roomSelect').slideUp();
+		$('.shouldBeHiddenBeforeEnteringAGame').show();
 
 	}
 	//Call all Functions
