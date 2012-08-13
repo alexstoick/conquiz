@@ -12,7 +12,7 @@ function submitAnswer ( answer , time)
 
 function showPopUp (intrebare,answers) {
 	//trebuie apelat ca sa apara intrebarea
-	UIshowPopUp(intrebare,answers); 
+	UIshowPopUp(intrebare,answers);
 }
 
 function clickedZone(zoneID,hh){
@@ -23,5 +23,5 @@ function clickedZone(zoneID,hh){
 
 function selectedRoom ( roomId ){
 	//se apelaza de fiecare data cand se alege o camera
-	room=roomId;
+	chosenRoom=roomId;
 }
