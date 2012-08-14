@@ -14,7 +14,7 @@ function showPopUp (intrebare,answers) {
 	m.UIshowPopUp(intrebare,answers); 
 }
 
-function clickedZone(zoneID,hh){
+function clickedZone(zoneID){
 	//se apelaza de fiecare data cand se clickuie o zona
 	console.log("APELAT");
 	sendMapUpdate(zoneID);
