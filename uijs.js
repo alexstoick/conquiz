@@ -1,9 +1,10 @@
+
 $(document).ready(function() {
 	m=main()
 });
 function main()
 {
-	 //DEMO STUFF
+	//DEMO STUFF
 	//tryButton
 	function tryButton() {
 		$("#addQuestion").click(spawn).hide();

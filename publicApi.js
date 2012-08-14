@@ -1,11 +1,23 @@
 //PUBLIC PROPERTY
+/**
+ * @class Global Public Api
+ * @property {string} username usernameul userului ; nu trebuie modificat
+ * @property {number} chosenRoom camera aleasa ; nu trebuie modificat
+ * @property {paper} paper nvas; nu trebuie modificat
+ * @property {number} roomsAvailable numarul de camere disponibile ; nu trebuie modificat
+ * @property {function}  m functia main; nu trebuie modificat
+ */
 var username; // READ-ONLY
 var chosenRoom; // READ-ONLY
 var paper; // Doar culorile
 var roomsAvailabe=5; // TREBUIE MODIFICAT
 var m;
 //PUBLIC FUNCTION
-
+/**
+	@function  submitAnswer se apelaza de fiecare data cand se primeste
+	@param answer raspunsul trimis
+	@param time timpul de raspuns
+*/
 function submitAnswer ( answer , time)
 {
 	//se apeleaza de fiecare data cand se primeste
