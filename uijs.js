@@ -142,7 +142,7 @@ function main()
 		};	
 		function chosenRoom()
 		{
-			var roomId=$(this).parent().attr('isRoom');
+			var roomId=$(this).attr('isRoom');
 			selectedRoom(roomId);
 			UIselectedRoom();
 
