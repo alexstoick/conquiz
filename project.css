@@ -1,6 +1,6 @@
 /*MAIN SHIT*/
-body {    
-    
+body {
+
 }
 .container{
     font-family: 'PT Sans', sans-serif;
@@ -22,33 +22,33 @@ p {
 .right{
     float:right;
 }
-.left{	
+.left{
     float:left
 }
 /*HEADER AND LOGIN*/
 header {
     color: #E9633B;
     background-color: #ECEAE0;
-    
+
 }
 /*POP-UP*/
-#pop-up4a { 
+#pop-up4a {
     display:none;
     position:absolute;
     width: 960px;
     height:200px;
-    padding: 0px;		
+    padding: 0px;
     top:200px;
     background: rgb(216, 214, 205);
     background: rgba(216, 214, 205, 0.7);
 
-    
+
     color: #E9633B;
     line-height: 100%;
 }
 
 .answer{
-  
+
     text-align:center;
     width:430px;
     height:30px;
@@ -93,7 +93,7 @@ p#question{
     height: 30px;
     font-size: 25px;
     color: #E9633B;
-    box-shadow: rgba(0,0,0, 0.1) 0px 0px 8px;   -moz-box-shadow: rgba(0,0,0, 0.1) 0px 0px 8px;   -webkit-box-shadow: rgba(0,0,0, 0.1) 0px 0px 8px;   
+    box-shadow: rgba(0,0,0, 0.1) 0px 0px 8px;   -moz-box-shadow: rgba(0,0,0, 0.1) 0px 0px 8px;   -webkit-box-shadow: rgba(0,0,0, 0.1) 0px 0px 8px;
 }
 .form{
 }
@@ -115,5 +115,8 @@ p#question{
     width:100%;
 }
 .userBlock{
+    display:none;
+}
+.shouldBeHiddenUntilLogin{
     display:none;
 }
