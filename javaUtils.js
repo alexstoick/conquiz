@@ -45,8 +45,8 @@ function test ( )
 {
     if ( socket && socket.socket.connected )
     {
-        socket.emit ( 'joinRoom' , 'room1' ) ;
-        log ( '> should join room 1' ) ;
+        socket.emit ( 'joinRoom' , chosenRoom , username ) ;
+        log ( '> should ' + chosenRoom ) ;
     }
     else
     {
