@@ -28,6 +28,7 @@ p {
 /*HEADER AND LOGIN*/
 header {
     color: #E9633B;
+    width:100%;
     background-color: #ECEAE0;
 
 }
@@ -60,7 +61,6 @@ p#question{
     padding:0px;
     text-align:center;
     font-size: 30px;
-    padding:auto;
 }
 /*Score*/
 #score
@@ -70,7 +70,7 @@ p#question{
     margin: 0px;
     padding: 0px;
 }
-#casuta {
+.casuta {
     display: inline;
     margin: 5px;
     padding: 5px;
@@ -93,7 +93,9 @@ p#question{
     height: 30px;
     font-size: 25px;
     color: #E9633B;
-    box-shadow: rgba(0,0,0, 0.1) 0px 0px 8px;   -moz-box-shadow: rgba(0,0,0, 0.1) 0px 0px 8px;   -webkit-box-shadow: rgba(0,0,0, 0.1) 0px 0px 8px;
+    box-shadow: rgba(0,0,0, 0.1) 0px 0px 8px;  
+    -moz-box-shadow: rgba(0,0,0, 0.1) 0px 0px 8px; 
+    -webkit-box-shadow: rgba(0,0,0, 0.1) 0px 0px 8px;   
 }
 .form{
 }
@@ -111,12 +113,31 @@ p#question{
     display:none;
 }
 .roomSelect{
-    overflow: hidden;
-    width:100%;
+    overflow:auto;
+    width:960px;
+    clear:both;
 }
 .userBlock{
     display:none;
 }
 .shouldBeHiddenUntilLogin{
     display:none;
+}
+.roomUI{
+    background-color:#ECEAE0;
+    color: #221E1D;
+    clear:both;
+    font-size: 30px;
+    width:100%;
+    margin-bottom:4px;
+}
+.userBlock
+{
+    color: #555555;
+    font-size: 20px;
+    clear:both;
+}
+.roomTitle
+{
+    width: 95%;
 }

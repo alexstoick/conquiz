@@ -1,17 +1,16 @@
 $(document).ready(function() {
-   main();
+ 	m=main()
  });
 function main()
 {
-	//DEMO STUFF
+	 //DEMO STUFF
 	//tryButton
 	function tryButton() {
 	$("#addQuestion").click(spawn).hide();
     $("#shouldBeHiddenUntilLogin").hide();
-    	}
 	function spawn(){
 		UIshowPopUp('Compozitori: În ce oraş a decedat Camille Saint-Saëns, compozitor francez din epoca romantică?', ["Alger1", "Alger2", "Alger3", "Alger4"],this);
-	}
+	};
 	//DEMO STUFF ENDS
 	//Question  & Answer UI SETUP
 	function UIshowPopUp (intrebare,answers) {
@@ -22,51 +21,53 @@ function main()
 		$('#answer2').text(answers[1]);
 		$('#answer3').text(answers[2]);
 		$('#answer4').text(answers[3]);
-	}
+	};
 	function setUpQuestion(){
 		$('#answer1').click(clickedAnswer);
 		$('#answer2').click(clickedAnswer);
 		$('#answer3').click(clickedAnswer);
 		$('#answer4').click(clickedAnswer);
-	}
+	};
 	function UIClickedAnswer(){
 		$('#pop-up4a').hide();
 		clearInterval(interval);
 		clearTimeout(timeout);
-	}
+	};
 	function clickedAnswer()
 	{
 		UIClickedAnswer();
 		submitAnswer($(this).text(),timer);
-	}
+	};
 	//timer related
 	var timer, interval, timeout;
-     function addTime() {
+     	function addTime() {
 		timer += 10;
     	}
     	function passedTime() {
 		clearInterval(interval);
 		submitAnswer(0,10000);
-    	}
+    	};
     	function setUpTimer() {
 		timer    =0;
 	     interval =setInterval(addTime,10);
 	     timeout  =setTimeout(passedTime,10000);
-     }
-     //LOGIN RELATED
-     function addLogin(){
-		$("#submitUsername").click(login)
-    	}
+    	 };
+    	 //LOGIN RELATED
+     	function addLogin(){
+		$("#submitUsername").click(login);
+    	};
     	function login()
     	{
 		username = document.getElementById("usernameForm").value ;
 		$(".login").text("Hello "+username);
 		$("#addQuestion").show();
         $("#shouldBeHiddenUntilLogin").show();
-    	}
+		connectedUsers[0]=username;
+		UIUpdateUsersPresentation();
+    	};
     	//MAP RELATED
     	var zones=[];
-     var zonesCanvas=[];
+     	var zonesCanvas=[];
 	function drawCanvas()
 	{
 		// MIGHT MODIFY starting point by 1 px
@@ -103,40 +104,104 @@ function main()
 				clickedZone(this.id);
 			});
 		}
-	}
+	};
 	//ROOM RELATED
 	function roomSetUp()
 	{
 		for(var i=1;i<=roomsAvailabe;i++)
 		{
-			$('.roomSelect').append('<div class="roomUI"><p>ROOM '+i+'</p></div>');
-			var currentItem=$('.roomSelect .roomUI:nth-child('+(i)+')');
-			currentItem.click(chosenRoom).attr({'isRoom':i});
-			currentItem.append('<div class="userBlock"></div>');
-			currentItem.hover(function(){
-				$('.userBlock:eq('+($(this).attr('isRoom')-1)+')').toggle();
-			});
-			var usersItem=$('.userBlock:eq('+(i-1)+')');
-			for(var j=1;j<=4;j++)
-				usersItem.append('<p>username'+j+'<p>');
+			addNewRoom(i);
 		}
-	}
+	};
+	function addNewRoom(roomNumber)
+	{
+		//div .roomSelect = allRooms
+			//div .roomUI = currentRoom
+				//p .left .roomTitle = titleOfRoom 
+				//p .right (barItem) = barItemOfRoom
+				//br clear:both pentru background
+				//div .userBlock = usersOfRoom
+					//p (username)
+			//div .roomUI ETC
+
+		var allRooms=$('.roomSelect');
+			allRooms.append('<div class="roomUI"><p class="left roomTitle">ROOM '+roomNumber+'</p><p class="right">=</p><br style="clear:both"></div>');
+			var currentRoom=allRooms.find(' .roomUI:eq('+(roomNumber-1)+')');
+				var titleOfRoom=currentRoom.find(' p:eq(0)');
+					titleOfRoom.click(chosenRoom).attr({'isRoom':roomNumber});
+				var barItemOfRoom=currentRoom.find('P:eq(1)');
+					barItemOfRoom.click(function()
+					{
+						$(this).parent().find('div').toggle();
+					});
+				currentRoom.append('<div class="userBlock"></div>');
+				var usersOfRoom=$('.userBlock:eq('+(roomNumber-1)+')');
+					for(var j=1;j<=4;j++)
+						usersOfRoom.append('<p>username'+j+'<p>');
+	};	
 	function chosenRoom()
 	{
-		var roomId=$(this).attr('isRoom');
+		var roomId=$(this).parent().attr('isRoom');
 		selectedRoom(roomId);
 		UIselectedRoom();
 
-	}
+	};
 	function UIselectedRoom(){
 		$('.roomSelect').slideUp();
 		$('.shouldBeHiddenBeforeEnteringAGame').show();
 
+	};
+	//users
+	//pozitia 0 e setata in functia login() cu numele usereului;
+	var connectedUsers=[-1,0,0,0];
+	function UIRemoveUser(user){
+		console.log('removing');
+
+		var userNo=5;
+		
+		for(var i=1;i<connectedUsers.length;i++)
+		{	
+			console.log(connectedUsers[i],user);
+			if(connectedUsers[i]==user)
+				userNo=i;
+		}
+		connectedUsers[userNo]=0;
+		UIUpdateUsersPresentation();
+
+	};
+	function UIAddUsersForCurrentRoom(users)
+	{
+		console.log(users);
+		for(var i=0;i<users.length;i++)
+		{
+			var j=0;
+			while(connectedUsers[j]!=0 && j<=3)
+				j++;
+			if(j==4)
+				console.log('ERROR:Sent more users');
+			connectedUsers[j]=users[i];
+		}
+		UIUpdateUsersPresentation();
 	}
-	//Call all Functions
+	function UIUpdateUsersPresentation()
+	{
+		console.log(connectedUsers);
+		for(var i=0;i<4;i++)
+		{
+			if(connectedUsers[i]!=0)
+				$('.casuta:eq('+i+')').text(connectedUsers[i]);
+			else
+				$('.casuta:eq('+i+')').text('no user connected');
+
+		}
+	}
 	setUpQuestion();
 	tryButton();
 	drawCanvas();
 	addLogin();
 	roomSetUp();
+	return {
+		UIAddUsersForCurrentRoom:UIAddUsersForCurrentRoom , 
+		UIRemoveUser:UIRemoveUser
+	}
 }

@@ -3,6 +3,7 @@ var username; // READ-ONLY
 var chosenRoom; // READ-ONLY
 var paper; // Doar culorile
 var roomsAvailabe=5; // TREBUIE MODIFICAT
+var m;
 //PUBLIC FUNCTION
 
 function submitAnswer ( answer , time)
@@ -12,7 +13,7 @@ function submitAnswer ( answer , time)
 
 function showPopUp (intrebare,answers) {
 	//trebuie apelat ca sa apara intrebarea
-	UIshowPopUp(intrebare,answers);
+	m.UIshowPopUp(intrebare,answers); 
 }
 
 function clickedZone(zoneID,hh){
@@ -23,5 +24,24 @@ function clickedZone(zoneID,hh){
 
 function selectedRoom ( roomId ){
 	//se apelaza de fiecare data cand se alege o camera
-	chosenRoom=roomId;
+	room=roomId;
+}
+
+function addUsers ( users )
+{	
+	//trimiti un Array
+	m.UIAddUsersForCurrentRoom(users);
+}
+function removeUser ( user )
+{
+	m.UIRemoveUser(user);
+}
+function receiveAnswer( answers)
+{
+	//doar 3
+}
+function getUsersFromRoom ( roomID )
+{
+	users=getUsersFromServer()//java servlet
+	UIAddUsersForRoomTooltip ( roomId , users);
 }
