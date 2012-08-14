@@ -11,22 +11,21 @@ function submitAnswer ( answer , time)
 
 function showPopUp (intrebare,answers) {
 	//trebuie apelat ca sa apara intrebarea
-	m.UIshowPopUp(intrebare,answers); 
+	m.UIshowPopUp(intrebare,answers);
 }
 
 function clickedZone(zoneID){
 	//se apelaza de fiecare data cand se clickuie o zona
-	console.log("APELAT");
 	sendMapUpdate(zoneID);
 }
 
 function selectedRoom ( roomId ){
 	//se apelaza de fiecare data cand se alege o camera
-	room=roomId;
+	chosenRoom=roomId;
 }
 
 function addUsers ( users )
-{	
+{
 	//trimiti un Array
 	m.UIAddUsersForCurrentRoom(users);
 }
@@ -40,6 +39,6 @@ function receiveAnswer( answers)
 }
 function getUsersFromRoom ( roomID )
 {
-	users=getUsersFromServer()//java servlet
+	users=getUsersFromServer() ;//java servlet
 	UIAddUsersForRoomTooltip ( roomId , users);
 }

@@ -6,7 +6,7 @@ function main()
 {
 	//DEMO STUFF
 	//tryButton
-	
+
 	function tryButton() {
 		$("#addQuestion").click(spawn).hide();
 	};
@@ -118,7 +118,7 @@ function main()
 	{
 		//div .roomSelect = allRooms
 			//div .roomUI = currentRoom
-				//p .left .roomTitle = titleOfRoom 
+				//p .left .roomTitle = titleOfRoom
 				//p .right (barItem) = barItemOfRoom
 				//br clear:both pentru background
 				//div .userBlock = usersOfRoom
@@ -139,7 +139,7 @@ function main()
 		var usersOfRoom=$('.userBlock:eq('+(roomNumber-1)+')');
 		for(var j=1;j<=4;j++)
 			usersOfRoom.append('<p>username'+j+'<p>');
-		};	
+		};
 		function chosenRoom()
 		{
 			var roomId=$(this).attr('isRoom');
@@ -159,9 +159,9 @@ function main()
 		console.log('removing');
 
 		var userNo=5;
-		
+
 		for(var i=1;i<connectedUsers.length;i++)
-		{	
+		{
 			console.log(connectedUsers[i],user);
 			if(connectedUsers[i]==user)
 				userNo=i;
@@ -175,12 +175,14 @@ function main()
 		console.log(users);
 		for(var i=0;i<users.length;i++)
 		{
+            /*
 			var j=0;
 			while(connectedUsers[j]!=0 && j<=3)
 				j++;
 			if(j==4)
 				console.log('ERROR:Sent more users');
-			connectedUsers[j]=users[i];
+            */
+			connectedUsers[i]=users[i];
 		}
 		UIUpdateUsersPresentation();
 	}
@@ -202,7 +204,7 @@ function main()
 	addLogin();
 	roomSetUp();
 	return {
-		UIAddUsersForCurrentRoom:UIAddUsersForCurrentRoom , 
+		UIAddUsersForCurrentRoom:UIAddUsersForCurrentRoom ,
 		UIRemoveUser:UIRemoveUser
 	}
 }

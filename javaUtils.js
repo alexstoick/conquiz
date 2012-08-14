@@ -1,6 +1,3 @@
-function doAlert () {
-    alert ( "1231231" ) ;
-}
 
 function log(msg)
 {
@@ -29,9 +26,11 @@ function connect()
     if (socket == null)
     {
         socket = io.connect() ;
-        socket.on('connect', function () { status('Connected'); test(); });
-        socket.on('message', function (data) { log(data); });
-        socket.on('mapUpdate' , function (id,player) { updateMap ( id,player) ;})
+        socket.on( 'connect' , function () { status('Connected'); test(); });
+        socket.on( 'message' , function (data) { log(data); });
+        socket.on( 'mapUpdate' , function (id,player) { updateMap ( id,player) ;}) ;
+        socket.on ( 'usersUpdate' , function ( users ) { addUsers ( users ) ; } ) ;
+        socket.on ( 'userDisconnected' , function ( user ) { removeUser ( user ) ; } ) ;
     }
     socket.socket.connect();
 }
