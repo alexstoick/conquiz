@@ -159,8 +159,10 @@ function main()
 		console.log('removing');
 
 		var userNo=5;
-
-		for(var i=1;i<connectedUsers.length;i++)
+        /*
+         *       ~~~~~POZITIA 0 NU MAI E SETATA!!!!
+         */
+		for(var i=0;i<connectedUsers.length;i++)
 		{
 			console.log(connectedUsers[i],user);
 			if(connectedUsers[i]==user)
