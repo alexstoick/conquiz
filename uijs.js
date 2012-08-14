@@ -6,6 +6,7 @@ function main()
 {
 	//DEMO STUFF
 	//tryButton
+	
 	function tryButton() {
 		$("#addQuestion").click(spawn).hide();
 	};
