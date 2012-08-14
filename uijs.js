@@ -1,21 +1,20 @@
 $(document).ready(function() {
- 	m=main()
- });
+	m=main()
+});
 function main()
 {
 	 //DEMO STUFF
 	//tryButton
 	function tryButton() {
-	$("#addQuestion").click(spawn).hide();
-    $("#shouldBeHiddenUntilLogin").hide();
-	}
+		$("#addQuestion").click(spawn).hide();
+	};
 	function spawn(){
 		UIshowPopUp('Compozitori: În ce oraş a decedat Camille Saint-Saëns, compozitor francez din epoca romantică?', ["Alger1", "Alger2", "Alger3", "Alger4"],this);
 	};
 	//DEMO STUFF ENDS
 	//Question  & Answer UI SETUP
 	function UIshowPopUp (intrebare,answers) {
-	   	setUpTimer();
+		setUpTimer();
 		$('#pop-up4a').show();
 		$('#question').text(intrebare);
 		$('#answer1').text(answers[0]);
@@ -41,46 +40,45 @@ function main()
 	};
 	//timer related
 	var timer, interval, timeout;
-     	function addTime() {
+	function addTime() {
 		timer += 10;
-    	}
-    	function passedTime() {
+	}
+	function passedTime() {
 		clearInterval(interval);
 		submitAnswer(0,10000);
-    	};
-    	function setUpTimer() {
+	};
+	function setUpTimer() {
 		timer    =0;
-	     interval =setInterval(addTime,10);
-	     timeout  =setTimeout(passedTime,10000);
-    	 };
+		interval =setInterval(addTime,10);
+		timeout  =setTimeout(passedTime,10000);
+	};
     	 //LOGIN RELATED
-     	function addLogin(){
-		$("#submitUsername").click(login);
-    	};
-    	function login()
-    	{
-		username = document.getElementById("usernameForm").value ;
-		$(".login").text("Hello "+username);
-		$("#addQuestion").show();
-        $("#shouldBeHiddenUntilLogin").show();
-		connectedUsers[0]=username;
-		UIUpdateUsersPresentation();
-    	};
+    	 function addLogin(){
+    	 	$("#submitUsername").click(login);
+    	 };
+    	 function login()
+    	 {
+    	 	username = document.getElementById("usernameForm").value ;
+    	 	$(".login").text("Hello "+username);
+    	 	$("#addQuestion").show();
+    	 	connectedUsers[0]=username;
+    	 	UIUpdateUsersPresentation();
+    	 };
     	//MAP RELATED
     	var zones=[];
-     	var zonesCanvas=[];
-	function drawCanvas()
-	{
+    	var zonesCanvas=[];
+    	function drawCanvas()
+    	{
 		// MIGHT MODIFY starting point by 1 px
 		// M inseamna goTo x y
 		// NEVER NEVER modifica altceva inafara de primele 2 cifre daca nu vrei decat sa muti pozitia
 		//zones[0] inseamna zona 1 NO SHIT
 		var defaultAttributes= {
-            fill: '#ECEAE0',
-            stroke: '#63AA9C',
-            'stroke-width': 3,
-            'stroke-linejoin': 'round'
-        }
+			fill: '#ECEAE0',
+			stroke: '#63AA9C',
+			'stroke-width': 3,
+			'stroke-linejoin': 'round'
+		}
 		paper = new Raphael(document.getElementById('canvasRaphael'),"100%", "100%");
 		paper.rect(0,0,960,500).attr({fill:'#221E1D'})
 		zones[0]="M 144 125 l 160 0 l 0 50 l -160 75 z";
@@ -126,32 +124,32 @@ function main()
 			//div .roomUI ETC
 
 		var allRooms=$('.roomSelect');
-			allRooms.append('<div class="roomUI"><p class="left roomTitle">ROOM '+roomNumber+'</p><p class="right">=</p><br style="clear:both"></div>');
-			var currentRoom=allRooms.find(' .roomUI:eq('+(roomNumber-1)+')');
-				var titleOfRoom=currentRoom.find(' p:eq(0)');
-					titleOfRoom.click(chosenRoom).attr({'isRoom':roomNumber});
-				var barItemOfRoom=currentRoom.find('P:eq(1)');
-					barItemOfRoom.click(function()
-					{
-						$(this).parent().find('div').toggle();
-					});
-				currentRoom.append('<div class="userBlock"></div>');
-				var usersOfRoom=$('.userBlock:eq('+(roomNumber-1)+')');
-					for(var j=1;j<=4;j++)
-						usersOfRoom.append('<p>username'+j+'<p>');
-	};	
-	function chosenRoom()
-	{
-		var roomId=$(this).parent().attr('isRoom');
-		selectedRoom(roomId);
-		UIselectedRoom();
+		allRooms.append('<div class="roomUI"><p class="left roomTitle">ROOM '+roomNumber+'</p><p class="right">=</p><br style="clear:both"></div>');
+		var currentRoom=allRooms.find(' .roomUI:eq('+(roomNumber-1)+')');
+		var titleOfRoom=currentRoom.find(' p:eq(0)');
+		titleOfRoom.click(chosenRoom).attr({'isRoom':roomNumber});
+		var barItemOfRoom=currentRoom.find('P:eq(1)');
+		barItemOfRoom.click(function()
+		{
+			$(this).parent().find('div').toggle();
+		});
+		currentRoom.append('<div class="userBlock"></div>');
+		var usersOfRoom=$('.userBlock:eq('+(roomNumber-1)+')');
+		for(var j=1;j<=4;j++)
+			usersOfRoom.append('<p>username'+j+'<p>');
+		};	
+		function chosenRoom()
+		{
+			var roomId=$(this).parent().attr('isRoom');
+			selectedRoom(roomId);
+			UIselectedRoom();
 
-	};
-	function UIselectedRoom(){
-		$('.roomSelect').slideUp();
-		$('.shouldBeHiddenBeforeEnteringAGame').show();
+		};
+		function UIselectedRoom(){
+			$('.roomSelect').slideUp();
+			$('.shouldBeHiddenBeforeEnteringAGame').show();
 
-	};
+		};
 	//users
 	//pozitia 0 e setata in functia login() cu numele usereului;
 	var connectedUsers=[-1,0,0,0];
