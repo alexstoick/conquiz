@@ -31,8 +31,16 @@ function connect()
         socket.on( 'mapUpdate' , function (id,player) { updateMap ( id,player) ;}) ;
         socket.on ( 'usersUpdate' , function ( users ) { addUsers ( users ) ; } ) ;
         socket.on ( 'userDisconnected' , function ( user ) { removeUser ( user ) ; } ) ;
+        socket.on ( 'showQuestion' , function ( ) { showQuestion () ; } ) ;
     }
     socket.socket.connect();
+}
+
+function showQuestion ( )
+{
+    //call to public API
+    console.log ( "called the public api for question" ) ;
+    showPopUp ( 'Compozitori: În ce oraş a decedat Camille Saint-Saëns, compozitor francez din epoca romantică?', ["1", "2", "3", "4"] ) ;
 }
 
 function sendTestMessage ( )
@@ -72,5 +80,6 @@ function updateMap ( id , player )
 function sendMapUpdate ( id )
 {
     socket.emit ( 'updateMap' , id , username ) ;
+    socket.emit ( 'sendQuestion' ) ;
 }
 

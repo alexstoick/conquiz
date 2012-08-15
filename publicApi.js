@@ -7,11 +7,12 @@ var m;
 function submitAnswer ( answer , time)
 {
 	//se apeleaza de fiecare data cand se primeste
+    socket.emit ( 'answer' , chosenRoom , username , answer , time ) ;
 }
 
 function showPopUp (intrebare,answers) {
 	//trebuie apelat ca sa apara intrebarea
-	m.UIshowPopUp(intrebare,answers);
+	m.UIShowPopUp(intrebare,answers);
 }
 
 function clickedZone(zoneID){

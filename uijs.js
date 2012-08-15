@@ -11,11 +11,11 @@ function main()
 		$("#addQuestion").click(spawn).hide();
 	};
 	function spawn(){
-		UIshowPopUp('Compozitori: În ce oraş a decedat Camille Saint-Saëns, compozitor francez din epoca romantică?', ["Alger1", "Alger2", "Alger3", "Alger4"],this);
+		UIShowPopUp('Compozitori: În ce oraş a decedat Camille Saint-Saëns, compozitor francez din epoca romantică?', ["Alger1", "Alger2", "Alger3", "Alger4"],this);
 	};
 	//DEMO STUFF ENDS
 	//Question  & Answer UI SETUP
-	function UIshowPopUp (intrebare,answers) {
+	function UIShowPopUp (intrebare,answers) {
 		setUpTimer();
 		$('#pop-up4a').show();
 		$('#question').text(intrebare);
@@ -207,6 +207,7 @@ function main()
 	roomSetUp();
 	return {
 		UIAddUsersForCurrentRoom:UIAddUsersForCurrentRoom ,
-		UIRemoveUser:UIRemoveUser
+		UIRemoveUser:UIRemoveUser,
+        UIShowPopUp:UIShowPopUp
 	}
 }
