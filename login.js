@@ -2,12 +2,15 @@
 function LoginClass ( ){
 
     //Public properties
-    this.username ;
+  //  this.username ;
+    this.username = "abc" ;
 
     //Private properties
 
     //Constructor
-    $("#submitUsername").click(setUsername);
+    this.construct = function ( ) {
+        $("#submitUsername").click(setUsername);
+    }
 
 
     function setUsername()
@@ -17,5 +20,6 @@ function LoginClass ( ){
         $("#addQuestion").show();
         $('.roomSelect').show();
         console.log ( this.username ) ;
+        loggedIn ( this.username ) ;
     }
 }

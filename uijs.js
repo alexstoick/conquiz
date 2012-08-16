@@ -37,6 +37,13 @@ function UIClass()
             //userBlock.find('p:eq('+i+')').text('free slot');
     }
 
+    this.construct = function ( )
+    {
+        setUpQuestion();
+        tryButton();
+        roomSetUp();
+    }
+
 
     //Private functions
     /*
@@ -173,8 +180,5 @@ function UIClass()
 
 
 
-    setUpQuestion();
-    tryButton();
-    roomSetUp();
 
 }

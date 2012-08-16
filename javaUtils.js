@@ -1,6 +1,4 @@
 
-$(document).ready ( connect ) ;
-
 function log(msg)
 {
     document.getElementById('log').appendChild(document.createTextNode(new Date() + ' ' + msg + '\n'));
@@ -66,7 +64,8 @@ function connectToRoom ( )
 {
     if ( socket && socket.socket.connected )
     {
-        socket.emit ( 'joinRoom' , roomHandler.chosenRoom , username ) ;
+        console.log ( loginHandler.username ) ;
+        socket.emit ( 'joinRoom' , roomHandler.chosenRoom , loginHandler.username ) ;
         log ( '> should ' + roomHandler.chosenRoom ) ;
     }
     else
@@ -93,7 +92,7 @@ function updateMap ( id , player )
 
 function sendMapUpdate ( id )
 {
-    socket.emit ( 'updateMap' , id , username ) ;
+    socket.emit ( 'updateMap' , id , loginHandler.username ) ;
     socket.emit ( 'sendQuestion' ) ;
 }
 
