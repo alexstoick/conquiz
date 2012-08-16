@@ -96,46 +96,6 @@ function main()
      *  Map UI
      */
 
-    var zones = [];
-    var zonesCanvas = [];
-
-    function drawCanvas()
-    {
-        // MIGHT MODIFY starting point by 1 px
-        // M inseamna goTo x y
-        // NEVER NEVER modifica altceva inafara de primele 2 cifre daca nu vrei decat sa muti pozitia
-        //zones[0] inseamna zona 1 NO SHIT
-        var defaultAttributes = {
-                                    fill: '#ECEAE0',
-                                    stroke: '#63AA9C',
-                                    'stroke-width': 3,
-                                    'stroke-linejoin': 'round'
-                                };
-
-        paper = new Raphael(document.getElementById('canvasRaphael'), "100%", "100%");
-        paper.rect(0, 0, 960, 500).attr({ fill: '#221E1D' });
-
-        zones[0] = "M 144 125 l 160 0 l 0 50 l -160 75 z";
-        zones[1] = "M 304 175 l 0 150 l -160 -75 z";
-        zones[2] = "M 144 425 l 160 0 l 0 -100 l -160 -75 z";
-        zones[3] = "M 304 125 l 512 0 l 0 -50 z";
-        zones[4] = "M 304 125 l 0 50 l 320 0 l 0 -50 z";
-        zones[5] = "M 304 175 l 0 50 l 256 0 l 0 -50 z";
-        zones[6] = "M 304 225 l 0 125 l 384 0 l 0 -125 z";
-        zones[7] = "M 304 350 l 0 75 l 192 0 l 0 -75 z";
-        zones[8] = "M 496 350 l 0 37.5 l 192 0 l 0 -37.5 z";
-        zones[9] = "M 496 387.5 l 0 37.5 l 192 0 l 0 -37.5 z";
-        zones[10] = "M 624 125 l 0 50 l 192 0 l 0 -50 z";
-        zones[11] = "M 560 175 l 0 50 l 128 0 l 0 125 l 128 0 l 0 -175 z";
-        zones[12] = "M 688 350 l 0 75 l 128 0 z";
-        zones[13] = "M 688 350 l 128 0 l 0 75 z";
-        for (var i = 0; i < zones.length; i++)
-        {
-            zonesCanvas[i] = paper.path(zones[i]);
-            zonesCanvas[i].attr(defaultAttributes);
-            zonesCanvas[i].click(function() { clickedZone(this.id); });
-        }
-    }
 
 
 
@@ -207,39 +167,9 @@ function main()
      */
 
 
-    //pozitia 0 e setata in functia login() cu numele usereului; -- NO LONGER
-    var connectedUsers = [-1, 0, 0, 0];
 
-    function UIRemoveUser(user)
-    {
-        console.log('removing');
 
-        var userNo = 5;
-        for (var i = 0; i < connectedUsers.length; i++)
-        {
-            console.log(connectedUsers[i], user);
-            if (connectedUsers[i] == user) userNo = i;
-        }
-        connectedUsers[userNo] = 0;
-        UIUpdateUsersPresentation();
-    }
 
-    function UIAddUsersForCurrentRoom(users)
-    {
-        console.log(users);
-        for (var i = 0; i < users.length; i++)
-        {
-            /*
-                var j=0;
-                while(connectedUsers[j]!=0 && j<=3)
-                    j++;
-                if(j==4)
-                 console.log('ERROR:Sent more users');
-            */
-            connectedUsers[i] = users[i];
-        }
-        UIUpdateUsersPresentation();
-    }
 
     function UIUpdateUsersPresentation()
     {

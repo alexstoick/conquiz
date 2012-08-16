@@ -5,7 +5,8 @@ function RoomClass ()
 
     //Private properties
     var chosenRoom ; //public setter
-    var connectedUsers;
+
+    var connectedUsers = [ 0, 0, 0, 0];
 
     //Constructor
 	
@@ -40,4 +41,5 @@ function RoomClass ()
         //UIHandler.UpdateUsersPresentation();
     }
 
+    //Private functions
 }
