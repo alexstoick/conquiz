@@ -1,6 +1,3 @@
-$(document).ready(function() {
-    m = main()
-});
 
 function main()
 {
@@ -258,7 +255,6 @@ function main()
     setUpQuestion();
     tryButton();
     drawCanvas();
-    addLogin();
     roomSetUp();
 
     return {

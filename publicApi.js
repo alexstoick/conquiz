@@ -1,8 +1,16 @@
-var username; // READ-ONLY
 var chosenRoom; // READ-ONLY
 var paper; // Doar culorile
 var roomsAvailabe=5; // TREBUIE MODIFICAT
-var m;
+var UIHandler;
+var loginHandler ;
+var roomHandler ;
+
+$(document).ready(function() {
+	loginHandler = new LoginClass ( ) ;
+	roomHandler = new RoomClass ( ) ;
+    UIHandler = main();
+});
+
 
 function submitAnswer ( answer , time)
 {
@@ -12,7 +20,7 @@ function submitAnswer ( answer , time)
 
 function showPopUp (intrebare,answers) {
 	//trebuie apelat ca sa apara intrebarea
-	m.UIShowPopUp(intrebare,answers);
+	UIHandler.UIShowPopUp(intrebare,answers);
 }
 
 function clickedZone(zoneID){
@@ -29,11 +37,11 @@ function selectedRoom ( roomId ){
 function addUsers ( users )
 {
 	//trimiti un Array
-	m.UIAddUsersForCurrentRoom(users);
+	UIHandler.UIAddUsersForCurrentRoom(users);
 }
 function removeUser ( user )
 {
-	m.UIRemoveUser(user);
+	UIHandler.UIRemoveUser(user);
 }
 function receiveAnswer( answers)
 {

@@ -1,5 +1,5 @@
 
-function Login ( ){
+function LoginClass ( ){
 
     //Public properties
     this.username ;
@@ -7,7 +7,7 @@ function Login ( ){
     //Private properties
 
     //Constructor
-    $("#submitUsername").click(login);
+    $("#submitUsername").click(setUsername);
 
 
     function setUsername()
@@ -16,8 +16,8 @@ function Login ( ){
         $(".login").text("Hello " + this.username );
         $("#addQuestion").show();
         $('.roomSelect').show();
-        connectedUsers[0] = this.username ;
-
+        console.log ( this.username ) ;
+        //connectedUsers[0] = this.username ;
         //UIUpdateUsersPresentation();
     }
 }
