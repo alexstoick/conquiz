@@ -93,20 +93,6 @@ function main()
       */
 
 
-    function addLogin()
-    {
-        $("#submitUsername").click(login);
-    }
-
-    function login()
-    {
-        username = document.getElementById("usernameForm").value;
-        $(".login").text("Hello " + username);
-        $("#addQuestion").show();
-        $('.roomSelect').show();
-        connectedUsers[0] = username;
-        UIUpdateUsersPresentation();
-    }
 
 
     /*
@@ -159,13 +145,13 @@ function main()
     /*
      * Room UI
      */
-    //div .roomSelect = allRooms     
+    //div .roomSelect = allRooms
         //div .roomUI = currentRoom
-            //p .left .roomTitle = titleOfRoom  
+            //p .left .roomTitle = titleOfRoom
             //p .right (barItem) = barItemOfRoom
-            //br clear:both pentru background     
-            //div .userBlock = usersOfRoom             
-                //p (username)     
+            //br clear:both pentru background
+            //div .userBlock = usersOfRoom
+                //p (username)
         //div .roomUI ETC
 
     function roomSetUp()
