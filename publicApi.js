@@ -57,14 +57,17 @@ function addUsers ( users )
     console.log ( users ) ;
 	roomHandler.addUsers(users);
 }
+
 function removeUser ( user )
 {
 	roomHandler.removeUser(user);
 }
+
 function receiveAnswer( answers)
 {
 	//doar 3
 }
+
 function getUsersFromRoom ( roomID )
 {
 	getUsersFromServer(roomID) ;//java servlet
