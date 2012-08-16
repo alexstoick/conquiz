@@ -1,7 +1,7 @@
 function RoomClass ()
 {
     //Public properties
-    
+
 
     //Private properties
     var chosenRoom ; //public setter
@@ -9,13 +9,15 @@ function RoomClass ()
     var connectedUsers = [ 0, 0, 0, 0];
 
     //Constructor
-	
+
+    UIHandler.UIUpdateUsersPresentation () ;
+
 	//Public functions
 
-	this.SET_chosenRoom = function ( value ) { chosenRoom = value ; } 
+	this.SET_chosenRoom = function ( value ) { chosenRoom = value ; } ;
 
-	this.GET_connectedUsers = function ( ) { return connectedUsers ; }
-	
+	this.GET_connectedUsers = function ( ) { return connectedUsers ; } ;
+
 	this.removeUser = function (user)
     {
         console.log('removing');
@@ -27,7 +29,7 @@ function RoomClass ()
             if (connectedUsers[i] == user) userNo = i;
         }
         connectedUsers[userNo] = 0;
-        
+
         UIHandler.UpdateUsersPresentation();
     }
 

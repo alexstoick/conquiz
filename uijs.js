@@ -7,7 +7,7 @@ function UIClass()
     //Private properties
 
     //Constructor
-    
+
     //Public functions
 
     this.UIUpdateUsersPresentation = function ()
@@ -238,10 +238,4 @@ function UIClass()
     tryButton();
     roomSetUp();
 
-    return {
-        UIAddUsersForCurrentRoom: UIAddUsersForCurrentRoom,
-        UIRemoveUser: UIRemoveUser,
-        UIShowPopUp: UIShowPopUp,
-        UIAddUsersForRoomTooltip:UIAddUsersForRoomTooltip
-    };
 }
