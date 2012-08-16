@@ -2,7 +2,8 @@ function MapClass ()
 {
     //Public properties
 
-    this.paper ;
+    var paper ;
+    this.paper = paper ;
 
     //Private properties
 
@@ -50,7 +51,5 @@ function MapClass ()
             zonesCanvas[i].attr(defaultAttributes);
             zonesCanvas[i].click(function() { clickedZone(this.id); });
         }
-        setUpPaper ( paper ) ;
     }
-
 }
