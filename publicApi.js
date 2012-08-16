@@ -6,10 +6,11 @@ var roomHandler ;
 var mapHandler ;
 
 $(document).ready(function() {
+	UIHandler = new UIClass() ;
 	loginHandler = new LoginClass ( ) ;
 	roomHandler = new RoomClass ( ) ;
 	mapHandler = new MapClass ( ) ;
-    UIHandler = new UIClass();
+   
 });
 
 function submitAnswer ( answer , time)

@@ -2,12 +2,6 @@
 function UIClass()
 {
 
-    //Public properties
-
-    //Private properties
-
-    //Constructor
-
     //Public functions
 
     this.UIUpdateUsersPresentation = function ()
@@ -45,61 +39,6 @@ function UIClass()
 
 
     //Private functions
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     /*
      *  DEMO STUFF
      */
