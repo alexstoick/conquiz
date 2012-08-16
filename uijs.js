@@ -159,7 +159,14 @@ function main()
     /*
      * Room UI
      */
-
+    //div .roomSelect = allRooms     
+        //div .roomUI = currentRoom
+            //p .left .roomTitle = titleOfRoom  
+            //p .right (barItem) = barItemOfRoom
+            //br clear:both pentru background     
+            //div .userBlock = usersOfRoom             
+                //p (username)     
+        //div .roomUI ETC
 
     function roomSetUp()
     {
@@ -171,24 +178,26 @@ function main()
     {
         var allRooms = $('.roomSelect');
         allRooms.append('<div class="roomUI"><p class="left roomTitle">ROOM ' + roomNumber + '</p><p class="right">=</p><br style="clear:both"></div>');
-        var currentRoom = allRooms.find(' .roomUI:eq(' + (roomNumber - 1) + ')');
-        var titleOfRoom = currentRoom.find(' p:eq(0)');
-        titleOfRoom.click(chosenRoom).attr({
+        var currentRoom = allRooms.find(' .roomUI:eq(' + (roomNumber - 1) + ')').attr({
             'isRoom': roomNumber
-        });
+        });;
+        var titleOfRoom = currentRoom.find(' p:eq(0)');
+        titleOfRoom.click(chosenRoom);
         var barItemOfRoom = currentRoom.find('P:eq(1)');
-        barItemOfRoom.click(function() {
-            $(this).parent().find('div').toggle();
-        });
+        barItemOfRoom.click(barItemClicked);
         currentRoom.append('<div class="userBlock"></div>');
         var usersOfRoom = $('.userBlock:eq(' + (roomNumber - 1) + ')');
         for (var j = 1; j <= 4; j++)
-        usersOfRoom.append('<p>username' + j + '<p>');
+            usersOfRoom.append('<p>Free Slot</p>');
     }
-
+    function barItemClicked()
+    {
+        $(this).parent().find('div').toggle();
+        getUsersFromRoom($(this).parent().attr('isRoom'));
+    }
     function chosenRoom()
     {
-        var roomId = $(this).attr('isRoom');
+        var roomId = $(this).parent().attr('isRoom');
         selectedRoom(roomId);
         UIselectedRoom();
 
@@ -200,7 +209,15 @@ function main()
         $('.shouldBeHiddenBeforeEnteringAGame').show();
         $('.shouldBeHiddenUntilLogin').show();
     }
-
+     function UIAddUsersForRoomTooltip(roomId,users)
+    {
+        var userBlock=$('.roomSelect .roomUI:eq('+(roomId-1)+') .userBlock');
+        console.log(users.length);
+        for(var i=0;i<users.length;i++)
+            userBlock.find('p:eq('+i+')').text(users[i]);
+        //for(var i=users.length;i<4;i++)
+            //userBlock.find('p:eq('+i+')').text('free slot');
+    }
 
     /*
      * User related functions
@@ -252,7 +269,6 @@ function main()
                $('.casuta:eq(' + i + ')').text('no user connected');
         }
     }
-
     setUpQuestion();
     tryButton();
     drawCanvas();
@@ -262,6 +278,7 @@ function main()
     return {
         UIAddUsersForCurrentRoom: UIAddUsersForCurrentRoom,
         UIRemoveUser: UIRemoveUser,
-        UIShowPopUp: UIShowPopUp
+        UIShowPopUp: UIShowPopUp,
+        UIAddUsersForRoomTooltip:UIAddUsersForRoomTooltip
     };
 }

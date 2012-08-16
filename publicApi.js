@@ -40,6 +40,6 @@ function receiveAnswer( answers)
 }
 function getUsersFromRoom ( roomID )
 {
-	users=getUsersFromServer() ;//java servlet
-	UIAddUsersForRoomTooltip ( roomId , users);
+	users=getUsersFromServer(roomID) ;//java servlet
+	m.UIAddUsersForRoomTooltip ( roomId , users);
 }
