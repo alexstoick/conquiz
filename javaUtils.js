@@ -41,7 +41,7 @@ function connect()
 
 function receivedUsers ( users , roomId )
 {
-    m.UIAddUsersForRoomTooltip ( roomId , users);
+    updateUsersTooltipForRoom ( roomId , users ) ;
 }
 
 function getUsersFromServer ( roomId  )
@@ -66,8 +66,8 @@ function connectToRoom ( )
 {
     if ( socket && socket.socket.connected )
     {
-        socket.emit ( 'joinRoom' , chosenRoom , username ) ;
-        log ( '> should ' + chosenRoom ) ;
+        socket.emit ( 'joinRoom' , roomHandler.chosenRoom , username ) ;
+        log ( '> should ' + roomHandler.chosenRoom ) ;
     }
     else
     {
@@ -88,7 +88,7 @@ function updateMap ( id , player )
         if ( player == players[i] )
             fillColor = colors[i] ;
 
-    paper.getById ( id ).attr ( {fill:fillColor} ) ;
+    mapHandler.paper.getById ( id ).attr ( {fill:fillColor} ) ;
 }
 
 function sendMapUpdate ( id )

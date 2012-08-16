@@ -1,6 +1,5 @@
-var chosenRoom; // READ-ONLY
-var paper; // Doar culorile
 var roomsAvailabe=5; // TREBUIE MODIFICAT
+
 var UIHandler ;
 var loginHandler ;
 var roomHandler ;
@@ -51,4 +50,9 @@ function receiveAnswer( answers)
 function getUsersFromRoom ( roomID )
 {
 	getUsersFromServer(roomID) ;//java servlet
+}
+
+function updateUsersTooltipForRoom ( roomID , users )
+{
+	UIHandler.UIAddUsersForRoomTooltip ( roomId , users);
 }

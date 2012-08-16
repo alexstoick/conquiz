@@ -33,6 +33,17 @@ function UIClass()
             $("#answer"+i).text(answers[i-1]);
     }
 
+    this.UIAddUsersForRoomTooltip = function (roomId,users)
+    {
+        var userBlock=$('.roomSelect .roomUI:eq('+(roomId-1)+') .userBlock');
+        console.log(users.length);
+        for(var i=0;i<users.length;i++)
+            userBlock.find('p:eq('+i+')').text(users[i]);
+        //for(var i=users.length;i<4;i++)
+            //userBlock.find('p:eq('+i+')').text('free slot');
+    }
+
+
     //Private functions
 
 
@@ -218,15 +229,6 @@ function UIClass()
         $('.shouldBeHiddenUntilLogin').show();
     }
 
-     function UIAddUsersForRoomTooltip(roomId,users)
-    {
-        var userBlock=$('.roomSelect .roomUI:eq('+(roomId-1)+') .userBlock');
-        console.log(users.length);
-        for(var i=0;i<users.length;i++)
-            userBlock.find('p:eq('+i+')').text(users[i]);
-        //for(var i=users.length;i<4;i++)
-            //userBlock.find('p:eq('+i+')').text('free slot');
-    }
 
 
 
