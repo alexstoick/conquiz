@@ -10,8 +10,18 @@ $(document).ready(function() {
 	loginHandler = new LoginClass ( ) ;
 	roomHandler = new RoomClass ( ) ;
 	mapHandler = new MapClass ( ) ;
-   
+    UIHandler.construct ( ) ;
+    roomHandler.construct ( ) ;
+    loginHandler.construct ( ) ;
+
 });
+
+function loggedIn ( username )
+{
+    loginHandler.username = username ;
+    console.log ( "publicAPI " + loginHandler.username) ;
+    connect ( ) ; //from javaUtils
+}
 
 function submitAnswer ( answer , time)
 {
@@ -32,12 +42,13 @@ function clickedZone(zoneID){
 function selectedRoom ( roomId ){
 	//se apelaza de fiecare data cand se alege o camera
 	roomHandler.chosenRoom=roomId;
-    //connectToRoom ( ) ;
+    connectToRoom ( ) ;
 }
 
 function addUsers ( users )
 {
 	//trimiti un Array
+    console.log ( users ) ;
 	roomHandler.addUsers(users);
 }
 function removeUser ( user )
@@ -55,5 +66,5 @@ function getUsersFromRoom ( roomID )
 
 function updateUsersTooltipForRoom ( roomID , users )
 {
-	UIHandler.UIAddUsersForRoomTooltip ( roomId , users);
+	UIHandler.UIAddUsersForRoomTooltip ( roomID , users);
 }
