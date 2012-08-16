@@ -10,10 +10,10 @@ function MapClass ()
     var zonesCanvas = [];
 
     //Constructor
-    drawCanvas ( ) ;
+    this.construct = function ( ) { drawCanvas ( ) ; } ;
 
-    
-	
+
+
     function drawCanvas()
     {
         // MIGHT MODIFY starting point by 1 px
@@ -50,6 +50,7 @@ function MapClass ()
             zonesCanvas[i].attr(defaultAttributes);
             zonesCanvas[i].click(function() { clickedZone(this.id); });
         }
+        setUpPaper ( paper ) ;
     }
 
 }

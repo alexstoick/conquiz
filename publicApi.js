@@ -13,8 +13,14 @@ $(document).ready(function() {
     UIHandler.construct ( ) ;
     roomHandler.construct ( ) ;
     loginHandler.construct ( ) ;
+    mapHandler.construct ( ) ;
 
 });
+
+function setUpPaper ( paper )
+{
+    mapHandler.paper = paper ;
+}
 
 function loggedIn ( username )
 {
@@ -26,7 +32,7 @@ function loggedIn ( username )
 function submitAnswer ( answer , time)
 {
 	//se apeleaza de fiecare data cand se primeste
-    socket.emit ( 'answer' , chosenRoom , username , answer , time ) ;
+    socket.emit ( 'answer' , roomHandler.chosenRoom , loginHandler.username , answer , time ) ;
 }
 
 function showPopUp (intrebare,answers) {
