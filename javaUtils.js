@@ -1,4 +1,6 @@
 
+$(document).ready ( connect ) ;
+
 function log(msg)
 {
     document.getElementById('log').appendChild(document.createTextNode(new Date() + ' ' + msg + '\n'));
@@ -26,14 +28,26 @@ function connect()
     if (socket == null)
     {
         socket = io.connect() ;
-        socket.on( 'connect' , function () { status('Connected'); test(); });
+        socket.on( 'connect' , function () { status('Connected'); });
         socket.on( 'message' , function (data) { log(data); });
         socket.on( 'mapUpdate' , function (id,player) { updateMap ( id,player) ;}) ;
         socket.on ( 'usersUpdate' , function ( users ) { addUsers ( users ) ; } ) ;
         socket.on ( 'userDisconnected' , function ( user ) { removeUser ( user ) ; } ) ;
         socket.on ( 'showQuestion' , function ( ) { showQuestion () ; } ) ;
+        socket.on ( 'usersForSpecificRoom' , function ( conn , room ) { receivedUsers ( conn , room ) ; } ) ;
     }
     socket.socket.connect();
+}
+
+function receivedUsers ( users , roomId )
+{
+    m.UIAddUsersForRoomTooltip ( roomId , users);
+}
+
+function getUsersFromServer ( roomId  )
+{
+    console.log ( "requested users" ) ;
+    socket.emit ( 'requestUsers' , roomId ) ;
 }
 
 function showQuestion ( )
@@ -48,7 +62,7 @@ function sendTestMessage ( )
     socket.send ( 'abc' ) ;
 }
 
-function test ( )
+function connectToRoom ( )
 {
     if ( socket && socket.socket.connected )
     {

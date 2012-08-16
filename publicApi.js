@@ -23,6 +23,7 @@ function clickedZone(zoneID){
 function selectedRoom ( roomId ){
 	//se apelaza de fiecare data cand se alege o camera
 	chosenRoom=roomId;
+    connectToRoom ( ) ;
 }
 
 function addUsers ( users )
@@ -40,6 +41,5 @@ function receiveAnswer( answers)
 }
 function getUsersFromRoom ( roomID )
 {
-	users=getUsersFromServer(roomID) ;//java servlet
-	m.UIAddUsersForRoomTooltip ( roomId , users);
+	getUsersFromServer(roomID) ;//java servlet
 }
