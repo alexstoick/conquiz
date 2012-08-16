@@ -103,6 +103,7 @@ function main()
         username = document.getElementById("usernameForm").value;
         $(".login").text("Hello " + username);
         $("#addQuestion").show();
+        $('.roomSelect').show();
         connectedUsers[0] = username;
         UIUpdateUsersPresentation();
     }
@@ -197,6 +198,7 @@ function main()
     {
         $('.roomSelect').slideUp();
         $('.shouldBeHiddenBeforeEnteringAGame').show();
+        $('.shouldBeHiddenUntilLogin').show();
     }
 
 

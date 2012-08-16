@@ -116,6 +116,7 @@ p#question{
     overflow:auto;
     width:960px;
     clear:both;
+    display:none;
 }
 .userBlock{
     display:none;
