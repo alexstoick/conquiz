@@ -1,16 +1,17 @@
 var chosenRoom; // READ-ONLY
 var paper; // Doar culorile
 var roomsAvailabe=5; // TREBUIE MODIFICAT
-var UIHandler;
+var UIHandler ;
 var loginHandler ;
 var roomHandler ;
+var mapHandler ;
 
 $(document).ready(function() {
 	loginHandler = new LoginClass ( ) ;
 	roomHandler = new RoomClass ( ) ;
-    UIHandler = main();
+	mapHandler = new MapClass ( ) ;
+    UIHandler = new UIClass();
 });
-
 
 function submitAnswer ( answer , time)
 {
@@ -30,18 +31,18 @@ function clickedZone(zoneID){
 
 function selectedRoom ( roomId ){
 	//se apelaza de fiecare data cand se alege o camera
-	chosenRoom=roomId;
-    connectToRoom ( ) ;
+	roomHandler.chosenRoom=roomId;
+    //connectToRoom ( ) ;
 }
 
 function addUsers ( users )
 {
 	//trimiti un Array
-	UIHandler.UIAddUsersForCurrentRoom(users);
+	roomHandler.addUsers(users);
 }
 function removeUser ( user )
 {
-	UIHandler.UIRemoveUser(user);
+	roomHandler.removeUser(user);
 }
 function receiveAnswer( answers)
 {

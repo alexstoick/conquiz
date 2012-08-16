@@ -1,6 +1,94 @@
 
-function main()
+function UIClass()
 {
+
+    //Public properties
+
+    //Private properties
+
+    //Constructor
+    
+    //Public functions
+
+    this.UIUpdateUsersPresentation = function ()
+    {
+        var connectedUsers = roomHandler.GET_connectedUsers() ;
+        console.log(connectedUsers);
+        for (var i = 0; i < 4; i++)
+        {
+            if (connectedUsers[i] !== 0)
+                $('.casuta:eq(' + i + ')').text(connectedUsers[i]);
+            else
+               $('.casuta:eq(' + i + ')').text('no user connected');
+        }
+    }
+
+    this.UIShowPopUp = function (intrebare, answers)
+    {
+        setUpTimer();
+        $('#pop-up4a').show();
+        $('#question').text(intrebare);
+        var i ;
+        for ( i = 1 ; i < 5 ; ++ i )
+            $("#answer"+i).text(answers[i-1]);
+    }
+
+    //Private functions
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
     /*
      *  DEMO STUFF
      */
@@ -22,15 +110,7 @@ function main()
      */
 
 
-    function UIShowPopUp(intrebare, answers)
-    {
-        setUpTimer();
-        $('#pop-up4a').show();
-        $('#question').text(intrebare);
-        var i ;
-        for ( i = 1 ; i < 5 ; ++ i )
-            $("#answer"+i).text(answers[i-1]);
-    }
+
 
     function setUpQuestion()
     {
@@ -82,23 +162,6 @@ function main()
     }
 
 
-
-
-
-     /*
-      * Login UI
-      */
-
-
-
-
-    /*
-     *  Map UI
-     */
-
-
-
-
     /*
      * Room UI
      */
@@ -133,6 +196,8 @@ function main()
         for (var j = 1; j <= 4; j++)
             usersOfRoom.append('<p>Free Slot</p>');
     }
+
+
     function barItemClicked()
     {
         $(this).parent().find('div').toggle();
@@ -152,6 +217,7 @@ function main()
         $('.shouldBeHiddenBeforeEnteringAGame').show();
         $('.shouldBeHiddenUntilLogin').show();
     }
+
      function UIAddUsersForRoomTooltip(roomId,users)
     {
         var userBlock=$('.roomSelect .roomUI:eq('+(roomId-1)+') .userBlock');
@@ -162,29 +228,12 @@ function main()
             //userBlock.find('p:eq('+i+')').text('free slot');
     }
 
-    /*
-     * User related functions
-     */
 
 
 
 
-
-
-    function UIUpdateUsersPresentation()
-    {
-        console.log(connectedUsers);
-        for (var i = 0; i < 4; i++)
-        {
-            if (connectedUsers[i] !== 0)
-                $('.casuta:eq(' + i + ')').text(connectedUsers[i]);
-            else
-               $('.casuta:eq(' + i + ')').text('no user connected');
-        }
-    }
     setUpQuestion();
     tryButton();
-    drawCanvas();
     roomSetUp();
 
     return {

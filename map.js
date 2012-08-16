@@ -10,11 +10,10 @@ function MapClass ()
     var zonesCanvas = [];
 
     //Constructor
+    drawCanvas ( ) ;
+
+    
 	
-	//Public functions
-
-	//Private functions
-
     function drawCanvas()
     {
         // MIGHT MODIFY starting point by 1 px

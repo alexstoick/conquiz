@@ -14,7 +14,7 @@ function RoomClass ()
 
 	this.SET_chosenRoom = function ( value ) { chosenRoom = value ; } 
 
-	this.SET_connectedUsers = function ( value ) { connectedUsers = value ; }
+	this.GET_connectedUsers = function ( ) { return connectedUsers ; }
 	
 	this.removeUser = function (user)
     {
@@ -27,7 +27,8 @@ function RoomClass ()
             if (connectedUsers[i] == user) userNo = i;
         }
         connectedUsers[userNo] = 0;
-        //UIUpdateUsersPresentation();
+        
+        UIHandler.UpdateUsersPresentation();
     }
 
     this.addUsers = function (users)
@@ -38,7 +39,7 @@ function RoomClass ()
             connectedUsers[i] = users[i];
         }
 
-        //UIHandler.UpdateUsersPresentation();
+        UIHandler.UpdateUsersPresentation();
     }
 
     //Private functions

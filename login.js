@@ -17,7 +17,5 @@ function LoginClass ( ){
         $("#addQuestion").show();
         $('.roomSelect').show();
         console.log ( this.username ) ;
-        //connectedUsers[0] = this.username ;
-        //UIUpdateUsersPresentation();
     }
 }
