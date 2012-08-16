@@ -11,17 +11,11 @@ function RoomClass ()
 	
 	//Public functions
 
-	function SET_chosenRoom ( value )
-	{
-		chosenRoom = value ;
-	} 
+	this.SET_chosenRoom = function ( value ) { chosenRoom = value ; } 
 
-	function SET_connectedUsers ( value )
-	{
-		connectedUsers = value ;
-	}
+	this.SET_connectedUsers = function ( value ) { connectedUsers = value ; }
 	
-	function removeUser(user)
+	this.removeUser = function (user)
     {
         console.log('removing');
 
@@ -35,7 +29,7 @@ function RoomClass ()
         //UIUpdateUsersPresentation();
     }
 
-    function addUsers(users)
+    this.addUsers = function (users)
     {
         console.log(users);
         for (var i = 0; i < users.length; i++)
@@ -46,5 +40,4 @@ function RoomClass ()
         //UIHandler.UpdateUsersPresentation();
     }
 
-	//Private functions
 }
