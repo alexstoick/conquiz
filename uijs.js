@@ -156,7 +156,7 @@ function UIClass()
 
     function barItemClicked()
     {
-        
+
         getUsersFromRoom($(this).parent().attr('isRoom'));
     }
     function clickedRoom()
@@ -168,6 +168,7 @@ function UIClass()
             UIselectedRoom();
         }
         else{
+            getUsersFromRoom(roomId);
             userBlock.show();
             if(lastItem!=-1)
             {
