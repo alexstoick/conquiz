@@ -125,12 +125,11 @@ function UIClass()
     //div .roomSelect = allRooms
         //div .roomUI = currentRoom
             //p .left .roomTitle = titleOfRoom
-            //p .right (barItem) = barItemOfRoom
             //br clear:both pentru background
             //div .userBlock = usersOfRoom
                 //p (username)
         //div .roomUI ETC
-
+    var lastItem=-1;
     function roomSetUp()
     {
         for (var i = 1; i <= roomsAvailabe; i++)
@@ -140,12 +139,12 @@ function UIClass()
     function addNewRoom(roomNumber)
     {
         var allRooms = $('.roomSelect');
-        allRooms.append('<div class="roomUI"><p class="left roomTitle">ROOM ' + roomNumber + '</p><p class="right">=</p><br style="clear:both"></div>');
+        allRooms.append('<div class="roomUI"><p class="roomTitle">ROOM ' + roomNumber + '</p></div>');
         var currentRoom = allRooms.find(' .roomUI:eq(' + (roomNumber - 1) + ')').attr({
             'isRoom': roomNumber
         });;
         var titleOfRoom = currentRoom.find(' p:eq(0)');
-        titleOfRoom.click(chosenRoom);
+        currentRoom.click(clickedRoom);
         var barItemOfRoom = currentRoom.find('P:eq(1)');
         barItemOfRoom.click(barItemClicked);
         currentRoom.append('<div class="userBlock"></div>');
@@ -157,14 +156,26 @@ function UIClass()
 
     function barItemClicked()
     {
-        $(this).parent().find('div').toggle();
+        
         getUsersFromRoom($(this).parent().attr('isRoom'));
     }
-    function chosenRoom()
+    function clickedRoom()
     {
-        var roomId = $(this).parent().attr('isRoom');
-        selectedRoom(roomId);
-        UIselectedRoom();
+        var userBlock=$(this).find('div');
+        var roomId = $(this).attr('isRoom');
+        if($(userBlock).is(':visible')){
+            selectedRoom(roomId);
+            UIselectedRoom();
+        }
+        else{
+            userBlock.show();
+            if(lastItem!=-1)
+            {
+                console.log( $(this).parent());
+                $(this).parent().find('.userBlock:eq('+(lastItem-1)+')').hide();
+            }
+            lastItem=roomId;
+        }
 
     }
 
