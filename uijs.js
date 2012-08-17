@@ -69,9 +69,7 @@ function UIClass()
     {
         for (var i = 1; i <= roomsAvailable; i++)
             addNewRoom(i);
-        console.log ( "WINNING" ) ;
         $('.addNewRoom').click(function(){
-            console.log ( "abc" ) ;
             log ( "qq" ) ;
             addNewRoom(++roomsAvailable);
             //call to publicAPI

@@ -43,7 +43,9 @@ function connect()
 
         socket.on ( 'roomNumber' , function ( rooms ) { log ( "received Rooms" ) ; roomsAvailable = rooms ; UIHandler.roomSetUp () ; }) ;
 
-        socket.on ( 'addRoom' , function ( room ) { console.log ( ' should add new room' ) ; UIHandler.newRoom ( room ) ; roomsAvailable = room ; } ) ;
+        socket.on ( 'addRoom' , function ( room ) { console.log ( 'should add new room' ) ; UIHandler.newRoom ( room ) ; roomsAvailable = room ; } ) ;
+
+        socket.on ( 'getFreeUsers', function ( users) { console.log ( 'got free users' ) ; UIHandler.UIAddFreeUsers(users) ; } ) ;
     }
     socket.socket.connect();
 }
@@ -52,7 +54,7 @@ function connect()
 function connected ( )
 {
     status('Connected');
-    socket.emit ( 'noRoom' ) ;
+    socket.emit ( 'noRoom' , loginHandler.username ) ;
     socket.emit ( 'requestRoomNumber') ;
 }
 
@@ -84,7 +86,7 @@ function connectToRoom ( )
     if ( socket && socket.socket.connected )
     {
         console.log ( loginHandler.username ) ;
-        socket.emit ( 'joinRoom' , roomHandler.chosenRoom , loginHandler.username ) ;
+        socket.emit ( 'joinRoom' , roomHandler.chosenRoom ) ;
         log ( '> should ' + roomHandler.chosenRoom ) ;
     }
     else
