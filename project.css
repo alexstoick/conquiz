@@ -118,13 +118,10 @@ p#question{
     clear:both;
     display:none;
 }
-.userBlock{
-    display:none;
-}
 .shouldBeHiddenUntilLogin{
     display:none;
 }
-.roomUI{
+.roomUI , .addNewRoom , .unconnectedUsers{
     background-color:#ECEAE0;
     color: #221E1D;
     clear:both;
@@ -132,19 +129,12 @@ p#question{
     width:100%;
     margin-bottom:4px;
 }
-.userBlock
+.userBlock , .uncoonectedUsersBlock
 {
     color: #555555;
     font-size: 20px;
     clear:both;
-}
-.roomTitle
-{
-    width: 95%;
-}
-.addNewRoom{
-    background-color:#ECEAE0;
-    text-align: center;
+    display:none;
 }
 /* ETC */
 #log{

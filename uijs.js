@@ -36,7 +36,14 @@ function UIClass()
         for(var i=users.length;i<4;i++)
             userBlock.find('p:eq('+i+')').text('Free slot');
     }
-
+    this.UIAddFreeUsers = function (users)
+    {
+        var freeUsersBlock=$('.uncoonectedUsersBlock');
+        freeUsersBlock.html('');
+        console.log(users.length);
+            for(var i=0;i<users.length;i++)
+                freeUsersBlock.append('<p>'+users[i]+'</p>');
+    }
     this.construct = function ( )
     {
         setUpQuestion();
@@ -137,6 +144,10 @@ function UIClass()
         $('.addNewRoom').click(function(){
             addNewRoom(++roomsAvailabe);
         });
+        $('.unconnectedUsers').click(function(){
+            console.log($(this));
+            $(this).find('div').toggle();
+        })
     }
 
     function addNewRoom(roomNumber)
