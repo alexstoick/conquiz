@@ -142,3 +142,10 @@ p#question{
 {
     width: 95%;
 }
+
+/* ETC */
+#log{
+    font-size:30px;
+    clear:both;
+    width:100%;
+}
