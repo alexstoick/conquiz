@@ -134,6 +134,9 @@ function UIClass()
     {
         for (var i = 1; i <= roomsAvailabe; i++)
             addNewRoom(i);
+        $('.addNewRoom').click(function(){
+            addNewRoom(++roomsAvailabe);
+        });
     }
 
     function addNewRoom(roomNumber)
@@ -179,7 +182,6 @@ function UIClass()
         }
 
     }
-
     function UIselectedRoom()
     {
         $('.roomSelect').slideUp();

@@ -1,5 +1,4 @@
 var roomsAvailabe=5; // TREBUIE MODIFICAT
-
 var UIHandler ;
 var loginHandler ;
 var roomHandler ;
@@ -28,6 +27,8 @@ function loggedIn ( user )
     loginHandler.username = user ;
     console.log ( "publicAPI " + loginHandler.username ) ;
     connect ( ) ; //from javaUtils
+
+    //GET No of avaialble ROOMS
 }
 
 function submitAnswer ( answer , time)

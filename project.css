@@ -142,7 +142,10 @@ p#question{
 {
     width: 95%;
 }
-
+.addNewRoom{
+    background-color:#ECEAE0;
+    text-align: center;
+}
 /* ETC */
 #log{
     font-size:20px;
