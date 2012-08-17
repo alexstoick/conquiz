@@ -29,6 +29,8 @@ function loggedIn ( user )
     connect ( ) ; //from javaUtils
 
     //GET No of avaialble ROOMS
+
+    //get list of users in no room: UIHandler.UIAddFreeUsers ( users ) ;
 }
 
 function submitAnswer ( answer , time)

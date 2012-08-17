@@ -15,7 +15,7 @@ function UIClass()
             else
                $('.casuta:eq(' + i + ')').text('no user connected');
         }
-    }
+    };
 
     this.UIShowPopUp = function (intrebare, answers)
     {
@@ -25,7 +25,7 @@ function UIClass()
         var i ;
         for ( i = 1 ; i < 5 ; ++ i )
             $("#answer"+i).text(answers[i-1]);
-    }
+    };
 
     this.UIAddUsersForRoomTooltip = function (roomId,users)
     {
@@ -33,9 +33,10 @@ function UIClass()
         console.log(users.length);
         for(var i=0;i<users.length;i++)
             userBlock.find('p:eq('+i+')').text(users[i]);
-        for(var i=users.length;i<4;i++)
+        for( i=users.length;i<4;i++)
             userBlock.find('p:eq('+i+')').text('Free slot');
-    }
+    };
+
     this.UIAddFreeUsers = function (users)
     {
         var freeUsersBlock=$('.uncoonectedUsersBlock');
@@ -43,13 +44,14 @@ function UIClass()
         console.log(users.length);
             for(var i=0;i<users.length;i++)
                 freeUsersBlock.append('<p>'+users[i]+'</p>');
-    }
+    };
+
     this.construct = function ( )
     {
         setUpQuestion();
         tryButton();
         roomSetUp();
-    }
+    };
 
 
     //Private functions
@@ -141,13 +143,15 @@ function UIClass()
     {
         for (var i = 1; i <= roomsAvailabe; i++)
             addNewRoom(i);
+
         $('.addNewRoom').click(function(){
             addNewRoom(++roomsAvailabe);
         });
+
         $('.unconnectedUsers').click(function(){
             console.log($(this));
             $(this).find('div').toggle();
-        })
+        });
     }
 
     function addNewRoom(roomNumber)
@@ -156,7 +160,7 @@ function UIClass()
         allRooms.append('<div class="roomUI"><p class="roomTitle">ROOM ' + roomNumber + '</p></div>');
         var currentRoom = allRooms.find(' .roomUI:eq(' + (roomNumber - 1) + ')').attr({
             'isRoom': roomNumber
-        });;
+        });
         var titleOfRoom = currentRoom.find(' p:eq(0)');
         currentRoom.click(clickedRoom);
         var barItemOfRoom = currentRoom.find('P:eq(1)');
