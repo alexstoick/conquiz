@@ -33,8 +33,8 @@ function UIClass()
         console.log(users.length);
         for(var i=0;i<users.length;i++)
             userBlock.find('p:eq('+i+')').text(users[i]);
-        //for(var i=users.length;i<4;i++)
-            //userBlock.find('p:eq('+i+')').text('free slot');
+        for(var i=users.length;i<4;i++)
+            userBlock.find('p:eq('+i+')').text('Free slot');
     }
 
     this.construct = function ( )
