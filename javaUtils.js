@@ -26,13 +26,22 @@ function connect()
     if (socket == null)
     {
         socket = io.connect() ;
-        socket.on( 'connect' , function () { status('Connected'); });
+
+        socket.on( 'connect' , function () { status('Connected');socket.emit ( 'noRoom' ) ; });
+
         socket.on( 'message' , function (data) { log(data); });
+
         socket.on( 'mapUpdate' , function (id,player) { updateMap ( id,player) ;}) ;
+
         socket.on ( 'usersUpdate' , function ( users ) { addUsers ( users ) ; } ) ;
+
         socket.on ( 'userDisconnected' , function ( user ) { removeUser ( user ) ; } ) ;
+
         socket.on ( 'showQuestion' , function ( ) { showQuestion () ; } ) ;
+
         socket.on ( 'usersForSpecificRoom' , function ( conn , room ) { receivedUsers ( conn , room ) ; } ) ;
+
+        socket.on ( 'addRoom' , function ( room ) { console.log ( ' should add new room' ) ; UIHandler.newRoom ( room ) ; } ) ;
     }
     socket.socket.connect();
 }

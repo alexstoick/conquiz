@@ -46,12 +46,36 @@ function UIClass()
                 freeUsersBlock.append('<p>'+users[i]+'</p>');
     };
 
+    this.newRoom = addNewRoom ;
+
+    function addNewRoom (roomNumber)
+    {
+        var allRooms = $('.roomSelect');
+        allRooms.append('<div class="roomUI"><p class="roomTitle">ROOM ' + roomNumber + '</p></div>');
+        var currentRoom = allRooms.find(' .roomUI:eq(' + (roomNumber - 1) + ')').attr({
+            'isRoom': roomNumber
+        });
+        var titleOfRoom = currentRoom.find(' p:eq(0)');
+        currentRoom.click(clickedRoom);
+        var barItemOfRoom = currentRoom.find('P:eq(1)');
+        barItemOfRoom.click(barItemClicked);
+        currentRoom.append('<div class="userBlock"></div>');
+        var usersOfRoom = $('.userBlock:eq(' + (roomNumber - 1) + ')');
+        for (var j = 1; j <= 4; j++)
+            usersOfRoom.append('<p>Free Slot</p>');
+
+    }
+
+
+
     this.construct = function ( )
     {
         setUpQuestion();
         tryButton();
         roomSetUp();
     };
+
+
 
 
     //Private functions
@@ -146,6 +170,8 @@ function UIClass()
 
         $('.addNewRoom').click(function(){
             addNewRoom(++roomsAvailabe);
+            //call to publicAPI
+            newRoomAdded ( roomsAvailabe ) ;
         });
 
         $('.unconnectedUsers').click(function(){
@@ -154,22 +180,7 @@ function UIClass()
         });
     }
 
-    function addNewRoom(roomNumber)
-    {
-        var allRooms = $('.roomSelect');
-        allRooms.append('<div class="roomUI"><p class="roomTitle">ROOM ' + roomNumber + '</p></div>');
-        var currentRoom = allRooms.find(' .roomUI:eq(' + (roomNumber - 1) + ')').attr({
-            'isRoom': roomNumber
-        });
-        var titleOfRoom = currentRoom.find(' p:eq(0)');
-        currentRoom.click(clickedRoom);
-        var barItemOfRoom = currentRoom.find('P:eq(1)');
-        barItemOfRoom.click(barItemClicked);
-        currentRoom.append('<div class="userBlock"></div>');
-        var usersOfRoom = $('.userBlock:eq(' + (roomNumber - 1) + ')');
-        for (var j = 1; j <= 4; j++)
-            usersOfRoom.append('<p>Free Slot</p>');
-    }
+
 
 
     function barItemClicked()

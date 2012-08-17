@@ -27,7 +27,6 @@ function loggedIn ( user )
     loginHandler.username = user ;
     console.log ( "publicAPI " + loginHandler.username ) ;
     connect ( ) ; //from javaUtils
-
     //GET No of avaialble ROOMS
 
     //get list of users in no room: UIHandler.UIAddFreeUsers ( users ) ;
@@ -47,6 +46,12 @@ function showPopUp (intrebare,answers) {
 function clickedZone(zoneID){
 	//se apelaza de fiecare data cand se clickuie o zona
 	sendMapUpdate(zoneID);
+}
+
+function newRoomAdded ( roomID )
+{
+    console.log ( "emmited event" ) ;
+    socket.emit ( 'newRoom' , roomID ) ;
 }
 
 function selectedRoom ( roomId ){
