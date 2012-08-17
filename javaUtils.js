@@ -23,11 +23,11 @@ var socket = null;
 function connect()
 {
     log('Connecting to local server...');
-    if (socket == null)
+    if (socket === null)
     {
         socket = io.connect() ;
 
-        socket.on( 'connect' , function () { status('Connected');socket.emit ( 'noRoom' ) ; });
+        socket.on( 'connect' , function () { connected () ; });
 
         socket.on( 'message' , function (data) { log(data); });
 
@@ -41,9 +41,19 @@ function connect()
 
         socket.on ( 'usersForSpecificRoom' , function ( conn , room ) { receivedUsers ( conn , room ) ; } ) ;
 
-        socket.on ( 'addRoom' , function ( room ) { console.log ( ' should add new room' ) ; UIHandler.newRoom ( room ) ; } ) ;
+        socket.on ( 'roomNumber' , function ( rooms ) { log ( "received Rooms" ) ; roomsAvailable = rooms ; UIHandler.roomSetUp () ; }) ;
+
+        socket.on ( 'addRoom' , function ( room ) { console.log ( ' should add new room' ) ; UIHandler.newRoom ( room ) ; roomsAvailable = room ; } ) ;
     }
     socket.socket.connect();
+}
+
+
+function connected ( )
+{
+    status('Connected');
+    socket.emit ( 'noRoom' ) ;
+    socket.emit ( 'requestRoomNumber') ;
 }
 
 function receivedUsers ( users , roomId )

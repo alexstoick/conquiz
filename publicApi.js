@@ -1,4 +1,6 @@
-var roomsAvailabe=5; // TREBUIE MODIFICAT
+var roomsAvailable=5; // TREBUIE MODIFICAT
+
+
 var UIHandler ;
 var loginHandler ;
 var roomHandler ;
@@ -10,32 +12,31 @@ $(document).ready(function() {
 	roomHandler = new RoomClass ( ) ;
 	mapHandler = new MapClass ( ) ;
 
-    UIHandler.construct ( ) ;
-    roomHandler.construct ( ) ;
-    loginHandler.construct ( ) ;
-    mapHandler.construct ( ) ;
-
+	mapHandler.construct ( ) ;
+	UIHandler.construct ( ) ;
+	roomHandler.construct ( ) ;
+	loginHandler.construct ( ) ;
 });
 
 function setPaper ( paper )
 {
-    mapHandler.paper = paper ;
+	mapHandler.paper = paper ;
 }
 
 function loggedIn ( user )
 {
-    loginHandler.username = user ;
-    console.log ( "publicAPI " + loginHandler.username ) ;
-    connect ( ) ; //from javaUtils
-    //GET No of avaialble ROOMS
+	loginHandler.username = user ;
+	console.log ( "publicAPI " + loginHandler.username ) ;
+	connect ( ) ; //from javaUtils
+	//GET No of avaialble ROOMS
 
-    //get list of users in no room: UIHandler.UIAddFreeUsers ( users ) ;
+	//get list of users in no room: UIHandler.UIAddFreeUsers ( users ) ;
 }
 
 function submitAnswer ( answer , time)
 {
 	//se apeleaza de fiecare data cand se primeste
-    socket.emit ( 'answer' , roomHandler.chosenRoom , loginHandler.username , answer , time ) ;
+	socket.emit ( 'answer' , roomHandler.chosenRoom , loginHandler.username , answer , time ) ;
 }
 
 function showPopUp (intrebare,answers) {
@@ -50,20 +51,20 @@ function clickedZone(zoneID){
 
 function newRoomAdded ( roomID )
 {
-    console.log ( "emmited event" ) ;
-    socket.emit ( 'newRoom' , roomID ) ;
+	console.log ( "emmited event" ) ;
+	socket.emit ( 'newRoom' , roomID ) ;
 }
 
 function selectedRoom ( roomId ){
 	//se apelaza de fiecare data cand se alege o camera
 	roomHandler.chosenRoom=roomId;
-    connectToRoom ( ) ;
+	connectToRoom ( ) ;
 }
 
 function addUsers ( users )
 {
 	//trimiti un Array
-    console.log ( users ) ;
+	console.log ( users ) ;
 	roomHandler.addUsers(users);
 }
 

@@ -63,8 +63,27 @@ function UIClass()
         var usersOfRoom = $('.userBlock:eq(' + (roomNumber - 1) + ')');
         for (var j = 1; j <= 4; j++)
             usersOfRoom.append('<p>Free Slot</p>');
-
     }
+
+    this.roomSetUp = function ()
+    {
+        for (var i = 1; i <= roomsAvailable; i++)
+            addNewRoom(i);
+        console.log ( "WINNING" ) ;
+        $('.addNewRoom').click(function(){
+            console.log ( "abc" ) ;
+            log ( "qq" ) ;
+            addNewRoom(++roomsAvailable);
+            //call to publicAPI
+            newRoomAdded ( roomsAvailable ) ;
+        });
+
+        $('.unconnectedUsers').click(function(){
+            console.log($(this));
+            $(this).find('div').toggle();
+        });
+    };
+
 
 
 
@@ -72,7 +91,6 @@ function UIClass()
     {
         setUpQuestion();
         tryButton();
-        roomSetUp();
     };
 
 
@@ -90,7 +108,8 @@ function UIClass()
 
     function spawn() //rigged Question
     {
-        UIShowPopUp('Compozitori: În ce oraş a decedat Camille Saint-Saëns, compozitor francez din epoca romantică?', ["Alger1", "Alger2", "Alger3", "Alger4"], this);
+        UIShowPopUp('Compozitori: În ce oraş a decedat Camille Saint-Saëns, compozitor francez din epoca romantică?',
+                     ["Alger1", "Alger2", "Alger3", "Alger4"], this);
     }
 
 
@@ -163,22 +182,6 @@ function UIClass()
                 //p (username)
         //div .roomUI ETC
     var lastItem=-1;
-    function roomSetUp()
-    {
-        for (var i = 1; i <= roomsAvailabe; i++)
-            addNewRoom(i);
-
-        $('.addNewRoom').click(function(){
-            addNewRoom(++roomsAvailabe);
-            //call to publicAPI
-            newRoomAdded ( roomsAvailabe ) ;
-        });
-
-        $('.unconnectedUsers').click(function(){
-            console.log($(this));
-            $(this).find('div').toggle();
-        });
-    }
 
 
 
