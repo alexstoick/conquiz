@@ -93,9 +93,9 @@ p#question{
     height: 30px;
     font-size: 25px;
     color: #E9633B;
-    box-shadow: rgba(0,0,0, 0.1) 0px 0px 8px;  
-    -moz-box-shadow: rgba(0,0,0, 0.1) 0px 0px 8px; 
-    -webkit-box-shadow: rgba(0,0,0, 0.1) 0px 0px 8px;   
+    box-shadow: rgba(0,0,0, 0.1) 0px 0px 8px;
+    -moz-box-shadow: rgba(0,0,0, 0.1) 0px 0px 8px;
+    -webkit-box-shadow: rgba(0,0,0, 0.1) 0px 0px 8px;
 }
 .form{
 }
@@ -145,7 +145,7 @@ p#question{
 
 /* ETC */
 #log{
-    font-size:30px;
+    font-size:20px;
     clear:both;
     width:100%;
 }

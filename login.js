@@ -21,6 +21,6 @@ function LoginClass ( ){
         $("#addQuestion").show();
         $('.roomSelect').show();
         console.log ( username ) ;
-        //loggedIn ( this.username ) ;
+        loggedIn ( ) ;
     }
 }
