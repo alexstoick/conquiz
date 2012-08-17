@@ -3,8 +3,8 @@ function LoginClass ( ){
 
     //Public properties
   //  this.username ;
-    var username ;
-    this.username = username ;
+    var user ;
+    this.username = user ;
 
     //Private properties
 
@@ -16,11 +16,11 @@ function LoginClass ( ){
 
     function setUsername()
     {
-        username = document.getElementById("usernameForm").value;
-        $(".login").text("Hello " + username );
+        user = document.getElementById("usernameForm").value;
+        $(".login").text("Hello " + user );
         $("#addQuestion").show();
         $('.roomSelect').show();
-        console.log ( username ) ;
-        loggedIn ( ) ;
+        console.log ( user ) ;
+        loggedIn ( user ) ;
     }
 }

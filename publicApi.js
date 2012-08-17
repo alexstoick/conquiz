@@ -10,7 +10,7 @@ $(document).ready(function() {
 	loginHandler = new LoginClass ( ) ;
 	roomHandler = new RoomClass ( ) ;
 	mapHandler = new MapClass ( ) ;
-	
+
     UIHandler.construct ( ) ;
     roomHandler.construct ( ) ;
     loginHandler.construct ( ) ;
@@ -18,9 +18,15 @@ $(document).ready(function() {
 
 });
 
-function loggedIn ( username )
+function setPaper ( paper )
 {
-    console.log ( "publicAPI " + loginHandler.username) ;
+    mapHandler.paper = paper ;
+}
+
+function loggedIn ( user )
+{
+    loginHandler.username = user ;
+    console.log ( "publicAPI " + loginHandler.username ) ;
     connect ( ) ; //from javaUtils
 }
 

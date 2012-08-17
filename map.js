@@ -51,5 +51,6 @@ function MapClass ()
             zonesCanvas[i].attr(defaultAttributes);
             zonesCanvas[i].click(function() { clickedZone(this.id); });
         }
+        setPaper ( paper ) ;
     }
 }
