@@ -23,14 +23,23 @@ function setPaper ( paper )
 	mapHandler.paper = paper ;
 }
 
+function loggedIn2 ( user , picURL )
+{
+	console.log ( "overloaded loggedIn" ) ;
+	$(".login").html ( "<img src='https://graph.facebook.com/" + picURL + "/picture'> Hello " + user ) ;
+	$("#addQuestion").show();
+	$('.roomSelect').show();
+	loginHandler.username = user ;
+	console.log ( "publicAPI " + loginHandler.username ) ;
+	connect ( ) ; //from javaUtils
+
+}
+
 function loggedIn ( user )
 {
 	loginHandler.username = user ;
 	console.log ( "publicAPI " + loginHandler.username ) ;
 	connect ( ) ; //from javaUtils
-	//GET No of avaialble ROOMS
-
-	//get list of users in no room: UIHandler.UIAddFreeUsers ( users ) ;
 }
 
 function submitAnswer ( answer , time)
