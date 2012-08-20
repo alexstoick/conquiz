@@ -42,25 +42,52 @@ header {
     top:200px;
     background: rgb(216, 214, 205);
     background: rgba(216, 214, 205, 0.7);
-
-
     color: #E9633B;
     line-height: 100%;
 }
 
 .answer{
-
-    text-align:center;
     width:430px;
     height:30px;
     padding:0px;
-    margin: 10px;
-    background: #63AA9C;
+    margin:10px;
+    padding:7px;
+    position: relative;
+
+}
+.answer p{
+    text-align:center;
+    margin:0px;
+    z-index: 1;
+    position:absolute;
 }
 p#question{
     padding:0px;
     text-align:center;
     font-size: 30px;
+}
+#Color1 {
+    position: absolute;
+    left:0;
+    top:0;
+    height: 100%;
+}
+
+#Color2 {
+    position: absolute;
+    top:0;
+    height: 100%;
+}
+
+#Color3 {
+    position: absolute;
+    top:0;
+    height: 100%;
+}
+#Color4{
+    position:absolute;
+    top:0;
+    height: 100%;
 }
 /*Score*/
 #score

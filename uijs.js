@@ -3,7 +3,7 @@ function UIClass()
 {
 
     //Public functions
-
+    this.newRoom = addNewRoom ;
     this.UIUpdateUsersPresentation = function ()
     {
         var connectedUsers = roomHandler.GET_connectedUsers() ;
@@ -24,13 +24,24 @@ function UIClass()
         $('#question').text(intrebare);
         var i ;
         for ( i = 1 ; i < 5 ; ++ i )
+        {
             $("#answer"+i).text(answers[i-1]);
+            console.log('hello');
+            UIHandler.colorAnswer(['#63AA9C'],i);
+        }
     };
-
+    this.colorAnswer = function ( colors , answerNumber)
+    {
+        var width=100/colors.length;
+        console.log(colors);
+        var answerDiv=$('.answer:eq('+(answerNumber-1)+')');
+        console.log(answerDiv);
+        for(var i=1;i<=colors.length;i++)
+            answerDiv.find('#Color'+i).css({'width':width+'%','background-color':colors[i-1],'left':width*(i-1)+'%'});
+    }
     this.UIAddUsersForRoomTooltip = function (roomId,users)
     {
         var userBlock=$('.roomSelect .roomUI:eq('+(roomId-1)+') .userBlock');
-        console.log(users.length);
         for(var i=0;i<users.length;i++)
             userBlock.find('p:eq('+i+')').text(users[i]);
         for( i=users.length;i<4;i++)
@@ -41,13 +52,11 @@ function UIClass()
     {
         var freeUsersBlock=$('.uncoonectedUsersBlock');
         freeUsersBlock.html('');
-        console.log(users.length);
             for(var i=0;i<users.length;i++)
                 freeUsersBlock.append('<p>'+users[i]+'</p>');
     };
 
-    this.newRoom = addNewRoom ;
-
+    
     function addNewRoom (roomNumber)
     {
         var allRooms = $('.roomSelect');
@@ -77,20 +86,15 @@ function UIClass()
         });
 
         $('.unconnectedUsers').click(function(){
-            console.log($(this));
             $(this).find('div').toggle();
         });
     };
-
-
-
-
     this.construct = function ( )
     {
         setUpQuestion();
         tryButton();
     };
-
+    
 
 
 
@@ -106,7 +110,7 @@ function UIClass()
 
     function spawn() //rigged Question
     {
-        UIShowPopUp('Compozitori: În ce oraş a decedat Camille Saint-Saëns, compozitor francez din epoca romantică?',
+        UIHandler.UIShowPopUp('Compozitori: În ce oraş a decedat Camille Saint-Saëns, compozitor francez din epoca romantică?',
                      ["Alger1", "Alger2", "Alger3", "Alger4"], this);
     }
 
@@ -202,7 +206,6 @@ function UIClass()
             userBlock.show();
             if(lastItem!=-1)
             {
-                console.log( $(this).parent());
                 $(this).parent().find('.userBlock:eq('+(lastItem-1)+')').hide();
             }
             lastItem=roomId;
