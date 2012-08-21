@@ -3,6 +3,10 @@ function UIClass()
 {
 
     //Public functions
+
+    
+
+    //GAME UI
     this.newRoom = addNewRoom ;
     this.UIUpdateUsersPresentation = function ()
     {
@@ -14,7 +18,7 @@ function UIClass()
                 $('.casuta:eq(' + i + ')').text(connectedUsers[i]);
             else
                $('.casuta:eq(' + i + ')').text('no user connected');
-        }
+        };
     };
 
     this.UIShowPopUp = function (intrebare, answers)
@@ -28,7 +32,11 @@ function UIClass()
             $("#answer"+i).text(answers[i-1]);
             console.log('hello');
             UIHandler.colorAnswer(['#63AA9C'],i);
-        }
+        };
+    };
+    this.UIHidePopUp = function ()
+    {
+        $('#pop-up4a').hide();
     };
     this.colorAnswer = function ( colors , answerNumber)
     {
@@ -38,6 +46,61 @@ function UIClass()
         console.log(answerDiv);
         for(var i=1;i<=colors.length;i++)
             answerDiv.find('#Color'+i).css({'width':width+'%','background-color':colors[i-1],'left':width*(i-1)+'%'});
+    };
+    function UIClickedAnswer()
+    {
+        $('#pop-up4a').hide();
+        clearInterval(interval);
+        clearTimeout(timeout);
+    };
+    function clickedAnswer()
+    {
+        UIClickedAnswer();
+        submitAnswer($(this).text(), timer);
+    };
+    /*////////
+    ROOMS LIST 
+    ///////*/
+     /*
+     * Room UI
+     */
+    //div .roomSelect = allRooms
+        //div .roomUI = currentRoom
+            //p .left .roomTitle = titleOfRoom
+            //br clear:both pentru background
+            //div .userBlock = usersOfRoom
+                //p (username)
+        //div .roomUI ETC
+    var lastItem=-1;
+    function barItemClicked()
+    {
+
+        getUsersFromRoom($(this).parent().attr('isRoom'));
+    }
+    function clickedRoom()
+    {
+        var userBlock=$(this).find('div');
+        var roomId = $(this).attr('isRoom');
+        if($(userBlock).is(':visible')){
+            selectedRoom(roomId);
+            UIselectedRoom();
+        }
+        else{
+            getUsersFromRoom(roomId);
+            userBlock.show();
+            if(lastItem!=-1)
+            {
+                $(this).parent().find('.userBlock:eq('+(lastItem-1)+')').hide();
+            }
+            lastItem=roomId;
+        }
+
+    }
+    function UIselectedRoom()
+    {
+        $('.roomSelect').slideUp();
+        $('.shouldBeHiddenBeforeEnteringAGame').show();
+        $('.shouldBeHiddenUntilLogin').show();
     }
     this.UIAddUsersForRoomTooltip = function (roomId,users)
     {
@@ -47,7 +110,6 @@ function UIClass()
         for( i=users.length;i<4;i++)
             userBlock.find('p:eq('+i+')').text('Free slot');
     };
-
     this.UIAddFreeUsers = function (users)
     {
         var freeUsersBlock=$('.uncoonectedUsersBlock');
@@ -55,8 +117,6 @@ function UIClass()
             for(var i=0;i<users.length;i++)
                 freeUsersBlock.append('<p>'+users[i]+'</p>');
     };
-
-    
     function addNewRoom (roomNumber)
     {
         var allRooms = $('.roomSelect');
@@ -89,69 +149,9 @@ function UIClass()
             $(this).find('div').toggle();
         });
     };
-    this.construct = function ( )
-    {
-        setUpQuestion();
-        tryButton();
-    };
-    
-
-
-
-    //Private functions
-    /*
-     *  DEMO STUFF
-     */
-
-    function tryButton()
-    {
-        $("#addQuestion").click(spawn).hide();
-    }
-
-    function spawn() //rigged Question
-    {
-        UIHandler.UIShowPopUp('Compozitori: În ce oraş a decedat Camille Saint-Saëns, compozitor francez din epoca romantică?',
-                     ["Alger1", "Alger2", "Alger3", "Alger4"], this);
-    }
-
-
-
-    /*
-     *  Question and Answer UI
-     */
-
-
-
-
-    function setUpQuestion()
-    {
-        var i ;
-        for ( i = 1 ; i < 5 ; ++ i )
-            $("#answer"+i).click(clickedAnswer);
-    }
-
-    function UIClickedAnswer()
-    {
-        $('#pop-up4a').hide();
-        clearInterval(interval);
-        clearTimeout(timeout);
-    }
-
-    function clickedAnswer()
-    {
-        UIClickedAnswer();
-        submitAnswer($(this).text(), timer);
-    }
-
-
-
-
     /*
      *  Timer related functions
      */
-
-
-
     var timer, interval, timeout;
 
     function addTime()
@@ -171,58 +171,31 @@ function UIClass()
         interval = setInterval(addTime, 10);
         timeout = setTimeout(passedTime, 10000);
     }
-
-
+    /*CONSTRUCT FUNCTIONS*/
+    this.construct = function ( )
+    {
+        setUpQuestion();
+        tryButton();
+    };
+    function setUpQuestion()
+    {
+        var i ;
+        for ( i = 1 ; i < 5 ; ++ i )
+            $("#answer"+i).click(clickedAnswer);
+    }
     /*
-     * Room UI
+     *  DEMO STUFF
      */
-    //div .roomSelect = allRooms
-        //div .roomUI = currentRoom
-            //p .left .roomTitle = titleOfRoom
-            //br clear:both pentru background
-            //div .userBlock = usersOfRoom
-                //p (username)
-        //div .roomUI ETC
-    var lastItem=-1;
 
-
-
-
-    function barItemClicked()
+    function tryButton()
     {
-
-        getUsersFromRoom($(this).parent().attr('isRoom'));
-    }
-    function clickedRoom()
-    {
-        var userBlock=$(this).find('div');
-        var roomId = $(this).attr('isRoom');
-        if($(userBlock).is(':visible')){
-            selectedRoom(roomId);
-            UIselectedRoom();
-        }
-        else{
-            getUsersFromRoom(roomId);
-            userBlock.show();
-            if(lastItem!=-1)
-            {
-                $(this).parent().find('.userBlock:eq('+(lastItem-1)+')').hide();
-            }
-            lastItem=roomId;
-        }
-
-    }
-    function UIselectedRoom()
-    {
-        $('.roomSelect').slideUp();
-        $('.shouldBeHiddenBeforeEnteringAGame').show();
-        $('.shouldBeHiddenUntilLogin').show();
+        $("#addQuestion").click(spawn).hide();
     }
 
-
-
-
-
-
+    function spawn() //rigged Question
+    {
+        UIHandler.UIShowPopUp('Compozitori: În ce oraş a decedat Camille Saint-Saëns, compozitor francez din epoca romantică?',
+                     ["Alger1", "Alger2", "Alger3", "Alger4"], this);
+    }
 
 }

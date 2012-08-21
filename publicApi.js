@@ -5,13 +5,14 @@ var UIHandler ;
 var loginHandler ;
 var roomHandler ;
 var mapHandler ;
+var gameHandler;
 
 $(document).ready(function() {
 	UIHandler = new UIClass() ;
 	loginHandler = new LoginClass ( ) ;
 	roomHandler = new RoomClass ( ) ;
 	mapHandler = new MapClass ( ) ;
-
+	gameHandler = new GameModel ();
 	mapHandler.construct ( ) ;
 	UIHandler.construct ( ) ;
 	roomHandler.construct ( ) ;
