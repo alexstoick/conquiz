@@ -7,8 +7,8 @@ function GameModel()
 	var scoreGainPerAnswer
 	function findTheWinner(){
 		var winners=[];
-		var colorsToBeAdded=[][];
-		for(i=0;i<4;i++){
+		var colorsToBeAdded=[];
+		for(var i=0;i<4;i++){
 			if(answers[i]==correctAnswer)
 			{
 				winners[winners.length]=i;
@@ -16,7 +16,7 @@ function GameModel()
 			}
 			colorsToBeAdded[answers[i]][colorsToBeAdded[answers[i].length]]=colors[i];
 		}
-		for(int i=1;i<=4;i++)
+		for(var i=1;i<=4;i++)
 			if(colorsToBeAdded[i].length!=0)
 				UIHandler.colorAnswer(colorsToBeAdded[i],i);
 		console.log(winners);

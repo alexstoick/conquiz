@@ -45,7 +45,9 @@ function UIClass()
         var answerDiv=$('.answer:eq('+(answerNumber-1)+')');
         console.log(answerDiv);
         for(var i=1;i<=colors.length;i++)
-            answerDiv.find('#Color'+i).css({'width':width+'%','background-color':colors[i-1],'left':width*(i-1)+'%'});
+            answerDiv.find('#Color'+i).css({'width':width+'%','background-color':colors[i-1],'left':width*(i-1)+'%'}).show();
+        for(var i=colors.length+1;i<=4;i++)
+            answerDiv.find('#Color'+i).hide();
     };
     function UIClickedAnswer()
     {
