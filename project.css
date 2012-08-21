@@ -57,9 +57,9 @@ header {
 }
 .answer p{
     text-align:center;
-    margin:0px;
+    margin:auto;
     z-index: 1;
-    position:absolute;
+    position:relative;;
 }
 p#question{
     padding:0px;
