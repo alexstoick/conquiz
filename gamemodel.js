@@ -5,7 +5,9 @@ function GameModel()
 	this.times=[] ;
 //	this.correctAnswer;
 //	this.scores=[];
-	this.colors=['green','yellow','cyan','red'];
+
+
+	var colors=['green','yellow','cyan','red'];
 	var scoreGainPerAnswer;
 	var colorsToBeAdded = [4] ;
 	this.findTheWinner = function ( answers )
