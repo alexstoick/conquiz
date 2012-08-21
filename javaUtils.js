@@ -46,6 +46,8 @@ function connect()
         socket.on ( 'addRoom' , function ( room ) { console.log ( 'should add new room' ) ; UIHandler.newRoom ( room ) ; roomsAvailable = room ; } ) ;
 
         socket.on ( 'getFreeUsers', function ( users) { console.log ( 'got free users' ) ; UIHandler.UIAddFreeUsers(users) ; } ) ;
+
+        socket.on ( 'answer' , function ( username , answer , time) { /*call to publicAPI */addAnswerToArray ( username , answer , time ) ; } ) ;
     }
     socket.socket.connect();
 }
@@ -116,4 +118,3 @@ function sendMapUpdate ( id )
     socket.emit ( 'updateMap' , id , loginHandler.username ) ;
     socket.emit ( 'sendQuestion' ) ;
 }
-

@@ -4,7 +4,7 @@ function UIClass()
 
     //Public functions
 
-    
+
 
     //GAME UI
     this.newRoom = addNewRoom ;
@@ -18,7 +18,7 @@ function UIClass()
                 $('.casuta:eq(' + i + ')').text(connectedUsers[i]);
             else
                $('.casuta:eq(' + i + ')').text('no user connected');
-        };
+        }
     };
 
     this.UIShowPopUp = function (intrebare, answers)
@@ -32,7 +32,7 @@ function UIClass()
             $("#answer"+i).text(answers[i-1]);
             console.log('hello');
             UIHandler.colorAnswer(['#63AA9C'],i);
-        };
+        }
     };
     this.UIHidePopUp = function ()
     {
@@ -46,26 +46,24 @@ function UIClass()
         console.log(answerDiv);
         for(var i=1;i<=colors.length;i++)
             answerDiv.find('#Color'+i).css({'width':width+'%','background-color':colors[i-1],'left':width*(i-1)+'%'}).show();
-        for(var i=colors.length+1;i<=4;i++)
+        for(i=colors.length+1;i<=4;i++)
             answerDiv.find('#Color'+i).hide();
     };
     function UIClickedAnswer()
     {
-        $('#pop-up4a').hide();
+       // $('#pop-up4a').hide();
         clearInterval(interval);
         clearTimeout(timeout);
-    };
+    }
     function clickedAnswer()
     {
         UIClickedAnswer();
         submitAnswer($(this).text(), timer);
-    };
-    /*////////
-    ROOMS LIST 
-    ///////*/
-     /*
+    }
+    /*
      * Room UI
      */
+
     //div .roomSelect = allRooms
         //div .roomUI = currentRoom
             //p .left .roomTitle = titleOfRoom
@@ -196,8 +194,8 @@ function UIClass()
 
     function spawn() //rigged Question
     {
-        UIHandler.UIShowPopUp('Compozitori: În ce oraş a decedat Camille Saint-Saëns, compozitor francez din epoca romantică?',
-                     ["Alger1", "Alger2", "Alger3", "Alger4"], this);
+        showPopUp ( 'Compozitori: În ce oraş a decedat Camille Saint-Saëns, compozitor francez din epoca romantică?',
+                      ["Alger1", "Alger2", "Alger3", "Alger4"] ) ;
     }
 
 }

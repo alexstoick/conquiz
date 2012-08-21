@@ -12,7 +12,7 @@ function RoomClass ()
     this.construct = function ( )
     {
         UIHandler.UIUpdateUsersPresentation () ;
-    }
+    };
 
 	//Public functions
 
@@ -33,7 +33,7 @@ function RoomClass ()
         connectedUsers[userNo] = 0;
 
         UIHandler.UIUpdateUsersPresentation();
-    }
+    };
 
     this.addUsers = function (users)
     {
@@ -44,7 +44,6 @@ function RoomClass ()
         }
 
         UIHandler.UIUpdateUsersPresentation();
-    }
-
+    };
     //Private functions
 }

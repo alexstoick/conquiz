@@ -43,11 +43,27 @@ function submitAnswer ( answer , time)
 function showPopUp (intrebare,answers) {
 	//trebuie apelat ca sa apara intrebarea
 	UIHandler.UIShowPopUp(intrebare,answers);
+	gameHandler.answers.length = 0 ;
+	gameHandler.times.length = 0 ;
+	gameHandler.usernames.length = 0 ;
 }
 
 function clickedZone(zoneID){
 	//se apelaza de fiecare data cand se clickuie o zona
 	sendMapUpdate(zoneID);
+}
+
+function addAnswerToArray ( username , answer , time )
+{
+	console.log ( "added answer to array" ) ;
+	gameHandler.usernames.push ( username ) ;
+	gameHandler.times.push ( time ) ;
+	gameHandler.answers.push ( answer ) ;
+	console.log ( gameHandler.usernames[0] , gameHandler.times[0] , gameHandler.answers[0] ) ;
+	if ( gameHandler.usernames.length >= 1 )
+	{
+		gameHandler.findTheWinner ( gameHandler.answers ) ;
+	}
 }
 
 function newRoomAdded ( roomID )
