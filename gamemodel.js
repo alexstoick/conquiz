@@ -3,6 +3,7 @@ function GameModel()
 	this.answers=[] ;
 	this.usernames=[] ;
 	this.times=[] ;
+	this.userNumber=[];
 	this.correctAnswer=1;
 //	this.scores=[];
 	this.winners=[];
@@ -18,9 +19,9 @@ function GameModel()
 		colorsToBeAdded[4] = [] ;
 		for(var i=0;i<answers.length;i++)
 		{
-			if ( answers[i] )
+			if ( answers[i]==gameHandler.correctAnswer )
 			{
-				gameHandler.winners[gameHandler.winners.length] = i ;
+				gameHandler.winners[gameHandler.winners.length] = gameHandler.userNumber[i] ;
 				//scores[i] += scoreGainPerAnswer ;
 			}
 			colorsToBeAdded [ answers[i] ].push ( colors[i%4] ) ;
@@ -41,7 +42,7 @@ function GameModel()
 	this.userToSelect=0;
 	this.StartSelectingZones = function ()
 	{
-		console.log(mapHandler);
+		console.log(gameHandler.winners);
 		connectedUsers = roomHandler.GET_connectedUsers();
 		console.log(connectedUsers);
 		mapHandler.upperText.attr('text','Currently Selecting:'+connectedUsers[gameHandler.winners[gameHandler.currentlySelecting]]);

@@ -57,9 +57,15 @@ function clickedZone(zoneID){
 
 function addAnswerToArray ( username , answer , time )
 {
+	var thisIsUserNumber;
+	var connectedUsers=roomHandler.GET_connectedUsers();
+	for(var i=0;i<4;i++)
+		if(connectedUsers[i]==username)
+			thisIsUserNumber=i;
 	gameHandler.usernames.push ( username ) ;
 	gameHandler.times.push ( time ) ;
 	gameHandler.answers.push ( answer ) ;
+	gameHandler.userNumber.push ( thisIsUserNumber );
 	console.log ( gameHandler.usernames[0] , gameHandler.times[0] , gameHandler.answers[0] ) ;
 	if ( gameHandler.usernames.length == 2 )
 	{
