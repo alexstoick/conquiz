@@ -60,7 +60,7 @@ function addAnswerToArray ( username , answer , time )
 	gameHandler.times.push ( time ) ;
 	gameHandler.answers.push ( answer ) ;
 	console.log ( gameHandler.usernames[0] , gameHandler.times[0] , gameHandler.answers[0] ) ;
-	if ( gameHandler.usernames.length >= 1 )
+	if ( gameHandler.usernames.length == 2 )
 	{
 		gameHandler.findTheWinner ( gameHandler.answers ) ;
 	}

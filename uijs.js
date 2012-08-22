@@ -4,8 +4,6 @@ function UIClass()
 
     //Public functions
 
-
-
     //GAME UI
     this.newRoom = addNewRoom ;
     this.UIUpdateUsersPresentation = function ()
