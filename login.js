@@ -5,7 +5,8 @@ function LoginClass ( ){
   //  this.username ;
     var user ;
     this.username = user ;
-
+    var thisIsUserNo=-1;
+    this.thisIsUserNo=thisIsUserNo=-1;;
     //Private properties
 
     //Constructor

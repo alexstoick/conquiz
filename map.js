@@ -3,8 +3,9 @@ function MapClass ()
     //Public properties
 
     var paper ;
+    var upperText;
     this.paper = paper ;
-
+    this.upperText = upperText ;
     //Private properties
 
     var zones = [];
@@ -51,6 +52,8 @@ function MapClass ()
             zonesCanvas[i].attr(defaultAttributes);
             zonesCanvas[i].click(function() { clickedZone(this.id); });
         }
-        setPaper ( paper ) ;
+        upperText= paper.text(480,30,"HELLO MOFO");
+        upperText.attr({ 'font-size' : 30 , fill : '#ECEAE0' });
+        setPaper ( paper , upperText) ;
     }
 }

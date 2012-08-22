@@ -5,8 +5,7 @@ function GameModel()
 	this.times=[] ;
 	this.correctAnswer=1;
 //	this.scores=[];
-
-
+	this.winners=[];
 	var colors=['green','yellow','cyan','red'];
 	var scoreGainPerAnswer;
 	var colorsToBeAdded = [4] ;
@@ -17,14 +16,11 @@ function GameModel()
 		colorsToBeAdded[2] = [] ;
 		colorsToBeAdded[3] = [] ;
 		colorsToBeAdded[4] = [] ;
-
-		var winners=[];
-
 		for(var i=0;i<answers.length;i++)
 		{
 			if ( answers[i] )
 			{
-				winners[winners.length] = i ;
+				gameHandler.winners[gameHandler.winners.length] = i ;
 				//scores[i] += scoreGainPerAnswer ;
 			}
 			colorsToBeAdded [ answers[i] ].push ( colors[i%4] ) ;
@@ -36,7 +32,17 @@ function GameModel()
 		UIHandler.addGlow(this.correctAnswer);
 		setTimeout(function(){
 			UIHandler.UIHidePopUp();
+			UIHandler.removeGlow(gameHandler.correctAnswer);
+			gameHandler.StartSelectingZones(gameHandler.winners);
 		}
-		,2500);
+		,100);
 	};
+	this.currentlySelecting=0;
+	this.StartSelectingZones = function ()
+	{
+		console.log(mapHandler);
+		connectedUsers = roomHandler.GET_connectedUsers();
+		console.log(connectedUsers);
+		mapHandler.upperText.attr('text','Currently Selecting:'+connectedUsers[gameHandler.winners[gameHandler.currentlySelecting]]);
+	}
 }

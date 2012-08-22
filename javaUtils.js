@@ -75,7 +75,7 @@ function showQuestion ( )
     //call to public API
     setTimeout(function(){
         showPopUp ( 'Compozitori: În ce oraş a decedat Camille Saint-Saëns, compozitor francez din epoca romantică?', ["1", "2", "3", "4"] ) ;
-    }, 3000);
+    }, 100);
     
 }
 
@@ -103,7 +103,6 @@ var colors = [ "#ABCF00" , "#FAA000" ] ;
 
 function updateMap ( id , player )
 {
-    log ( "received update >>> zone:" + id + " by player:" + player ) ;
     var fillColor = "#000000" ;
     var i ;
     for ( i = 0 ; i < 2 ; ++ i )
@@ -116,5 +115,4 @@ function updateMap ( id , player )
 function sendMapUpdate ( id )
 {
     socket.emit ( 'updateMap' , id , loginHandler.username ) ;
-    socket.emit ( 'sendQuestion' ) ;
 }

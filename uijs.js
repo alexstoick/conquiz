@@ -7,7 +7,7 @@ function UIClass()
     //GAME UI
     this.newRoom = addNewRoom ;
     var clickedAnswerAlready=0;
-    var thisIsUserNo=-1;
+    
     var colors=['green','yellow','cyan','red'];
     this.UIUpdateUsersPresentation = function ()
     {
@@ -19,7 +19,7 @@ function UIClass()
             else
                $('.casuta:eq(' + i + ')').text('no user connected');
             if(connectedUsers[i]==loginHandler.username)
-                thisIsUserNo=i;
+                loginHandler.thisIsUserNo=i;
         }
     };
 
@@ -54,12 +54,17 @@ function UIClass()
     {
         $('#'+answerNumber).parent().addClass ('glow');
     }
+    this.removeGlow = function (answerNumber)
+    {
+         $('#'+answerNumber).parent().removeClass ('glow');
+         console.log('removed glow from '+answerNumber);
+    }
     function UIClickedAnswer(answerClicked)
     {
        // $('#pop-up4a').hide();
         clearInterval(interval);
         clearTimeout(timeout);
-        UIHandler.colorAnswer( [colors[thisIsUserNo]], answerClicked );
+        UIHandler.colorAnswer( [colors[loginHandler.thisIsUserNo]], answerClicked );
     }
     function clickedAnswer()
     {

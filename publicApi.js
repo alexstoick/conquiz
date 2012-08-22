@@ -19,9 +19,10 @@ $(document).ready(function() {
 	loginHandler.construct ( ) ;
 });
 
-function setPaper ( paper )
+function setPaper ( paper , upperText)
 {
 	mapHandler.paper = paper ;
+	mapHandler.upperText=upperText;
 }
 
 function loggedIn ( user )
@@ -49,7 +50,9 @@ function showPopUp (intrebare,answers) {
 
 function clickedZone(zoneID){
 	//se apelaza de fiecare data cand se clickuie o zona
-	sendMapUpdate(zoneID);
+	if(gameHandler.currentlySelecting==loginHandler.thisIsUserNo){
+		sendMapUpdate(zoneID);
+	}
 }
 
 function addAnswerToArray ( username , answer , time )
