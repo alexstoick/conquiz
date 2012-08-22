@@ -1,5 +1,5 @@
 var roomsAvailable=5; // TREBUIE MODIFICAT
-
+var colors=['green','yellow','cyan','red'];
 
 var UIHandler ;
 var loginHandler ;
@@ -46,6 +46,7 @@ function showPopUp (intrebare,answers) {
 	gameHandler.answers.length = 0 ;
 	gameHandler.times.length = 0 ;
 	gameHandler.usernames.length = 0 ;
+	gameHandler.userNumber.length = 0 ;
 }
 
 function clickedZone(zoneID){
@@ -108,4 +109,23 @@ function getUsersFromRoom ( roomID )
 function updateUsersTooltipForRoom ( roomID , users )
 {
 	UIHandler.UIAddUsersForRoomTooltip ( roomID , users);
+}
+
+function gameStateReady ( )
+{
+	socket.emit ( 'showQuestion' ) ;
+}
+
+function updateMap ( id , player )
+{
+    var fillColor = "#000000" ;
+    var i ;
+    var players = roomHandler.GET_connectedUsers() ;
+
+    for ( i = 0 ; i < 4 ; ++ i )
+        if ( player == players[i] )
+            fillColor = colors[i] ;
+
+    mapHandler.paper.getById ( id ).attr ( {fill:fillColor} ) ;
+    gameHandler.nextUserToSelectZone () ;
 }

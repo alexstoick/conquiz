@@ -7,9 +7,12 @@ function GameModel()
 	this.correctAnswer=1;
 //	this.scores=[];
 	this.winners=[];
-	var colors=['green','yellow','cyan','red'];
 	var scoreGainPerAnswer;
 	var colorsToBeAdded = [4] ;
+	this.currentlySelecting=0;
+	this.userToSelect=0;
+
+
 	this.findTheWinner = function ( answers )
 	{
 		colorsToBeAdded[0] = [] ;
@@ -36,16 +39,34 @@ function GameModel()
 			UIHandler.removeGlow(gameHandler.correctAnswer);
 			gameHandler.StartSelectingZones(gameHandler.winners);
 		}
-		,100);
+		,2000);
 	};
-	this.currentlySelecting=0;
-	this.userToSelect=0;
+
+
 	this.StartSelectingZones = function ()
 	{
+		console.log ( gameHandler.winners.length ) ;
+
+		if ( gameHandler.winners.length === 0 )
+		{
+			gameStateReady ( ) ;
+			return ;
+		}
+
 		console.log(gameHandler.winners);
 		connectedUsers = roomHandler.GET_connectedUsers();
 		console.log(connectedUsers);
 		mapHandler.upperText.attr('text','Currently Selecting:'+connectedUsers[gameHandler.winners[gameHandler.currentlySelecting]]);
 		gameHandler.userToSelect=gameHandler.winners[gameHandler.currentlySelecting];
-	}
+	};
+	this.nextUserToSelectZone = function () {
+		gameHandler.currentlySelecting ++ ;
+		if ( gameHandler.winners.length == gameHandler.currentlySelecting )
+			gameStateReady ( ) ;
+		else
+		{
+			mapHandler.upperText.attr('text','Currently Selecting:'+connectedUsers[gameHandler.winners[gameHandler.currentlySelecting]]);
+			gameHandler.userToSelect=gameHandler.winners[gameHandler.currentlySelecting];
+		}
+	};
 }

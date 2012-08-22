@@ -7,8 +7,7 @@ function UIClass()
     //GAME UI
     this.newRoom = addNewRoom ;
     var clickedAnswerAlready=0;
-    
-    var colors=['green','yellow','cyan','red'];
+
     this.UIUpdateUsersPresentation = function ()
     {
         var connectedUsers = roomHandler.GET_connectedUsers() ;
@@ -62,8 +61,7 @@ function UIClass()
     function UIClickedAnswer(answerClicked)
     {
        // $('#pop-up4a').hide();
-        clearInterval(interval);
-        clearTimeout(timeout);
+        interval = clearInterval(interval);
         UIHandler.colorAnswer( [colors[loginHandler.thisIsUserNo]], answerClicked );
     }
     function clickedAnswer()
@@ -71,7 +69,7 @@ function UIClass()
         if(clickedAnswerAlready==0)
         {
             UIClickedAnswer($(this).attr('id'));
-            submitAnswer($(this).text(), timer);
+            submitAnswer($(this).attr('id'), timer);
             clickedAnswerAlready=1;
         }
     }
@@ -148,7 +146,7 @@ function UIClass()
         for (var j = 1; j <= 4; j++)
             usersOfRoom.append('<p>Free Slot</p>');
     }
-    
+
     this.roomSetUp = function ()
     {
         for (var i = 1; i <= roomsAvailable; i++)
@@ -170,24 +168,25 @@ function UIClass()
     /*
      *  Timer related functions
      */
-    var timer, interval, timeout;
+    var timer, interval ;
 
     function addTime()
     {
-        timer += 10;
-    }
-
-    function passedTime()
-    {
-        clearInterval(interval);
-        submitAnswer(0, 10000);
+        timer += 1000;
+        if ( timer >= 3000 )
+        {
+            console.log ( "~Passed time" ) ;
+            clearInterval(interval);
+            submitAnswer(0, 10000);
+        }
+        console.log ( "Timer is: " + timer ) ;
     }
 
     function setUpTimer()
     {
         timer = 0;
-        interval = setInterval(addTime, 10);
-        timeout = setTimeout(passedTime, 10000);
+        clearInterval(interval) ;
+        interval = setInterval(addTime, 1000);
     }
     /*CONSTRUCT FUNCTIONS*/
     this.construct = function ( )
