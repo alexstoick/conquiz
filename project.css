@@ -169,3 +169,8 @@ p#question{
     clear:both;
     width:100%;
 }
+.glow {
+    box-shadow: 0 0 10px rgba(0, 0, 255, 1);
+    -webkit-box-shadow: 0 0 10px rgba(0, 0, 255, 1); 
+    -moz-box-shadow: 0 0 10px rgba(0, 0, 255, 1); 
+}

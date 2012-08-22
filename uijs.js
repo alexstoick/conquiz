@@ -50,6 +50,10 @@ function UIClass()
         for(i=colors.length+1;i<=4;i++)
             answerDiv.find('#Color'+i).hide();
     };
+    this.addGlow = function ( answerNumber )
+    {
+        $('#'+answerNumber).parent().addClass ('glow');
+    }
     function UIClickedAnswer(answerClicked)
     {
        // $('#pop-up4a').hide();
