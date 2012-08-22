@@ -7,6 +7,8 @@ function UIClass()
     //GAME UI
     this.newRoom = addNewRoom ;
     var clickedAnswerAlready=0;
+    var thisIsUserNo=-1;
+    var colors=['green','yellow','cyan','red'];
     this.UIUpdateUsersPresentation = function ()
     {
         var connectedUsers = roomHandler.GET_connectedUsers() ;
@@ -17,6 +19,8 @@ function UIClass()
                 $('.casuta:eq(' + i + ')').text(connectedUsers[i]);
             else
                $('.casuta:eq(' + i + ')').text('no user connected');
+            if(connectedUsers[i]==loginHandler.username)
+                thisIsUserNo=i;
         }
     };
 
@@ -28,8 +32,7 @@ function UIClass()
         var i ;
         for ( i = 1 ; i < 5 ; ++ i )
         {
-            $("#answer"+i).text(answers[i-1]);
-            console.log('hello');
+            $('#'+i).text(answers[i-1]);
             UIHandler.colorAnswer(['#63AA9C'],i);
         }
         clickedAnswerAlready=0
@@ -42,29 +45,30 @@ function UIClass()
     this.colorAnswer = function ( colors , answerNumber)
     {
         var width=100/colors.length;
-        console.log(colors);
+        console.log(colors,answerNumber,width);
         var answerDiv=$('.answer:eq('+(answerNumber-1)+')');
-        console.log(answerDiv);
         for(var i=1;i<=colors.length;i++)
             answerDiv.find('#Color'+i).css({'width':width+'%','background-color':colors[i-1],'left':width*(i-1)+'%'}).show();
         for(i=colors.length+1;i<=4;i++)
             answerDiv.find('#Color'+i).hide();
     };
-    function UIClickedAnswer()
+    function UIClickedAnswer(answerClicked)
     {
        // $('#pop-up4a').hide();
         clearInterval(interval);
         clearTimeout(timeout);
+        console.log(colors[thisIsUserNo],answerClicked );
+        UIHandler.colorAnswer( [colors[thisIsUserNo]], answerClicked );
     }
     function clickedAnswer()
     {
         if(clickedAnswerAlready==0)
         {
-            UIClickedAnswer();
+            console.log('is 0');
+            UIClickedAnswer($(this).attr('id'));
             submitAnswer($(this).text(), timer);
-        }
-        else
             clickedAnswerAlready=1;
+        }
     }
     /*
      * Room UI
@@ -139,7 +143,7 @@ function UIClass()
         for (var j = 1; j <= 4; j++)
             usersOfRoom.append('<p>Free Slot</p>');
     }
-    var colors=['green','yellow','cyan','red'];
+    
     this.roomSetUp = function ()
     {
         for (var i = 1; i <= roomsAvailable; i++)
@@ -190,7 +194,7 @@ function UIClass()
     {
         var i ;
         for ( i = 1 ; i < 5 ; ++ i )
-            $("#answer"+i).click(clickedAnswer);
+            $('#'+i).click(clickedAnswer);
     }
     /*
      *  DEMO STUFF
