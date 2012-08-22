@@ -131,7 +131,7 @@ function UIClass()
         for (var j = 1; j <= 4; j++)
             usersOfRoom.append('<p>Free Slot</p>');
     }
-
+    var colors=['green','yellow','cyan','red'];
     this.roomSetUp = function ()
     {
         for (var i = 1; i <= roomsAvailable; i++)
@@ -146,6 +146,9 @@ function UIClass()
         $('.unconnectedUsers').click(function(){
             $(this).find('div').toggle();
         });
+
+        for(var i=0;i<4;i++)
+             $('.casuta:eq(' + i + ')').css({'background-color':colors[i]});
     };
     /*
      *  Timer related functions

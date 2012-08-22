@@ -74,8 +74,11 @@ function getUsersFromServer ( roomId  )
 function showQuestion ( )
 {
     //call to public API
-    console.log ( "called the public api for question" ) ;
-    showPopUp ( 'Compozitori: În ce oraş a decedat Camille Saint-Saëns, compozitor francez din epoca romantică?', ["1", "2", "3", "4"] ) ;
+    setTimeout(function(){
+        console.log ( "called the public api for question" ) ;
+        showPopUp ( 'Compozitori: În ce oraş a decedat Camille Saint-Saëns, compozitor francez din epoca romantică?', ["1", "2", "3", "4"] ) ;
+    }, 3000)
+    
 }
 
 function sendTestMessage ( )
