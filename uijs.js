@@ -6,6 +6,7 @@ function UIClass()
 
     //GAME UI
     this.newRoom = addNewRoom ;
+    var clickedAnswerAlready=0;
     this.UIUpdateUsersPresentation = function ()
     {
         var connectedUsers = roomHandler.GET_connectedUsers() ;
@@ -31,7 +32,9 @@ function UIClass()
             console.log('hello');
             UIHandler.colorAnswer(['#63AA9C'],i);
         }
+        clickedAnswerAlready=0
     };
+
     this.UIHidePopUp = function ()
     {
         $('#pop-up4a').hide();
@@ -55,8 +58,13 @@ function UIClass()
     }
     function clickedAnswer()
     {
-        UIClickedAnswer();
-        submitAnswer($(this).text(), timer);
+        if(clickedAnswerAlready==0)
+        {
+            UIClickedAnswer();
+            submitAnswer($(this).text(), timer);
+        }
+        else
+            clickedAnswerAlready=1;
     }
     /*
      * Room UI
