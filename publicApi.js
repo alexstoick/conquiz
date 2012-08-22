@@ -27,7 +27,6 @@ function setPaper ( paper )
 function loggedIn ( user )
 {
 	loginHandler.username = user ;
-	console.log ( "publicAPI " + loginHandler.username ) ;
 	connect ( ) ; //from javaUtils
 	//GET No of avaialble ROOMS
 
@@ -55,7 +54,6 @@ function clickedZone(zoneID){
 
 function addAnswerToArray ( username , answer , time )
 {
-	console.log ( "added answer to array" ) ;
 	gameHandler.usernames.push ( username ) ;
 	gameHandler.times.push ( time ) ;
 	gameHandler.answers.push ( answer ) ;
@@ -68,7 +66,6 @@ function addAnswerToArray ( username , answer , time )
 
 function newRoomAdded ( roomID )
 {
-	console.log ( "emmited event" ) ;
 	socket.emit ( 'newRoom' , roomID ) ;
 }
 

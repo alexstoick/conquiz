@@ -43,9 +43,9 @@ function connect()
 
         socket.on ( 'roomNumber' , function ( rooms ) { log ( "received Rooms" ) ; roomsAvailable = rooms ; UIHandler.roomSetUp () ; }) ;
 
-        socket.on ( 'addRoom' , function ( room ) { console.log ( 'should add new room' ) ; UIHandler.newRoom ( room ) ; roomsAvailable = room ; } ) ;
+        socket.on ( 'addRoom' , function ( room ) {  UIHandler.newRoom ( room ) ; roomsAvailable = room ; } ) ;
 
-        socket.on ( 'getFreeUsers', function ( users) { console.log ( 'got free users' ) ; UIHandler.UIAddFreeUsers(users) ; } ) ;
+        socket.on ( 'getFreeUsers', function ( users) {  UIHandler.UIAddFreeUsers(users) ; } ) ;
 
         socket.on ( 'answer' , function ( username , answer , time) { /*call to publicAPI */addAnswerToArray ( username , answer , time ) ; } ) ;
     }
@@ -67,7 +67,6 @@ function receivedUsers ( users , roomId )
 
 function getUsersFromServer ( roomId  )
 {
-    console.log ( "requested users" ) ;
     socket.emit ( 'requestUsers' , roomId ) ;
 }
 
@@ -75,7 +74,6 @@ function showQuestion ( )
 {
     //call to public API
     setTimeout(function(){
-        console.log ( "called the public api for question" ) ;
         showPopUp ( 'Compozitori: În ce oraş a decedat Camille Saint-Saëns, compozitor francez din epoca romantică?', ["1", "2", "3", "4"] ) ;
     }, 3000)
     
@@ -90,7 +88,6 @@ function connectToRoom ( )
 {
     if ( socket && socket.socket.connected )
     {
-        console.log ( loginHandler.username ) ;
         socket.emit ( 'joinRoom' , roomHandler.chosenRoom ) ;
         log ( '> should ' + roomHandler.chosenRoom ) ;
     }

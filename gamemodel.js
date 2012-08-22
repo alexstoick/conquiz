@@ -27,13 +27,11 @@ function GameModel()
 				winners[winners.length] = i ;
 				//scores[i] += scoreGainPerAnswer ;
 			}
-			console.log ( colors[i%4] ) ;
 			colorsToBeAdded [ answers[i] ].push ( colors[i%4] ) ;
 		}
 
 		for(i=1;i<5;i++)
 			if( colorsToBeAdded[i].length!==0 )
 				UIHandler.colorAnswer(colorsToBeAdded[i],i);
-		console.log(winners);
 	};
 }

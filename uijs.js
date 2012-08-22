@@ -12,7 +12,6 @@ function UIClass()
     this.UIUpdateUsersPresentation = function ()
     {
         var connectedUsers = roomHandler.GET_connectedUsers() ;
-        console.log(connectedUsers);
         for (var i = 0; i < 4; i++)
         {
             if (connectedUsers[i] !== 0)
@@ -45,7 +44,6 @@ function UIClass()
     this.colorAnswer = function ( colors , answerNumber)
     {
         var width=100/colors.length;
-        console.log(colors,answerNumber,width);
         var answerDiv=$('.answer:eq('+(answerNumber-1)+')');
         for(var i=1;i<=colors.length;i++)
             answerDiv.find('#Color'+i).css({'width':width+'%','background-color':colors[i-1],'left':width*(i-1)+'%'}).show();
@@ -57,14 +55,12 @@ function UIClass()
        // $('#pop-up4a').hide();
         clearInterval(interval);
         clearTimeout(timeout);
-        console.log(colors[thisIsUserNo],answerClicked );
         UIHandler.colorAnswer( [colors[thisIsUserNo]], answerClicked );
     }
     function clickedAnswer()
     {
         if(clickedAnswerAlready==0)
         {
-            console.log('is 0');
             UIClickedAnswer($(this).attr('id'));
             submitAnswer($(this).text(), timer);
             clickedAnswerAlready=1;
