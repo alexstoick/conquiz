@@ -37,7 +37,6 @@ function RoomClass ()
 
     this.addUsers = function (users)
     {
-        console.log(users);
         for (var i = 0; i < users.length; i++)
         {
             connectedUsers[i] = users[i];

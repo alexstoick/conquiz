@@ -20,7 +20,6 @@ function LoginClass ( ){
         $(".login").text("Hello " + user );
         $("#addQuestion").show();
         $('.roomSelect').show();
-        console.log ( user ) ;
         loggedIn ( user ) ;
     }
 }

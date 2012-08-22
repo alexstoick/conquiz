@@ -78,7 +78,6 @@ function selectedRoom ( roomId ){
 function addUsers ( users )
 {
 	//trimiti un Array
-	console.log ( users ) ;
 	roomHandler.addUsers(users);
 }
 

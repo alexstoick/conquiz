@@ -3,7 +3,7 @@ function GameModel()
 	this.answers=[] ;
 	this.usernames=[] ;
 	this.times=[] ;
-//	this.correctAnswer;
+	this.correctAnswer=1;
 //	this.scores=[];
 
 
@@ -33,5 +33,10 @@ function GameModel()
 		for(i=1;i<5;i++)
 			if( colorsToBeAdded[i].length!==0 )
 				UIHandler.colorAnswer(colorsToBeAdded[i],i);
+		UIHandler.addGlow(this.correctAnswer);
+		setTimeout(function(){
+			UIHandler.UIHidePopUp();
+		}
+		,2500);
 	};
 }
