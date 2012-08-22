@@ -50,7 +50,7 @@ function showPopUp (intrebare,answers) {
 
 function clickedZone(zoneID){
 	//se apelaza de fiecare data cand se clickuie o zona
-	if(gameHandler.currentlySelecting==loginHandler.thisIsUserNo){
+	if(gameHandler.userToSelect==loginHandler.thisIsUserNo){
 		sendMapUpdate(zoneID);
 	}
 }

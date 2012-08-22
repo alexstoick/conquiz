@@ -38,11 +38,13 @@ function GameModel()
 		,100);
 	};
 	this.currentlySelecting=0;
+	this.userToSelect=0;
 	this.StartSelectingZones = function ()
 	{
 		console.log(mapHandler);
 		connectedUsers = roomHandler.GET_connectedUsers();
 		console.log(connectedUsers);
 		mapHandler.upperText.attr('text','Currently Selecting:'+connectedUsers[gameHandler.winners[gameHandler.currentlySelecting]]);
+		gameHandler.userToSelect=gameHandler.winners[gameHandler.currentlySelecting];
 	}
 }
