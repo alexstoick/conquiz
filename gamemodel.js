@@ -15,6 +15,8 @@ function GameModel()
 
 	this.findTheWinner = function ( answers )
 	{
+		gameHandler.winners.length = 0 ;
+		gameHandler.currentlySelecting = 0 ;
 		colorsToBeAdded[0] = [] ;
 		colorsToBeAdded[1] = [] ;
 		colorsToBeAdded[2] = [] ;
@@ -38,14 +40,13 @@ function GameModel()
 			UIHandler.UIHidePopUp();
 			UIHandler.removeGlow(gameHandler.correctAnswer);
 			gameHandler.StartSelectingZones(gameHandler.winners);
-		}
-		,2000);
+		},2000);
 	};
 
 
 	this.StartSelectingZones = function ()
 	{
-		console.log ( gameHandler.winners.length ) ;
+		console.log ( gameHandler.winners.length + " currentlySelecting:" + gameHandler.currentlySelecting ) ;
 
 		if ( gameHandler.winners.length === 0 )
 		{

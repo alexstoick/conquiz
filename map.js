@@ -6,14 +6,20 @@ function MapClass ()
     var upperText;
     this.paper = paper ;
     this.upperText = upperText ;
+    this.zoneIsUsed = [] ;
     //Private properties
 
     var zones = [];
     var zonesCanvas = [];
 
     //Constructor
-    this.construct = function ( ) { drawCanvas ( ) ; } ;
+    this.construct = function ( ) { drawCanvas ( ) ; initZone ( ) ; } ;
 
+    function initZone ( )
+    {
+        for ( var i = 0 ; i < 14 ; ++ i )
+            mapHandler.zoneIsUsed[i] = false ;
+    }
 
 
     function drawCanvas()

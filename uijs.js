@@ -33,7 +33,7 @@ function UIClass()
             $('#'+i).text(answers[i-1]);
             UIHandler.colorAnswer(['#63AA9C'],i);
         }
-        clickedAnswerAlready=0
+        clickedAnswerAlready=0 ;
     };
 
     this.UIHidePopUp = function ()
@@ -173,7 +173,7 @@ function UIClass()
     function addTime()
     {
         timer += 1000;
-        if ( timer >= 3000 )
+        if ( timer >= 10000 )
         {
             console.log ( "~Passed time" ) ;
             clearInterval(interval);

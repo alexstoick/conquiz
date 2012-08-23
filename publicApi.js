@@ -67,7 +67,7 @@ function addAnswerToArray ( username , answer , time )
 	gameHandler.times.push ( time ) ;
 	gameHandler.answers.push ( answer ) ;
 	gameHandler.userNumber.push ( thisIsUserNumber );
-	console.log ( gameHandler.usernames[0] , gameHandler.times[0] , gameHandler.answers[0] ) ;
+
 	if ( gameHandler.usernames.length == 2 )
 	{
 		gameHandler.findTheWinner ( gameHandler.answers ) ;
@@ -125,7 +125,12 @@ function updateMap ( id , player )
     for ( i = 0 ; i < 4 ; ++ i )
         if ( player == players[i] )
             fillColor = colors[i] ;
-
-    mapHandler.paper.getById ( id ).attr ( {fill:fillColor} ) ;
-    gameHandler.nextUserToSelectZone () ;
+    if ( mapHandler.zoneIsUsed[id] )
+		mapHandler.upperText.attr('text','Select another zone - this is already owned by a player' );
+   else
+   {
+		mapHandler.paper.getById ( id ).attr ( {fill:fillColor} ) ;
+		gameHandler.nextUserToSelectZone () ;
+		mapHandler.zoneIsUsed[id] = true ;
+	}
 }
