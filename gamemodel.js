@@ -52,6 +52,7 @@ function GameModel()
 		gameHandler.currentlySelecting=0;
 		if ( gameHandler.winners.length === 0 )
 		{
+			gameHandler.currentlySelecting=-1;
 			gameStateReady ( ) ;
 			return ;
 		}
@@ -62,7 +63,10 @@ function GameModel()
 	this.nextUserToSelectZone = function () {
 		gameHandler.currentlySelecting ++ ;
 		if ( gameHandler.winners.length == gameHandler.currentlySelecting )
+		{
+			gameHandler.currentlySelecting=-1;
 			gameStateReady ( ) ;
+		}
 		else
 		{
 			mapHandler.upperText.attr('text','Currently Selecting:'+connectedUsers[gameHandler.winners[gameHandler.currentlySelecting]]);
