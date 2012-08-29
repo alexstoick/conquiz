@@ -1,3 +1,4 @@
+@import "elements.less";
 ///////////////////////VARS///////////////////////
 @title-color:#8E2800;
 @room-color:#FFB03B;
@@ -5,17 +6,7 @@
 @popUpQuestion-color:#FFF0A5;
 @correctAnswer-color:rgba(0, 0, 255, 1);
 ///////////////////////MIXINS///////////////////////
-.box-shadow(@arguments) {
-  -webkit-box-shadow: @arguments;
-  -moz-box-shadow: @arguments;
-  box-shadow: @arguments;
-}
-.rounded(@radius: 2px) {
-  -webkit-border-radius: @radius;
-  -moz-border-radius: @radius;
-  border-radius: @radius;
-  -moz-background-clip: padding; -webkit-background-clip: padding-box; background-clip: padding-box; 
-}
+
 ///////////////////////CONTAINER////////////////////
 .container{
 	font-family: 'PT Sans', sans-serif;
@@ -26,9 +17,10 @@
     margin:auto;
     margin-top:15px;
     line-height: 100%;
+    opacity:1;
 }
 body{
-
+    background-image:url('img/pattern.png');
 }
 p {
     line-height: 100%;
@@ -48,6 +40,9 @@ p {
 .shouldBeHiddenBeforeEnteringAGame{
     display:none;
 }
+button{
+    font-size:20px;
+}
 ///////////////////////HEADER//////////////////////
 header{	
 
@@ -61,6 +56,8 @@ header{
 		margin-top:10px;
         display:inline;
 	}
+    #submitUsername{
+    }
 }
 ///////////////////////ROOM SELECT///////////////////////
 .roomSelect{

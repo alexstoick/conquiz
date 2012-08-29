@@ -9,7 +9,7 @@ function GameModel()
 	this.winners=[];
 	var scoreGainPerAnswer;
 	var colorsToBeAdded = [4] ;
-	this.currentlySelecting=0;
+	this.currentlySelecting=-1;
 	this.userToSelect=0;
 
 
@@ -22,12 +22,14 @@ function GameModel()
 		colorsToBeAdded[2] = [] ;
 		colorsToBeAdded[3] = [] ;
 		colorsToBeAdded[4] = [] ;
+		console.log('finding The Winner function is called');
 		for(var i=0;i<answers.length;i++)
 		{
 			if ( answers[i]==gameHandler.correctAnswer )
 			{
-				gameHandler.winners[gameHandler.winners.length] = gameHandler.userNumber[i] ;
+				gameHandler.winners.push(gameHandler.userNumber[i]);
 				//scores[i] += scoreGainPerAnswer ;
+				console.log('WINNER FOUND');
 			}
 			colorsToBeAdded [ answers[i] ].push ( colors[i%4] ) ;
 		}
@@ -35,6 +37,7 @@ function GameModel()
 		for(i=1;i<5;i++)
 			if( colorsToBeAdded[i].length!==0 )
 				UIHandler.colorAnswer(colorsToBeAdded[i],i);
+		console.log(gameHandler.winners);
 		UIHandler.addGlow(this.correctAnswer);
 		setTimeout(function(){
 			UIHandler.UIHidePopUp();
@@ -46,17 +49,13 @@ function GameModel()
 
 	this.StartSelectingZones = function ()
 	{
-		console.log ( gameHandler.winners.length + " currentlySelecting:" + gameHandler.currentlySelecting ) ;
-
+		gameHandler.currentlySelecting=0;
 		if ( gameHandler.winners.length === 0 )
 		{
 			gameStateReady ( ) ;
 			return ;
 		}
-
-		console.log(gameHandler.winners);
 		connectedUsers = roomHandler.GET_connectedUsers();
-		console.log(connectedUsers);
 		mapHandler.upperText.attr('text','Currently Selecting:'+connectedUsers[gameHandler.winners[gameHandler.currentlySelecting]]);
 		gameHandler.userToSelect=gameHandler.winners[gameHandler.currentlySelecting];
 	};
