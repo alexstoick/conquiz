@@ -5,16 +5,17 @@
     <title>Project</title>
     <link rel="stylesheet" href="project.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
-    <script src="raphael-min.js"></script>
-    <script src="publicApi.js"></script>
-    <script src="uijs.js"></script>
-    <script src="login.js"></script>
-    <script src="map.js"></script>
-    <script src="room.js"></script>
-    <script src="gamemodel.js"></script>
+
+    <script src="js/raphael-min.js"></script>
+    <script src="js/publicApi.js"></script>
+    <script src="js/uijs.js"></script>
+    <script src="js/login.js"></script>
+    <script src="js/map.js"></script>
+    <script src="js/room.js"></script>
+    <script src="js/gamemodel.js"></script>
+    <script src="js/javaUtils.js"></script>
 
 
-    <script src="javaUtils.js"></script>
     <script src="/socket.io/socket.io.js"></script>
 
     <link href='http://fonts.googleapis.com/css?family=PT+Sans' rel='stylesheet' type='text/css'>
@@ -35,8 +36,8 @@
         <div class="roomSelect">
             <div class="addNewRoom"><p>+ Click to add a new Room +</p></div>
             <div class="unconnectedUsers"><p>Unconnected Users</p>
-                <div class="uncoonectedUsersBlock"></div>              
-            </div> 
+                <div class="uncoonectedUsersBlock"></div>
+            </div>
         </div>
         <div class="shouldBeHiddenBeforeEnteringAGame">
             <div id="canvasRaphael"></div>
@@ -56,7 +57,7 @@
                 <div id="Color3"></div>
                 <div id="Color4"></div>
                 <p id="1"></p>
-                
+
             </div>
             <div class="answer right">
                 <div id="Color1"></div>
@@ -79,7 +80,7 @@
                 <div id="Color4"></div>
                 <p id="4"></p>
             </div>
-           
+
         </div>
         <div class="shouldBeHiddenUntilLogin">
             <button type="button" id="javaTest" onclick="connect()">Connect</button>
