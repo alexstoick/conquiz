@@ -52,6 +52,7 @@ function MapClass ()
         zones[11] = "M 560 175 l 0 50 l 128 0 l 0 125 l 128 0 l 0 -175 z";
         zones[12] = "M 688 350 l 0 75 l 128 0 z";
         zones[13] = "M 688 350 l 128 0 l 0 75 z";
+        upperText= paper.text(480,30,"");
         for (var i = 0; i < zones.length; i++)
         {
             zonesCanvas[i] = paper.path(zones[i]);
