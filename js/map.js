@@ -58,7 +58,6 @@ function MapClass ()
             zonesCanvas[i].attr(defaultAttributes);
             zonesCanvas[i].click(function() { clickedZone(this.id); });
         }
-        upperText= paper.text(480,30,"HELLO MOFO");
         upperText.attr({ 'font-size' : 30 , fill : '#ECEAE0' });
         setPaper ( paper , upperText) ;
     }

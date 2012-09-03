@@ -43,7 +43,7 @@ function GameModel()
 			UIHandler.UIHidePopUp();
 			UIHandler.removeGlow(gameHandler.correctAnswer);
 			gameHandler.StartSelectingZones(gameHandler.winners);
-		},2000);
+		},5000);
 	};
 
 
