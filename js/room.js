@@ -1,7 +1,7 @@
 function RoomClass ()
 {
     //Public properties
-
+    this.scores=[0,0,0,0];
 
     //Private properties
     var chosenRoom ; //public setter

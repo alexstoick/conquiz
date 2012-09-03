@@ -5,9 +5,8 @@ function GameModel()
 	this.times=[] ;
 	this.userNumber=[];
 	this.correctAnswer=1;
-//	this.scores=[];
 	this.winners=[];
-	var scoreGainPerAnswer;
+	var scoreGainPerAnswer=100;
 	var colorsToBeAdded = [4] ;
 	this.currentlySelecting=-1;
 	this.userToSelect=0;
@@ -15,8 +14,6 @@ function GameModel()
 
 	this.findTheWinner = function ( answers )
 	{
-		console.log('userNumber is'+gameHandler.userNumber);
-		console.log('answers is'+gameHandler.answers);
 		gameHandler.winners.length = 0 ;
 		gameHandler.currentlySelecting = 0 ;
 		colorsToBeAdded[0] = [] ;
@@ -24,18 +21,16 @@ function GameModel()
 		colorsToBeAdded[2] = [] ;
 		colorsToBeAdded[3] = [] ;
 		colorsToBeAdded[4] = [] ;
-		console.log('finding The Winner function is called');
 		for(var i=0;i<answers.length;i++)
 		{
 			if ( answers[i]==gameHandler.correctAnswer )
 			{
 				gameHandler.winners.push(gameHandler.userNumber[i]);
-				//scores[i] += scoreGainPerAnswer ;
-				console.log('WINNER FOUND');
+				roomHandler.scores[i] += scoreGainPerAnswer ;
 			}
 			colorsToBeAdded [ answers[i] ].push ( colors[gameHandler.userNumber[i]] ) ;
 		}
-
+		UIHandler.UIUpdateUsersPresentation();
 		for(i=1;i<5;i++)
 			if( colorsToBeAdded[i].length!==0 )
 				UIHandler.colorAnswer(colorsToBeAdded[i],i);
@@ -45,7 +40,7 @@ function GameModel()
 			UIHandler.UIHidePopUp();
 			UIHandler.removeGlow(gameHandler.correctAnswer);
 			gameHandler.StartSelectingZones(gameHandler.winners);
-		},5000);
+		},2000);
 	};
 
 

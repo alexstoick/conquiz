@@ -5,16 +5,18 @@ function UIClass()
     //Public functions
 
     //GAME UI
+ 
     this.newRoom = addNewRoom ;
     var clickedAnswerAlready=0;
 
     this.UIUpdateUsersPresentation = function ()
     {
+        var scores=roomHandler.scores;
         var connectedUsers = roomHandler.GET_connectedUsers() ;
         for (var i = 0; i < 4; i++)
         {
             if (connectedUsers[i] !== 0)
-                $('.casuta:eq(' + i + ')').text(connectedUsers[i]);
+                $('.casuta:eq(' + i + ')').text(connectedUsers[i]+' : '+scores[i]);
             else
                $('.casuta:eq(' + i + ')').text('no user connected');
             if(connectedUsers[i]==loginHandler.username)
