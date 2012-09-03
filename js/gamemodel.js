@@ -15,6 +15,8 @@ function GameModel()
 
 	this.findTheWinner = function ( answers )
 	{
+		console.log('userNumber is'+gameHandler.userNumber);
+		console.log('answers is'+gameHandler.answers);
 		gameHandler.winners.length = 0 ;
 		gameHandler.currentlySelecting = 0 ;
 		colorsToBeAdded[0] = [] ;
@@ -31,7 +33,7 @@ function GameModel()
 				//scores[i] += scoreGainPerAnswer ;
 				console.log('WINNER FOUND');
 			}
-			colorsToBeAdded [ answers[i] ].push ( colors[i%4] ) ;
+			colorsToBeAdded [ answers[i] ].push ( colors[gameHandler.userNumber[i]] ) ;
 		}
 
 		for(i=1;i<5;i++)
