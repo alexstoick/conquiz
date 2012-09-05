@@ -24,16 +24,17 @@ function UIClass()
     //4 Answers Pop-UP START
     this.UIShowPopUp = function (intrebare, answers)
     {
-        setUpTimer();
-        $('#pop-up4a').show();
-        $('#question').text(intrebare);
-        var i ;
-        for ( i = 1 ; i < 5 ; ++ i )
-        {
-            $('#'+i).text(answers[i-1]);
-            UIHandler.colorAnswer(['#63AA9C'],i);
-        }
-        clickedAnswerAlready=0 ;
+        $("#4questionModal").modal('show');
+        // setUpTimer();
+        // $('#pop-up4a').show();
+        // $('#question').text(intrebare);
+        // var i ;
+        // for ( i = 1 ; i < 5 ; ++ i )
+        // {
+        //     $('#'+i).text(answers[i-1]);
+        //     UIHandler.colorAnswer(['#63AA9C'],i);
+        // }
+        // clickedAnswerAlready=0 ;
     };
 
     this.UIHidePopUp = function ()

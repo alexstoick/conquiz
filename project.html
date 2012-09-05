@@ -58,7 +58,7 @@
             </div>
         </div>
     </div>    
-    <!-- NAVBAR END -->
+    <!-- NAVBAR END   -->
 
     <!-- MAIN CONTAINER START -->
     <div class="container">
@@ -75,7 +75,6 @@
     </div>
 
     <!-- MAIN CONTAINER END -->
-
 
     <!-- ROOM MODAL START-->
     <div class="modal fade" id="roomModal">
@@ -123,7 +122,54 @@
             <a href="#" class="btn btn-primary" id="connectToRoom">Connect to Room</a>
         </div>
     </div>
-    <!-- ROOM MODAL END -->
+    <!-- ROOM MODAL END  -->
+
+    <!-- Question 4 Answers Modal Start -->
+    <div class="modal fade" id="4questionModal" data-backdrop="static">
+        <div class="modal-header">
+            <h3 class="" id="roomNumberModal">Room ID</h3>
+            <h3 class="" id="themeModal">Theme</h3>
+        </div>
+        <div class="modal-body">
+            <h5 id="connectedUsers"></h5>
+            <table class="table">
+                <thead>
+                    <tr>
+                        <td>ProfilePic</td>
+                        <td>Username</td>
+                        <td>Country</td>
+                    </tr>
+                </thead>
+                <tbody class="tbodyModal">
+                    <tr>
+                        <td><img src="http://placehold.it/25x25"></td>
+                        <td>user1</td>
+                        <td>Romania</td>
+                    </tr>
+                    <tr>
+                        <td><img src="http://placehold.it/25x25"></td>
+                        <td>user2</td>
+                        <td>Bulgaria</td>
+                    </tr>
+                    <tr>
+                        <td><img src="http://placehold.it/25x25"></td>
+                        <td>user3</td>
+                        <td>Spain</td>
+                    </tr>
+                    <tr>
+                        <td><img src="http://placehold.it/25x25"></td>
+                        <td>user4</td>
+                        <td>Turkey</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="modal-footer">
+            <a href="#" class="btn" data-dismiss="modal">Close</a>
+            <a href="#" class="btn btn-primary" id="connectToRoom">Connect to Room</a>
+        </div>
+    </div> 
+    <!-- Question 4 Answers Modal End   -->
     <div class="container ">
         <div class="shouldBeHiddenBeforeEnteringAGame">
             <div id="canvasRaphael"></div>
