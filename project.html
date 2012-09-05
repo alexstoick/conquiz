@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <title>Project</title>
+    <!-- <link rel="stylesheet" href="project.css"> -->
+    <link href="css/bootstrap.css" rel="stylesheet">
+    <link href="css/style.css" rel="stylesheet">
+
+
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+
+    <script src="js/raphael-min.js"></script>
+    <script src="js/publicApi.js"></script>
+    <script src="js/uijs.js"></script>
+    <script src="js/login.js"></script>
+    <script src="js/map.js"></script>
+    <script src="js/room.js"></script>
+    <script src="js/gamemodel.js"></script>
+    <script src="js/javaUtils.js"></script>
+
+
+    <script src="/socket.io/socket.io.js"></script>
+
+    <link href='http://fonts.googleapis.com/css?family=PT+Sans' rel='stylesheet' type='text/css'>
+</head>
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="navbar-inner">
+            <div class="container">
+                <a class="brand pull-left" href="#">Conquiztador</a>
+                <ul class="nav pull-right">
+                    <li class="dropdown">
+                        <a href="" class="dropdown-toggle" data-toggle="dropdown">
+                            Account
+                            <b class="caret"></b>
+                        </a>
+                        <!-- Link or button to toggle dropdown -->
+                        <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel" style="padding:15px">
+                            <form>
+                                <input type="text" placeholder="Username" id="usernameForm">
+                                <input type="text" placeholder="Password">
+                            </form>
+                            <button type="submit" class="btn btn-inverse" id="submitUsername">Sign in</button>
+                            <li class="divider"></li>
+                            <li>Login with Facebook</li>
+                        </ul>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>    
+    <div class="container">
+        <table class="table table-bordered">
+            <tbody class="rooms">
+                <tr class="addNewRoom">
+                    <td><strong>Click to add a new Room</strong></td>
+                </tr>
+                <tr class="unconnectedUsers">
+                    <td><strong>Unconnected Users</strong></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="modal fade" id="test_modal">
+        <div class="modal-header">
+            <a class="close" data-dismiss="modal">&times;</a>
+            <h3>Modal Header</h3>
+        </div>
+        <div class="modal-body">
+            <p>Test Modal</p>
+        </div>
+        <div class="modal-footer">
+            <a href="#" class="btn" data-dismiss="modal">Close</a>
+            <a href="#" class="btn btn-primary">Save Changes</a>
+        </div>
+    </div> 
+    <div class="container ">
+        <div class="shouldBeHiddenBeforeEnteringAGame">
+            <div id="canvasRaphael"></div>
+            <ul id="score">
+                <li class="casuta">username:score</li>
+                <li class="casuta">username:score</li>
+                <li class="casuta">username:score</li>
+                <li class="casuta">username:score</li>
+            </ul>
+        </div>
+        <button type="button" id="addQuestion">Clickme!</button>
+
+
+
+
+        <div id="pop-up4a">
+            <p id="question"></p>
+            <div class="answer left">
+                <div id="Color1"></div>
+                <div id="Color2"></div>
+                <div id="Color3"></div>
+                <div id="Color4"></div>
+                <p id="1"></p>
+
+            </div>
+            <div class="answer right">
+                <div id="Color1"></div>
+                <div id="Color2"></div>
+                <div id="Color3"></div>
+                <div id="Color4"></div>
+                <p id="2"></p>
+            </div>
+            <div class="answer left">
+                <div id="Color1"></div>
+                <div id="Color2"></div>
+                <div id="Color3"></div>
+                <div id="Color4"></div>
+                <p id="3"></p>
+            </div>
+            <div class="answer right">
+                <div id="Color1"></div>
+                <div id="Color2"></div>
+                <div id="Color3"></div>
+                <div id="Color4"></div>
+                <p id="4"></p>
+            </div>
+
+        </div>
+        <div class="shouldBeHiddenUntilLogin">
+            <button type="button" id="javaTest" onclick="connect()">Connect</button>
+            <button type="button" id="javaTest2" onclick="sendTestMessage()">Test message</button>
+        </div>
+        <pre id="log">Log:<br /></pre> 
+    </div>
+</body>
+<script src="js/bootstrap.min.js"></script>
+</html>

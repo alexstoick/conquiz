@@ -134,19 +134,21 @@ function UIClass()
     };
     function addNewRoom (roomNumber)
     {
-        var allRooms = $('.roomSelect');
-        allRooms.append('<div class="roomUI"><p class="roomTitle">ROOM ' + roomNumber + '</p></div>');
-        var currentRoom = allRooms.find(' .roomUI:eq(' + (roomNumber - 1) + ')').attr({
-            'isRoom': roomNumber
-        });
-        var titleOfRoom = currentRoom.find(' p:eq(0)');
-        currentRoom.click(clickedRoom);
-        var barItemOfRoom = currentRoom.find('P:eq(1)');
-        barItemOfRoom.click(barItemClicked);
-        currentRoom.append('<div class="userBlock"></div>');
-        var usersOfRoom = $('.userBlock:eq(' + (roomNumber - 1) + ')');
-        for (var j = 1; j <= 4; j++)
-            usersOfRoom.append('<p>Free Slot</p>');
+        var table=$('tbody.rooms');
+        table.append('<tr><td>Room'+ roomNumber +'</td></tr>');
+        // var allRooms = $('.roomSelect');
+        // allRooms.append('<div class="roomUI"><p class="roomTitle">ROOM ' + roomNumber + '</p></div>');
+        // var currentRoom = allRooms.find(' .roomUI:eq(' + (roomNumber - 1) + ')').attr({
+        //     'isRoom': roomNumber
+        // });
+        // var titleOfRoom = currentRoom.find(' p:eq(0)');
+        // currentRoom.click(clickedRoom);
+        // var barItemOfRoom = currentRoom.find('P:eq(1)');
+        // barItemOfRoom.click(barItemClicked);
+        // currentRoom.append('<div class="userBlock"></div>');
+        // var usersOfRoom = $('.userBlock:eq(' + (roomNumber - 1) + ')');
+        // for (var j = 1; j <= 4; j++)
+        //     usersOfRoom.append('<p>Free Slot</p>');
     }
 
     this.roomSetUp = function ()
@@ -154,7 +156,7 @@ function UIClass()
         for (var i = 1; i <= roomsAvailable; i++)
             addNewRoom(i);
         $('.addNewRoom').click(function(){
-            log ( "qq" ) ;
+            
             addNewRoom(++roomsAvailable);
             //call to publicAPI
             newRoomAdded ( roomsAvailable ) ;

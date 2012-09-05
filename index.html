@@ -1,91 +1,56 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:fb="https://www.facebook.com/2008/fbml">
 <head>
-    <meta charset="utf-8">
-    <title>Project</title>
-    <link rel="stylesheet" href="project.css">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
-
-    <script src="js/raphael-min.js"></script>
-    <script src="js/publicApi.js"></script>
-    <script src="js/uijs.js"></script>
-    <script src="js/login.js"></script>
-    <script src="js/map.js"></script>
-    <script src="js/room.js"></script>
-    <script src="js/gamemodel.js"></script>
-    <script src="js/javaUtils.js"></script>
-
-
-    <script src="/socket.io/socket.io.js"></script>
-
-    <link href='http://fonts.googleapis.com/css?family=PT+Sans' rel='stylesheet' type='text/css'>
+	<title>Conquiztador</title>
+	<link href="css/bootstrap.css" rel="stylesheet">
+	<link href="css/style.css" rel="stylesheet">
 </head>
 <body>
-    <div class="container">
-        <header>
-            <div class="left">
-                <h1>Conquiztador</h1>
-            </div>
-            <div class="right login">
-                <form class="form loginForm">
-                    Username: <input type="text"  id="usernameForm"/>
-                </form>
-                <button type="button" id="submitUsername" class="right">Submit</button>
-            </div>
-        </header>
-        <div class="roomSelect">
-            <div class="addNewRoom"><p>+ Click to add a new Room +</p></div>
-            <div class="unconnectedUsers"><p>Unconnected Users</p>
-                <div class="uncoonectedUsersBlock"></div>
-            </div>
-        </div>
-        <div class="shouldBeHiddenBeforeEnteringAGame">
-            <div id="canvasRaphael"></div>
-            <ul id="score">
-                <li class="casuta">username:score</li>
-                <li class="casuta">username:score</li>
-                <li class="casuta">username:score</li>
-                <li class="casuta">username:score</li>
-            </ul>
-        </div>
-        <button type="button" id="addQuestion">Clickme!</button>
-        <div id="pop-up4a">
-            <p id="question"></p>
-            <div class="answer left">
-                <div id="Color1"></div>
-                <div id="Color2"></div>
-                <div id="Color3"></div>
-                <div id="Color4"></div>
-                <p id="1"></p>
+	<div class="navbar navbar-inverse navbar-fixed-top">
+		<div class="navbar-inner">
+			<div class="container">
+				<a class="brand pull-left" href="#">Conquiztador</a>
+				<ul class="nav pull-right">
+					<li class="dropdown">
+						<a href="" class="dropdown-toggle" data-toggle="dropdown">
+							Account
+							<b class="caret"></b>
+						</a>
+						<!-- Link or button to toggle dropdown -->
+						<ul class="dropdown-menu" role="menu" aria-labelledby="dLabel" style="padding:15px">
+							<form>
+								<input type="text" placeholder="Username">
+								<input type="text" placeholder="Password">
+								<button type="submit" class="btn btn-inverse">Sign in</button>
+							</form>
+							<li class="divider"></li>
+							<li>Login with Facebook</li>
+						</ul>
+					</li>
+				</ul>
+			</div>
+		</div>
+	</div>
+	<div class="container">
+		<div class="hero-unit">
+			<h1 style="text-align:center">Conquiztador</h1>
+			<p style="text-align:center">Multi-player quiz made for Comenius</h1>
+			<p style="text-align:center">  <a href="project.html"><button class="btn btn-large" type="button">Go to the Game!</button></p></a>
+		</div>
+		<div class="row">
+			<div class="span6">
+				<h1>Subjects available</h1>
+				LoremIpsum LoremIpsum LoremIpsum LoremIpsum LoremIpsum LoremIpsum LoremIpsum LoremIpsum LoremIpsum LoremIpsum LoremIpsum LoremIpsum LoremIpsum 
+			</div>
+			<div class="span6">
+				<h1>News</h1>
+				LoremIpsum LoremIpsum LoremIpsum LoremIpsum LoremIpsum LoremIpsum LoremIpsum LoremIpsum LoremIpsum LoremIpsum LoremIpsum LoremIpsum LoremIpsum 
+			</div>
+		</div>
+	</div>
 
-            </div>
-            <div class="answer right">
-                <div id="Color1"></div>
-                <div id="Color2"></div>
-                <div id="Color3"></div>
-                <div id="Color4"></div>
-                <p id="2"></p>
-            </div>
-            <div class="answer left">
-                <div id="Color1"></div>
-                <div id="Color2"></div>
-                <div id="Color3"></div>
-                <div id="Color4"></div>
-                <p id="3"></p>
-            </div>
-           <div class="answer right">
-                <div id="Color1"></div>
-                <div id="Color2"></div>
-                <div id="Color3"></div>
-                <div id="Color4"></div>
-                <p id="4"></p>
-            </div>
-
-        </div>
-        <div class="shouldBeHiddenUntilLogin">
-            <button type="button" id="javaTest" onclick="connect()">Connect</button>
-            <button type="button" id="javaTest2" onclick="sendTestMessage()">Test message</button>
-        </div>
-            <pre id="log">Log:<br /></pre>
-    </div>
+</div>
+<script src="http://code.jquery.com/jquery-latest.js"></script>
+<script src="js/bootstrap.min.js"></script>
 </body>
+</html>
