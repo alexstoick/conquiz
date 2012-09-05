@@ -4,12 +4,7 @@ function UIClass()
     //IMPORTANT VARS
     var clickedAnswerAlready=0;
     var roomModal=$('#roomModal');
-
-    //Public functions
-
-    //GAME UI
- 
-   
+    //IMPORTANT VARS END
     this.UIUpdateUsersPresentation = function ()
     {
         var scores=roomHandler.scores;
@@ -25,6 +20,8 @@ function UIClass()
         }
     };
 
+
+    //4 Answers Pop-UP START
     this.UIShowPopUp = function (intrebare, answers)
     {
         setUpTimer();
@@ -76,6 +73,9 @@ function UIClass()
             clickedAnswerAlready=1;
         }
     }
+    // 4 Answers Pop-UP END
+
+    //ModalRoom UI START
     function UIselectedRoom()
     {
         $('.roomSelect').slideUp();
@@ -127,16 +127,9 @@ function UIClass()
             roomModal.find('table').hide();
 
     };
-    this.UIAddFreeUsers = function (users)
-    {
-        var freeUsersBlock=$('.uncoonectedUsersBlock');
-        freeUsersBlock.html('');
-            for(var i=0;i<users.length;i++)
-                freeUsersBlock.append('<p>'+users[i]+'</p>');
-    };
+    // ModalRoomUI End
 
     // ROOM Table Set-UP
-
     function addNewRoom (roomNumber)
     {
         var table=$('tbody.rooms');
@@ -165,13 +158,9 @@ function UIClass()
         for(var i=0;i<4;i++)
              $('.casuta:eq(' + i + ')').css({'background-color':colors[i]});
     };
-
     // Room Table Set-up END
 
-
-    /*
-     *  Timer related functions
-     */
+    //TIMER FUNCTION START
     var timer, interval ;
 
     function addTime()
@@ -192,7 +181,9 @@ function UIClass()
         clearInterval(interval) ;
         interval = setInterval(addTime, 1000);
     }
-    /*CONSTRUCT FUNCTIONS*/
+    //TIMER FUNCTIONS END
+
+    // CONSTRUCT FUNCTIONS START
     this.construct = function ( )
     {
         setUpQuestion();
@@ -204,10 +195,9 @@ function UIClass()
         for ( i = 1 ; i < 5 ; ++ i )
             $('#'+i).click(clickedAnswer);
     }
-    /*
-     *  DEMO STUFF
-     */
-
+    // CONTRUCT FUNCTION END
+  
+    //DEMO STUFF STARTS
     function tryButton()
     {
         $("#addQuestion").click(spawn).hide();
@@ -218,5 +208,5 @@ function UIClass()
         showPopUp ( 'Compozitori: În ce oraş a decedat Camille Saint-Saëns, compozitor francez din epoca romantică?',
                       ["Alger1", "Alger2", "Alger3", "Alger4"] ) ;
     }
-
+    //DEMO STUFF ENDS
 }
