@@ -80,7 +80,6 @@ function UIClass()
     {
         $('.roomSelect').slideUp();
         $('.shouldBeHiddenBeforeEnteringAGame').show();
-        $('.shouldBeHiddenUntilLogin').show();
     }
     function clickedRoom(roomID)
     {
@@ -93,8 +92,8 @@ function UIClass()
     this.UIAddUsersForRoomTooltip = function (roomID,users)
     {
         var connectButton=roomModal.find('#connectToRoom');
-        roomModal.unbind('click');
-        roomModal.click(function(){
+        connectButton.unbind('click');
+        connectButton.click(function(){
             UIselectedRoom();
             selectedRoom(roomID);
             roomModal.modal('hide');
@@ -135,6 +134,9 @@ function UIClass()
             for(var i=0;i<users.length;i++)
                 freeUsersBlock.append('<p>'+users[i]+'</p>');
     };
+
+    // ROOM Table Set-UP
+
     function addNewRoom (roomNumber)
     {
         var table=$('tbody.rooms');
@@ -163,6 +165,10 @@ function UIClass()
         for(var i=0;i<4;i++)
              $('.casuta:eq(' + i + ')').css({'background-color':colors[i]});
     };
+
+    // Room Table Set-up END
+
+
     /*
      *  Timer related functions
      */

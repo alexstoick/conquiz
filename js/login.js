@@ -18,7 +18,8 @@ function LoginClass ( ){
     function setUsername()
     {
         user = document.getElementById("usernameForm").value;
-        $(".login").text("Hello " + user );
+        $("#usernameNav").text("Hello " + user );
+        $('#loginDropdown').hide();
         $("#addQuestion").show();
         $('.roomSelect').show();
         loggedIn ( user ) ;

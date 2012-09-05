@@ -29,8 +29,12 @@
         <div class="navbar-inner">
             <div class="container">
                 <a class="brand pull-left" href="#">Conquiztador</a>
-                <ul class="nav pull-right">
-                    <li class="dropdown">
+                <ul class="nav pull-left">
+                    <li><a href="index.html">Home</a></li>
+                    <li class="active"><a href="#">Game</a></li>
+                </ul>
+                <ul class="nav pull-right" >
+                    <li class="dropdown pull-right" id="loginDropdown">
                         <a href="" class="dropdown-toggle" data-toggle="dropdown">
                             Account
                             <b class="caret"></b>
@@ -46,7 +50,10 @@
                             <li>Login with Facebook</li>
                         </ul>
                     </li>
-                </ul>
+                    <li>
+                        <a href="#" id="usernameNav"></a>
+                    </li>
+                </ul>                
             </div>
         </div>
     </div>    
@@ -54,7 +61,7 @@
 
     <!-- MAIN CONTAINER START -->
     <div class="container">
-        <table class="table table-bordered">
+        <table class="table table-bordered roomSelect">
             <tbody class="rooms">
                 <tr class="addNewRoom">
                     <td><strong>Click to add a new Room</strong></td>

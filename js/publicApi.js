@@ -17,6 +17,7 @@ $(document).ready(function() {
 	UIHandler.construct ( ) ;
 	roomHandler.construct ( ) ;
 	loginHandler.construct ( ) ;
+	$('.roomSelect').hide();
 });
 
 function setPaper ( paper , upperText)

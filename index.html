@@ -10,24 +10,29 @@
 		<div class="navbar-inner">
 			<div class="container">
 				<a class="brand pull-left" href="#">Conquiztador</a>
-				<ul class="nav pull-right">
-					<li class="dropdown">
-						<a href="" class="dropdown-toggle" data-toggle="dropdown">
-							Account
-							<b class="caret"></b>
-						</a>
-						<!-- Link or button to toggle dropdown -->
-						<ul class="dropdown-menu" role="menu" aria-labelledby="dLabel" style="padding:15px">
-							<form>
-								<input type="text" placeholder="Username">
-								<input type="text" placeholder="Password">
-								<button type="submit" class="btn btn-inverse">Sign in</button>
-							</form>
-							<li class="divider"></li>
-							<li>Login with Facebook</li>
-						</ul>
-					</li>
-				</ul>
+				<ul class="nav pull-left">
+                    <li class="active"><a href="#">Home</a></li>
+                    <li><a href="project.html">Game</a></li>
+                </ul>
+				<ul class="nav pull-right" >
+                    <li class="dropdown pull-right" id="loginDropdown">
+                        <a href="" class="dropdown-toggle" data-toggle="dropdown">
+                            Account
+                            <b class="caret"></b>
+                        </a>
+                        <!-- Link or button to toggle dropdown -->
+                        <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel" style="padding:15px">
+                            <form>
+                                <input type="text" placeholder="Username" id="usernameForm">
+                                <input type="text" placeholder="Password">
+                            </form>
+                            <button type="submit" class="btn btn-inverse" id="submitUsername">Sign in</button>
+                            <li class="divider"></li>
+                            <li>Login with Facebook</li>
+                        </ul>
+                    </li>
+                    <p id="usernameNav"></p>
+                </ul>
 			</div>
 		</div>
 	</div>
