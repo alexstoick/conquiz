@@ -1,14 +1,15 @@
 
 function UIClass()
 {
+    //IMPORTANT VARS
+    var clickedAnswerAlready=0;
+    var roomModal=$('#roomModal');
 
     //Public functions
 
     //GAME UI
  
-    this.newRoom = addNewRoom ;
-    var clickedAnswerAlready=0;
-
+   
     this.UIUpdateUsersPresentation = function ()
     {
         var scores=roomHandler.scores;
@@ -75,55 +76,57 @@ function UIClass()
             clickedAnswerAlready=1;
         }
     }
-    /*
-     * Room UI
-     */
-
-    //div .roomSelect = allRooms
-        //div .roomUI = currentRoom
-            //p .left .roomTitle = titleOfRoom
-            //br clear:both pentru background
-            //div .userBlock = usersOfRoom
-                //p (username)
-        //div .roomUI ETC
-    var lastItem=-1;
-    function barItemClicked()
-    {
-
-        getUsersFromRoom($(this).parent().attr('isRoom'));
-    }
-    function clickedRoom()
-    {
-        var userBlock=$(this).find('div');
-        var roomId = $(this).attr('isRoom');
-        if($(userBlock).is(':visible')){
-            selectedRoom(roomId);
-            UIselectedRoom();
-        }
-        else{
-            getUsersFromRoom(roomId);
-            userBlock.show();
-            if(lastItem!=-1)
-            {
-                $(this).parent().find('.userBlock:eq('+(lastItem-1)+')').hide();
-            }
-            lastItem=roomId;
-        }
-
-    }
     function UIselectedRoom()
     {
         $('.roomSelect').slideUp();
         $('.shouldBeHiddenBeforeEnteringAGame').show();
         $('.shouldBeHiddenUntilLogin').show();
     }
-    this.UIAddUsersForRoomTooltip = function (roomId,users)
+    function clickedRoom(roomID)
     {
-        var userBlock=$('.roomSelect .roomUI:eq('+(roomId-1)+') .userBlock');
-        for(var i=0;i<users.length;i++)
-            userBlock.find('p:eq('+i+')').text(users[i]);
-        for( i=users.length;i<4;i++)
-            userBlock.find('p:eq('+i+')').text('Free slot');
+        roomModal.modal('show');
+        roomModal.find('#roomNumberModal').text('Room '+roomID);
+        roomModal.find('#themeModal').text('Theme for room '+roomID);
+        getUsersFromRoom(roomID); 
+
+    }
+    this.UIAddUsersForRoomTooltip = function (roomID,users)
+    {
+        var connectButton=roomModal.find('#connectToRoom');
+        roomModal.unbind('click');
+        roomModal.click(function(){
+            UIselectedRoom();
+            selectedRoom(roomID);
+            roomModal.modal('hide');
+        });
+        roomModal.find("#connectedUsers").text('Connected Users:'+(users.length)+'/4');
+        if(users.length!=0)
+        {
+            var tbody=roomModal.find('.tbodyModal');
+            console.log('tbody is '+$(tbody));
+            var currentTR;
+            for(var i=0;i<users.length;i++)
+            {
+                currentTR=tbody.find('tr:eq('+i+')').show();
+                for(var j=0;j<2;j++)
+                {
+                    //AICi e de munca cu issue #43
+                    if(j==1)
+                    {
+                        var currentTD=currentTR.find('td:eq('+j+')');
+                        currentTD.text(users[i]);
+                    }
+                }
+                console.log('currentTR is '+currentTR);
+            }
+            for(var i=users.length;i<4;i++)
+            {
+                currentTR=tbody.find('tr:eq('+i+')').hide();
+            }
+        }
+        else
+            roomModal.find('table').hide();
+
     };
     this.UIAddFreeUsers = function (users)
     {
@@ -135,20 +138,11 @@ function UIClass()
     function addNewRoom (roomNumber)
     {
         var table=$('tbody.rooms');
-        table.append('<tr><td>Room'+ roomNumber +'</td></tr>');
-        // var allRooms = $('.roomSelect');
-        // allRooms.append('<div class="roomUI"><p class="roomTitle">ROOM ' + roomNumber + '</p></div>');
-        // var currentRoom = allRooms.find(' .roomUI:eq(' + (roomNumber - 1) + ')').attr({
-        //     'isRoom': roomNumber
-        // });
-        // var titleOfRoom = currentRoom.find(' p:eq(0)');
-        // currentRoom.click(clickedRoom);
-        // var barItemOfRoom = currentRoom.find('P:eq(1)');
-        // barItemOfRoom.click(barItemClicked);
-        // currentRoom.append('<div class="userBlock"></div>');
-        // var usersOfRoom = $('.userBlock:eq(' + (roomNumber - 1) + ')');
-        // for (var j = 1; j <= 4; j++)
-        //     usersOfRoom.append('<p>Free Slot</p>');
+        table.append('<tr class="is'+roomNumber+'" isroom="'+roomNumber+'"><td>Room'+ roomNumber +'</td></tr>');
+        var currentTR=table.find('.is'+roomNumber);
+        currentTR.click(function(){
+            clickedRoom(currentTR.attr('isroom'))
+        });
     }
 
     this.roomSetUp = function ()
