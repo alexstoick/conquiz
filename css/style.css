@@ -4,3 +4,31 @@ body {
 .shouldBeHiddenUntilLogin{display:none;}
 .shouldBeHiddenBeforeEnteringAGame{display:none;}
 .roomSelect .userBlock,.roomSelect .uncoonectedUsersBlock{display:none;}
+
+.answer{
+	position:relative;
+	left:0px;
+	top:0px;
+	height:100%;
+	margin:10px;
+	width:46%;
+}
+.left{
+	float:left;
+}
+.right{
+	float:right;
+}
+#Color1 , #Color2 , #Color3 , #Color4{
+	position:absolute;
+	height:100%;
+	z-index: -1;
+}
+.answer p{
+	font-size:22px;
+	text-align:center;
+	padding-top:5px;
+}
+.modal { width: 940px; margin-left:-470px; }
+/*modal width  = -2 * margin-left */
+.glow{-webkit-box-shadow:0px 0px 10px #0000ff;-moz-box-shadow:0px 0px 10px #0000ff;box-shadow:0px 0px 10px #0000ff;}

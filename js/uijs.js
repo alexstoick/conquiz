@@ -25,21 +25,21 @@ function UIClass()
     this.UIShowPopUp = function (intrebare, answers)
     {
         $("#4questionModal").modal('show');
-        // setUpTimer();
+        setUpTimer();
         // $('#pop-up4a').show();
-        // $('#question').text(intrebare);
-        // var i ;
-        // for ( i = 1 ; i < 5 ; ++ i )
-        // {
-        //     $('#'+i).text(answers[i-1]);
-        //     UIHandler.colorAnswer(['#63AA9C'],i);
-        // }
-        // clickedAnswerAlready=0 ;
+        $('#question').text(intrebare);
+        for (var i = 1 ; i < 5 ; ++ i )
+        {
+            $('#'+i).text(answers[i-1]);
+            UIHandler.colorAnswer(['#63AA9C'],i);
+        }
+        clickedAnswerAlready=0 ;
     };
 
     this.UIHidePopUp = function ()
     {
-        $('#pop-up4a').hide();
+        console.log('happening');
+        $("#4questionModal").modal('hide');
     };
     this.colorAnswer = function ( colors , answerNumber)
     {
@@ -61,7 +61,6 @@ function UIClass()
     }
     function UIClickedAnswer(answerClicked)
     {
-       // $('#pop-up4a').hide();
         interval = clearInterval(interval);
         UIHandler.colorAnswer( [colors[loginHandler.thisIsUserNo]], answerClicked );
     }
@@ -159,6 +158,9 @@ function UIClass()
         for(var i=0;i<4;i++)
              $('.casuta:eq(' + i + ')').css({'background-color':colors[i]});
     };
+    this.UIAddFreeUsers=function(){
+
+    }
     // Room Table Set-up END
 
     //TIMER FUNCTION START
@@ -192,8 +194,7 @@ function UIClass()
     };
     function setUpQuestion()
     {
-        var i ;
-        for ( i = 1 ; i < 5 ; ++ i )
+        for (var  i = 1 ; i < 5 ; ++ i )
             $('#'+i).click(clickedAnswer);
     }
     // CONTRUCT FUNCTION END
@@ -201,7 +202,7 @@ function UIClass()
     //DEMO STUFF STARTS
     function tryButton()
     {
-        $("#addQuestion").click(spawn).hide();
+        $("#addQuestion").click(spawn);
     }
 
     function spawn() //rigged Question
