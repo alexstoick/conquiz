@@ -20,7 +20,7 @@ function clearLog()
 
 var socket = null;
 
-function connect()
+function connect( helloMessage )
 {
     log('Connecting to local server...');
     if (socket === null)

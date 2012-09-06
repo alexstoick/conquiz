@@ -35,6 +35,17 @@ function loggedIn ( user )
 	//get list of users in no room: UIHandler.UIAddFreeUsers ( users ) ;
 }
 
+function loggedIn2 ( user , picURL )
+{
+	$("#usernameNav").html( "<img src='https://graph.facebook.com/" + picURL + "/picture'> Hello " + user );
+    $('#loginDropdown').hide();
+    $("#addQuestion").show();
+    $('.roomSelect').show();
+	loginHandler.username = user ;
+	console.log ( "publicAPI " + loginHandler.username ) ;
+	connect ( ) ; //from javaUtils
+}
+
 function submitAnswer ( answer , time)
 {
 	//se apeleaza de fiecare data cand se primeste
