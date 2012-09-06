@@ -35,8 +35,8 @@ function MapClass ()
                                     'stroke-linejoin': 'round'
                                 };
 
-        paper = new Raphael(document.getElementById('canvasRaphael'), "100%", "100%");
-        paper.rect(0, 0, 960, 500).attr({ fill: '#221E1D' });
+        paper = new Raphael(document.getElementById('canvasRaphael'),940,500);
+        paper.rect(0, 0, 940, 500).attr({ fill: '#221E1D' });
 
         zones[0] = "M 144 125 l 160 0 l 0 50 l -160 75 z";
         zones[1] = "M 304 175 l 0 150 l -160 -75 z";

@@ -1,5 +1,5 @@
 var roomsAvailable=5; // TREBUIE MODIFICAT
-var colors=['green','yellow','cyan','red'];
+var colors=['#dff0d8','#f2dede','#d9edf7','#c09853'];
 
 var UIHandler ;
 var loginHandler ;

@@ -5,6 +5,7 @@ function UIClass()
     var clickedAnswerAlready=0;
     var roomModal=$('#roomModal');
     //IMPORTANT VARS END
+    this.newRoom = addNewRoom ;
     this.UIUpdateUsersPresentation = function ()
     {
         var scores=roomHandler.scores;

@@ -3,7 +3,6 @@
 <head>
     <meta charset="utf-8">
     <title>Project</title>
-    <!-- <link rel="stylesheet" href="project.css"> -->
     <link href="css/bootstrap.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
 
@@ -21,8 +20,6 @@
 
 
     <script src="/socket.io/socket.io.js"></script>
-
-    <link href='http://fonts.googleapis.com/css?family=PT+Sans' rel='stylesheet' type='text/css'>
 </head>
 <body>
     <!-- NAVBAR START -->
@@ -72,6 +69,27 @@
                 </tr>
             </tbody>
         </table>
+        <div class="shouldBeHiddenBeforeEnteringAGame">
+            <div id="canvasRaphael"></div> 
+            <table class="table scores">
+                <thead class="usernamesTH">
+                    <tr>
+                        <td class="casuta">username</td>
+                        <td class="casuta">username</td>
+                        <td class="casuta">username</td>
+                        <td class="casuta">username</td>
+                    </tr> 
+                </thead>
+            </table>
+        </div>
+        <button type="button" id="addQuestion">Clickme!</button>
+        
+        <div class="shouldBeHiddenUntilLogin">
+            <button type="button" id="javaTest" onclick="connect()">Connect</button>
+            <button type="button" id="javaTest2" onclick="sendTestMessage()">Test message</button>
+        </div>
+        <pre id="log">Log:<br /></pre> 
+        
     </div>
 
     <!-- MAIN CONTAINER END -->
@@ -163,28 +181,9 @@
         <div class="modal-footer">
             <a href="#" class="btn btn-primary" id="useHint">Use Hint ( 50/50 )</a>
         </div>
+        
     </div> 
     <!-- Question 4 Answers Modal End   -->
-
-
-    <div class="container ">
-        <div class="shouldBeHiddenBeforeEnteringAGame">
-            <div id="canvasRaphael"></div>
-            <ul id="score">
-                <li class="casuta">username:score</li>
-                <li class="casuta">username:score</li>
-                <li class="casuta">username:score</li>
-                <li class="casuta">username:score</li>
-            </ul>
-        </div>
-        <button type="button" id="addQuestion">Clickme!</button>
-        
-        <div class="shouldBeHiddenUntilLogin">
-            <button type="button" id="javaTest" onclick="connect()">Connect</button>
-            <button type="button" id="javaTest2" onclick="sendTestMessage()">Test message</button>
-        </div>
-        <pre id="log">Log:<br /></pre> 
-    </div>
 </body>
 <script src="js/bootstrap.min.js"></script>
 </html>
