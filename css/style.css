@@ -29,7 +29,7 @@ body {
 	text-align:center;
 	padding-top:5px;
 }
-#4questionModal { width: 940px; margin-left:-470px; }
+#fourQuestionModal { width: 940px; margin-left:-470px; }
 /*modal width  = -2 * margin-left */
 .glow{-webkit-box-shadow:0px 0px 10px #0000ff;-moz-box-shadow:0px 0px 10px #0000ff;box-shadow:0px 0px 10px #0000ff;}
 .usernamesTH td{

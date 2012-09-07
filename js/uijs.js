@@ -25,7 +25,7 @@ function UIClass()
     //4 Answers Pop-UP START
     this.UIShowPopUp = function (intrebare, answers)
     {
-        $("#4questionModal").modal('show');
+        $("#fourQuestionModal").modal('show');
         setUpTimer();
         // $('#pop-up4a').show();
         $('#question').text(intrebare);
@@ -40,7 +40,7 @@ function UIClass()
     this.UIHidePopUp = function ()
     {
         console.log('happening');
-        $("#4questionModal").modal('hide');
+        $("#fourQuestionModal").modal('hide');
     };
     this.colorAnswer = function ( colors , answerNumber)
     {
