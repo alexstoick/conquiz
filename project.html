@@ -47,21 +47,21 @@
                             <li>
                                 <div id="fb-root"></div>
                                 <script> 
-                                    var button;
-                                     var userInfo;
+                                var button;
+                                var userInfo;
 
-                                     window.fbAsyncInit = function()
-                                     {
-                                         FB.init({ appId: '134519973357696', status: true, cookie: true, xfbml: true, oauth: true});
-                                         showLoader(true);
+                                window.fbAsyncInit = function()
+                                {
+                                 FB.init({ appId: '134519973357696', status: true, cookie: true, xfbml: true, oauth: true});
+                                 showLoader(true);
 
-                                        function updateButton(response)
-                                        {
-                                            button       =   document.getElementById('fb-auth');
-                                            userInfo     =   document.getElementById('user-info');
+                                 function updateButton(response)
+                                 {
+                                    button       =   document.getElementById('fb-auth');
+                                    userInfo     =   document.getElementById('user-info');
 
-                                            if (response.authResponse)
-                                            {
+                                    if (response.authResponse)
+                                    {
                                                 //user is already logged in and connected
                                                 FB.api('/me', function(info) { login(response, info); } ) ;
                                                 button.onclick = function() { FB.logout(function(response) { logout(response); } ) ; } ;
@@ -104,28 +104,28 @@
 
                                     function login(response, info)
                                     {
-                                    if (response.authResponse)
-                                    {
+                                        if (response.authResponse)
+                                        {
                                         //showLoader(false);
                                         //username = info.name ;
                                         loggedIn2 ( info.name , info.id );
                                     }
-                                    }
+                                }
 
-                                    function logout(response)
-                                    {
+                                function logout(response)
+                                {
                                     userInfo.innerHTML                             =   "";
                                     document.getElementById('other').style.display =   "none";
                                     showLoader(false);
-                                    }
+                                }
 
-                                    function showLoader(status)
-                                    {
+                                function showLoader(status)
+                                {
                                     if (status)
                                         document.getElementById('loader').style.display = 'block';
                                     else
                                         document.getElementById('loader').style.display = 'none';
-                                    }
+                                }
                                 </script>
                                 <button id="fb-auth">Login</button>
                                 <div id="loader" style="display:none">
@@ -230,48 +230,78 @@
     </div>
     <!-- ROOM MODAL END  -->
 
-    <!-- Question 4 Answers Modal Start -->
-    <div class="modal fade" id="4questionModal" data-backdrop="static">
+    <!-- Room Creation Modal MODAL START-->
+    <div class="modal fade" id="roomCreationModal">
         <div class="modal-header">
-            <h3 class="" id="question">Room ID</h3>
+            <a class="close" data-dismiss="modal">&times;</a>
+            <h3 class="" id="themeModal">Creating a new room</h3>
         </div>
         <div class="modal-body">
-            <div class="answer left">
-                <div id="Color1"></div>
-                <div id="Color2"></div>
-                <div id="Color3"></div>
-                <div id="Color4"></div>
-                <p id="1">aaaa</p>
+            <form class="form-horizontal">
+              <div class="control-group">
+                <label class="control-label" for="themeSelect">Theme:</label>
+                <div class="controls" id="themeSelect">
+                  <select id="themeForRoom">
+                      <option value='21'>1</option>
+                      <option>2</option>
+                      <option>3</option>
+                      <option>4</option>
+                      <option>5</option>
+                  </select>
+              </div>
+          </div>
 
-            </div>
-            <div class="answer right">
-                <div id="Color1"></div>
-                <div id="Color2"></div>
-                <div id="Color3"></div>
-                <div id="Color4"></div>
-                <p id="2">aaaaa</p>
-            </div>
-            <div class="answer left">
-                <div id="Color1"></div>
-                <div id="Color2"></div>
-                <div id="Color3"></div>
-                <div id="Color4"></div>
-                <p id="3">aaaaaa</p>
-            </div>
-            <div class="answer right">
-                <div id="Color1"></div>
-                <div id="Color2"></div>
-                <div id="Color3"></div>
-                <div id="Color4"></div>
-                <p id="4">bbbbb</p>
-            </div>
+      </form>
+  </div>
+  <div class="modal-footer">
+    <a href="#" class="btn" data-dismiss="modal">Close</a>
+    <a href="#" class="btn btn-primary" id="createRoomBtn">Create room !</a>
+</div>
+</div>
+<!-- Room Creation Modal MODAL END  -->
+
+<!-- Question 4 Answers Modal Start -->
+<div class="modal fade" id="4questionModal" data-backdrop="static">
+    <div class="modal-header">
+        <h3 class="" id="question">Room ID</h3>
+    </div>
+    <div class="modal-body">
+        <div class="answer left">
+            <div id="Color1"></div>
+            <div id="Color2"></div>
+            <div id="Color3"></div>
+            <div id="Color4"></div>
+            <p id="1">aaaa</p>
+
         </div>
-        <div class="modal-footer">
-            <a href="#" class="btn btn-primary" id="useHint">Use Hint ( 50/50 )</a>
+        <div class="answer right">
+            <div id="Color1"></div>
+            <div id="Color2"></div>
+            <div id="Color3"></div>
+            <div id="Color4"></div>
+            <p id="2">aaaaa</p>
         </div>
-        
-    </div> 
-    <!-- Question 4 Answers Modal End   -->
+        <div class="answer left">
+            <div id="Color1"></div>
+            <div id="Color2"></div>
+            <div id="Color3"></div>
+            <div id="Color4"></div>
+            <p id="3">aaaaaa</p>
+        </div>
+        <div class="answer right">
+            <div id="Color1"></div>
+            <div id="Color2"></div>
+            <div id="Color3"></div>
+            <div id="Color4"></div>
+            <p id="4">bbbbb</p>
+        </div>
+    </div>
+    <div class="modal-footer">
+        <a href="#" class="btn btn-primary" id="useHint">Use Hint ( 50/50 )</a>
+    </div>
+
+</div> 
+<!-- Question 4 Answers Modal End   -->
 </body>
 <script src="js/bootstrap.min.js"></script>
 </html>

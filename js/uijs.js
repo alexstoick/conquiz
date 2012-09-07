@@ -85,13 +85,13 @@ function UIClass()
     function clickedRoom(roomID)
     {
         roomModal.modal('show');
-        roomModal.find('#roomNumberModal').text('Room '+roomID);
-        roomModal.find('#themeModal').text('Theme for room '+roomID);
         getUsersFromRoom(roomID); 
-
     }
-    this.UIAddUsersForRoomTooltip = function (roomID,users)
+    this.UIAddUsersForRoomTooltip = function (roomID,users,theme)
     {
+        roomModal.find('#roomNumberModal').text('Room '+roomID);
+        roomModal.find('#themeModal').text('Theme: '+theme);
+
         var connectButton=roomModal.find('#connectToRoom');
         connectButton.unbind('click');
         connectButton.click(function(){
@@ -141,16 +141,26 @@ function UIClass()
         });
     }
 
+    function createNewRoom ( roomNumber )
+    {
+        var theme = document.getElementById ("themeForRoom").value ;
+        addNewRoom ( roomNumber ) ;
+        $('#roomCreationModal').modal('hide');
+        newRoomAdded ( roomsAvailable , theme ) ;//call to publicAPI
+    }
+
+
     this.roomSetUp = function ()
     {
         for (var i = 1; i <= roomsAvailable; i++)
             addNewRoom(i);
         $('.addNewRoom').click(function(){
-            
-            addNewRoom(++roomsAvailable);
-            //call to publicAPI
-            newRoomAdded ( roomsAvailable ) ;
+
+            //showing room modal
+
+            $('#roomCreationModal').modal('show');
         });
+        $('#createRoomBtn').click ( function () { createNewRoom(++roomsAvailable);})
 
         $('.unconnectedUsers').click(function(){
             $(this).find('div').toggle();

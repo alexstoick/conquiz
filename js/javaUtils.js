@@ -39,7 +39,7 @@ function connect( helloMessage )
 
         socket.on ( 'showQuestion' , function ( ) { showQuestion () ; } ) ;
 
-        socket.on ( 'usersForSpecificRoom' , function ( conn , room ) { receivedUsers ( conn , room ) ; } ) ;
+        socket.on ( 'usersForSpecificRoom' , function ( conn , room , theme ) { receivedUsers ( conn , room , theme ) ; } ) ;
 
         socket.on ( 'roomNumber' , function ( rooms ) { log ( "received Rooms" ) ; roomsAvailable = rooms ; UIHandler.roomSetUp () ; }) ;
 
@@ -60,9 +60,9 @@ function connected ( )
     socket.emit ( 'requestRoomNumber') ;
 }
 
-function receivedUsers ( users , roomId )
+function receivedUsers ( users , roomId , theme )
 {
-    updateUsersTooltipForRoom ( roomId , users ) ;
+    updateUsersTooltipForRoom ( roomId , users , theme ) ;
 }
 
 function getUsersFromServer ( roomId  )

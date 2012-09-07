@@ -86,9 +86,9 @@ function addAnswerToArray ( username , answer , time )
 	}
 }
 
-function newRoomAdded ( roomID )
+function newRoomAdded ( roomID , theme )
 {
-	socket.emit ( 'newRoom' , roomID ) ;
+	socket.emit ( 'newRoom' , roomID , theme ) ;
 }
 
 function selectedRoom ( roomId ){
@@ -118,9 +118,9 @@ function getUsersFromRoom ( roomID )
 	getUsersFromServer(roomID) ;//java servlet
 }
 
-function updateUsersTooltipForRoom ( roomID , users )
+function updateUsersTooltipForRoom ( roomID , users , theme )
 {
-	UIHandler.UIAddUsersForRoomTooltip ( roomID , users);
+	UIHandler.UIAddUsersForRoomTooltip ( roomID , users , theme );
 }
 
 function gameStateReady ( )
