@@ -41,3 +41,7 @@ body {
 
   -moz-background-clip: padding; -webkit-background-clip: padding-box; background-clip: padding-box;
 }
+.mainHeroPage{
+	background-image:url('../img/mainbg.png');
+	height:378px;
+}
