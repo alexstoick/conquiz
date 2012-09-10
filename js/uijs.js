@@ -24,14 +24,19 @@ function UIClass() {
     // inputQuestion Start
     this.UIShowPopUPinputQuestion = function(intrebare)
     {
+        $('#inputQuestionAnswer').val('')
         mapHandler.upperText.attr('text','');
         inputmodal.modal('show');
         inputmodal.find('#inputQuestion').text(intrebare);
+        setUpTimer();
     }
     function inputEntered()
     {
+        var answer=document.getElementById("inputQuestionAnswer").value;
+        submitAnswer(answer, timer);
         inputmodal.find('#inputQuestionForm').hide();
         inputmodal.find('#statusInputQuestion').show();
+        interval = clearInterval(interval);
     }
     this.UIHidePopUpinputQuestion = function()
     {
@@ -39,6 +44,24 @@ function UIClass() {
         inputmodal.find('#statusInputQuestion').hide();
         inputmodal.find('table').hide();
         inputmodal.modal('hide');
+    }
+    this.UIUpdateInputResults = function(usernames,times,answer)
+    {
+        console.log(times.length);
+        inputmodal.find('#statusInputQuestion').hide();
+        var resultTable=inputmodal.find('table');
+        resultTable.show();
+        resultTable=resultTable.find('tbody');
+        for(var i=0;i<times.length;i++)
+        {
+            var currentTR=resultTable.find('tr:eq('+i+')');
+            currentTR.find('td:eq(1)').text(usernames[i]);
+            currentTR.find('td:eq(2)').text(answer[i]+' in '+times[i]);
+        }
+        for(var i=times.length;i<4;i++)
+        {
+            resultTable.find('tr:eq('+i+')').hide();
+        }
     }
     // inputQuestion End
 
@@ -191,7 +214,7 @@ function UIClass() {
     var timer, interval;
 
     function addTime() {
-        timer += 1000;
+        timer += 10;
         if (timer >= 10000) {
             console.log("~Passed time");
             clearInterval(interval);
@@ -203,7 +226,7 @@ function UIClass() {
     function setUpTimer() {
         timer = 0;
         clearInterval(interval);
-        interval = setInterval(addTime, 1000);
+        interval = setInterval(addTime, 10);
     }
     //TIMER FUNCTIONS END
     // CONSTRUCT FUNCTIONS START

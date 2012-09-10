@@ -58,6 +58,7 @@ function showPopUp4Question (intrebare,answers) {
 	gameHandler.times.length = 0 ;
 	gameHandler.usernames.length = 0 ;
 	gameHandler.userNumber.length = 0 ;
+	gameHandler.typeOfQuestion=0;
 }
 function showPopUpInputQuestion (intrebare)
 {
@@ -66,6 +67,7 @@ function showPopUpInputQuestion (intrebare)
 	gameHandler.times.length = 0 ;
 	gameHandler.usernames.length = 0 ;
 	gameHandler.userNumber.length = 0 ;
+	gameHandler.typeOfQuestion=1;
 }
 function clickedZone(zoneID){
 	//se apelaza de fiecare data cand se clickuie o zona
@@ -85,10 +87,13 @@ function addAnswerToArray ( username , answer , time )
 	gameHandler.times.push ( time ) ;
 	gameHandler.answers.push ( answer ) ;
 	gameHandler.userNumber.push ( thisIsUserNumber );
-
+	console.log(gameHandler.usernames);
 	if ( gameHandler.usernames.length == 2 )
 	{
-		gameHandler.findTheWinner ( gameHandler.answers ) ;
+		if(gameHandler.typeOfQuestion==0)
+			gameHandler.findTheWinner ( gameHandler.answers ) ;
+		else
+			gameHandler.findTheInputWinner (gameHandler.answers);
 	}
 }
 

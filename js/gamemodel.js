@@ -10,7 +10,7 @@ function GameModel()
 	var colorsToBeAdded = [4] ;
 	this.currentlySelecting=-1;
 	this.userToSelect=0;
-
+	this.typeOfQuestion=0;
 
 	this.findTheWinner = function ( answers )
 	{
@@ -48,8 +48,11 @@ function GameModel()
 			}
 		},2000);
 	};
-
-
+	this.findTheInputWinner = function (answers)
+	{
+		UIHandler.UIUpdateInputResults(gameHandler.usernames,gameHandler.times,answers);
+	}
+	
 	this.StartSelectingZones = function ()
 	{
 		gameHandler.currentlySelecting=0;
