@@ -29,9 +29,8 @@ function UIClass() {
         if( gameHandler.iAmWinner == 1 )
         {
             console.log ( "intra" ) ;
-            $('#inputQuestionAnswer').val('').show();
+            $('#inputQuestionAnswer').val('').focus();
             mapHandler.upperText.attr('text','');
-            $('#statusInputQuestion').hide();
             inputmodal.find('#inputQuestion').text(intrebare);
             setUpTimer();
         }
@@ -51,7 +50,6 @@ function UIClass() {
     }
     this.UIHidePopUpinputQuestion = function()
     {
-        $('#inputQuestionForm').caretToStart();
         inputmodal.find('#inputQuestionForm').show();
         inputmodal.find('#statusInputQuestion').hide();
         inputmodal.find('table').hide();
