@@ -12,6 +12,10 @@ function LoginClass ( ){
     //Constructor
     this.construct = function ( ) {
         $("#submitUsername").click(setUsername);
+        $("#loginForm").bind("submit", function(event) {
+            setUsername();
+            event.preventDefault();
+        });
     };
 
 
