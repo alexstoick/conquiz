@@ -74,7 +74,7 @@ function showQuestion ( )
 {
     //call to public API
     setTimeout(function(){
-        showPopUp ( 'Compozitori: În ce oraş a decedat Camille Saint-Saëns, compozitor francez din epoca romantică?', ["1", "2", "3", "4"] ) ;
+        showPopUp4Question ( 'Compozitori: În ce oraş a decedat Camille Saint-Saëns, compozitor francez din epoca romantică?', ["1", "2", "3", "4"] ) ;
     }, 1000);
 
 }

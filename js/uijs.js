@@ -2,6 +2,7 @@ function UIClass() {
     //IMPORTANT VARS
     var clickedAnswerAlready = 0;
     var roomModal            = $('#roomModal');
+    var inputmodal           = $('#inputQuestionModal');
     //IMPORTANT VARS END
 
     //ROOM SCORE START
@@ -24,9 +25,19 @@ function UIClass() {
     this.UIShowPopUPinputQuestion = function(intrebare)
     {
         mapHandler.upperText.attr('text','');
-        var inputmodal=$('#inputQuestionModal');
         inputmodal.modal('show');
         inputmodal.find('#inputQuestion').text(intrebare);
+    }
+    function inputEntered()
+    {
+        inputModal.find('#inputQuestionForm').hide();
+        inputModal.find('#statusInputQuestion').show();
+    }
+    this.UIHidePopUpinputQuestion = function()
+    {
+        inputModal.find('#inputQuestionForm').show();
+        inputModal.find('#statusInputQuestion').hide();
+        inputmodal.modal('hide');
     }
     // inputQuestion End
 
@@ -44,8 +55,7 @@ function UIClass() {
         }
         clickedAnswerAlready = 0;
     };
-    this.UIHidePopUp = function () {
-        console.log('happening');
+    this.UIHidePopUp4question = function () {
         $("#fourQuestionModal").modal('hide');
     };
     this.colorAnswer = function (colors, answerNumber) {
@@ -218,7 +228,7 @@ function UIClass() {
 
     function spawn() //rigged Question
     {
-       UIHandler.UIShowPopUPinputQuestion('Compozitori: În ce oraş a decedat Camille Saint-Saëns, compozitor francez din epoca romantică?');
+       showPopUpInputQuestion('Compozitori: În ce oraş a decedat Camille Saint-Saëns, compozitor francez din epoca romantică?');
     }
     //DEMO STUFF ENDS
 }

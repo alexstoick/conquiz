@@ -42,7 +42,6 @@ function loggedIn2 ( user , picURL )
     $("#addQuestion").show();
     $('.roomSelect').show();
 	loginHandler.username = user ;
-	console.log ( "publicAPI " + loginHandler.username ) ;
 	connect ( ) ; //from javaUtils
 }
 
@@ -52,7 +51,7 @@ function submitAnswer ( answer , time)
 	socket.emit ( 'answer' , roomHandler.chosenRoom , loginHandler.username , answer , time ) ;
 }
 
-function showPopUp (intrebare,answers) {
+function showPopUp4Question (intrebare,answers) {
 	//trebuie apelat ca sa apara intrebarea
 	UIHandler.UIShowPopUp4question(intrebare,answers);
 	gameHandler.answers.length = 0 ;
@@ -60,7 +59,10 @@ function showPopUp (intrebare,answers) {
 	gameHandler.usernames.length = 0 ;
 	gameHandler.userNumber.length = 0 ;
 }
-
+function showPopUpInputQuestion (intrebare)
+{
+	UIHandler.UIShowPopUPinputQuestion(intrebare);
+}
 function clickedZone(zoneID){
 	//se apelaza de fiecare data cand se clickuie o zona
 	if(gameHandler.userToSelect==loginHandler.thisIsUserNo && gameHandler.currentlySelecting!=-1){
