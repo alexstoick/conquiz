@@ -52,6 +52,7 @@ function submitAnswer ( answer , time)
 }
 
 function showPopUp4Question (intrebare,answers) {
+	console.log ( "abcsa321" ) ; 
 	//trebuie apelat ca sa apara intrebarea
 	UIHandler.UIShowPopUp4question(intrebare,answers);
 	gameHandler.answers.length = 0 ;
@@ -63,6 +64,7 @@ function showPopUp4Question (intrebare,answers) {
 }
 function showPopUpInputQuestion (intrebare)
 {
+	console.log ( "13221" ) ;
 	UIHandler.UIShowPopUPinputQuestion(intrebare);
 	gameHandler.answers.length = 0 ;
 	gameHandler.times.length = 0 ;
@@ -90,11 +92,17 @@ function addAnswerToArray ( username , answer , time )
 	gameHandler.userNumber.push ( thisIsUserNumber );
 	console.log(gameHandler.usernames);
 	if(gameHandler.typeOfQuestion==0)
-		if(gameHandler.inputReq=gameHandler.usernames.length)
+	{
+		console.log ( gameHandler.inputReq + "		" + gameHandler.usernames.length ) ;
+		if( 2 == gameHandler.usernames.length)
 			gameHandler.findTheWinner ( gameHandler.answers ) ;
+	}
 	else
+	{
+		console.log ( "abc" ) ;
 		if ( gameHandler.usernames.length == 2 )
-			gameHandler.findTheInputWinner (gameHandler.answers);
+			gameHandler.findTheInputWinner ( );
+	}
 }
 
 function newRoomAdded ( roomID , theme )

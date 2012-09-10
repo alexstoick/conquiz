@@ -25,9 +25,13 @@ function UIClass() {
     this.UIShowPopUPinputQuestion = function(intrebare)
     {
         inputmodal.modal('show');
-        if(gameHandler.iamWinner==0){
-            $('#inputQuestionAnswer').val('');
+        console.log ( gameHandler.iAmWinner == 1 ) ;
+        if( gameHandler.iAmWinner == 1 )
+        {
+            console.log ( "intra" ) ;
+            $('#inputQuestionAnswer').val('').show();
             mapHandler.upperText.attr('text','');
+            $('#statusInputQuestion').hide();
             inputmodal.find('#inputQuestion').text(intrebare);
             setUpTimer();
         }

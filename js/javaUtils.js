@@ -81,6 +81,7 @@ function showQuestion ( )
 }
 function showInputQuestion()
 {
+    console.log ( "am primit" ) ;
     setTimeout(function(){
         showPopUpInputQuestion('Compozitori: În ce oraş a decedat Camille Saint-Saëns, compozitor francez din epoca romantică?' );
     },1000);

@@ -5,6 +5,7 @@ function GameModel()
 	this.times=[] ;
 	this.userNumber=[];
 	this.correctAnswer=1;
+	this.correctAnswerForInput = 100 ;
 	this.winners=[];
 	var scoreGainPerAnswer=100;
 	var colorsToBeAdded = [4] ;
@@ -28,8 +29,10 @@ function GameModel()
 			{
 				gameHandler.winners.push(gameHandler.userNumber[i]);
 				roomHandler.scores[i] += scoreGainPerAnswer ;
-				if(gameHandler.usernames[i]==LoginHandler.username)
-					iAmWinner=1;
+				if(gameHandler.usernames[i]==loginHandler.username)
+				{
+					gameHandler.iAmWinner=1;
+				}
 			}
 			colorsToBeAdded [ answers[i] ].push ( colors[gameHandler.userNumber[i]] ) ;
 		}
@@ -44,17 +47,77 @@ function GameModel()
 			
 				UIHandler.UIHidePopUp4question();
 				UIHandler.removeGlow(gameHandler.correctAnswer);
-			if(gameHandler.winners.length<1)
+			if(gameHandler.winners.length<=1)
 				gameHandler.StartSelectingZones(gameHandler.winners);
 			else
 			{
 				reqDepartajare();
+				console.log ( gameHandler.iAmWinner ) ;
 			}
 		},2000);
 	};
-	this.findTheInputWinner = function (answers)
+
+	function modul ( value )
 	{
-		UIHandler.UIUpdateInputResults(gameHandler.usernames,gameHandler.times,answers,gameHandler.userNumber);
+		if ( value < gameHandler.correctAnswerForInput )
+			return gameHandler.correctAnswerForInput - value ;
+		return value - gameHandler.correctAnswerForInput ;
+	}
+
+	function swap ( poz1 , poz2 )
+	{
+		var aux ;
+
+		aux = gameHandler.times[poz1] ;
+		gameHandler.times[poz1] = gameHandler.times[poz2] ;
+		gameHandler.times[poz2] = aux ;
+
+		aux = gameHandler.answers[poz1] ;
+		gameHandler.answers[poz1] = gameHandler.answers[poz2] ;
+		gameHandler.answers[poz2] = aux ;
+
+		aux = gameHandler.usernames[poz1] ;
+		gameHandler.usernames[poz1] = gameHandler.usernames[poz2] ;
+		gameHandler.usernames[poz2] = aux ;	
+
+		aux = gameHandler.userNumber[poz1] ;
+		gameHandler.userNumber[poz1] = gameHandler.userNumber[poz2] ;
+		gameHandler.userNumber[poz2] = aux ;	
+	}
+
+	this.findTheInputWinner = function ()
+	{
+		//sortez dupa raspunsul corect. 
+		//daca exista mai multe raspunsuri corecte - dupa cel mai rapid timp
+
+		var L = gameHandler.answers.length ;
+		var i ;
+		var j ;
+
+		for ( i = 0 ; i < L ; ++ i )
+		{
+			for ( j = i+1 ; j < L ; ++ j )
+			{ 
+				var mod1 = modul( gameHandler.answers[i] );
+				var mod2 = modul( gameHandler.answers[j] );
+				if ( mod1 < mod2 )
+				{
+					swap ( i , j ) ;
+				}
+				else
+					if ( mod1 == mod2 && gameHandler.times[i] > gameHandler.times[j] )
+						swap(i,j);					
+			}
+		}
+
+		// answer  -- gameHandler.times ; gameHandler.usernames; gameHandler.userNumber
+
+		UIHandler.UIUpdateInputResults(gameHandler.usernames,gameHandler.times,gameHandler.answers,gameHandler.userNumber);
+
+		setTimeout ( function () 
+			{ UIHandler.UIHidePopUpinputQuestion () ; gameStateReady () ; } 
+			, 15000 ) ;
+
 	}
 	
 	this.StartSelectingZones = function ()
