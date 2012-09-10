@@ -45,7 +45,7 @@ function UIClass() {
         inputmodal.find('table').hide();
         inputmodal.modal('hide');
     }
-    this.UIUpdateInputResults = function(usernames,times,answer)
+    this.UIUpdateInputResults = function(usernames,times,answer,userNO)
     {
         console.log(times.length);
         inputmodal.find('#statusInputQuestion').hide();
@@ -55,6 +55,7 @@ function UIClass() {
         for(var i=0;i<times.length;i++)
         {
             var currentTR=resultTable.find('tr:eq('+i+')');
+            currentTR.css({'background-color' : colors[userNO[i]]} );
             currentTR.find('td:eq(1)').text(usernames[i]);
             currentTR.find('td:eq(2)').text(answer[i]+' in '+times[i]);
         }

@@ -50,7 +50,7 @@ function GameModel()
 	};
 	this.findTheInputWinner = function (answers)
 	{
-		UIHandler.UIUpdateInputResults(gameHandler.usernames,gameHandler.times,answers);
+		UIHandler.UIUpdateInputResults(gameHandler.usernames,gameHandler.times,answers,gameHandler.userNumber);
 	}
 	
 	this.StartSelectingZones = function ()
