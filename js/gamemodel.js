@@ -11,7 +11,8 @@ function GameModel()
 	this.currentlySelecting=-1;
 	this.userToSelect=0;
 	this.typeOfQuestion=0;
-
+	this.iAmWinner=0;
+	this.inputReq=0;
 	this.findTheWinner = function ( answers )
 	{
 		gameHandler.winners.length = 0 ;
@@ -27,9 +28,12 @@ function GameModel()
 			{
 				gameHandler.winners.push(gameHandler.userNumber[i]);
 				roomHandler.scores[i] += scoreGainPerAnswer ;
+				if(gameHandler.usernames[i]==LoginHandler.username)
+					iAmWinner=1;
 			}
 			colorsToBeAdded [ answers[i] ].push ( colors[gameHandler.userNumber[i]] ) ;
 		}
+		inputReq=gameHandler.winners.length;
 		UIHandler.UIUpdateUsersPresentation();
 		for(i=1;i<5;i++)
 			if( colorsToBeAdded[i].length!==0 )

@@ -24,11 +24,18 @@ function UIClass() {
     // inputQuestion Start
     this.UIShowPopUPinputQuestion = function(intrebare)
     {
-        $('#inputQuestionAnswer').val('')
-        mapHandler.upperText.attr('text','');
         inputmodal.modal('show');
-        inputmodal.find('#inputQuestion').text(intrebare);
-        setUpTimer();
+        if(gameHandler.iamWinner==0){
+            $('#inputQuestionAnswer').val('');
+            mapHandler.upperText.attr('text','');
+            inputmodal.find('#inputQuestion').text(intrebare);
+            setUpTimer();
+        }
+        else
+        {
+            $('#inputQuestionAnswer').hide();
+            $('#statusInputQuestion').show();
+        }
     }
     function inputEntered()
     {

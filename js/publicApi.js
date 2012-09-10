@@ -59,6 +59,7 @@ function showPopUp4Question (intrebare,answers) {
 	gameHandler.usernames.length = 0 ;
 	gameHandler.userNumber.length = 0 ;
 	gameHandler.typeOfQuestion=0;
+	gameHandler.iAmWinner=0;
 }
 function showPopUpInputQuestion (intrebare)
 {
@@ -88,13 +89,12 @@ function addAnswerToArray ( username , answer , time )
 	gameHandler.answers.push ( answer ) ;
 	gameHandler.userNumber.push ( thisIsUserNumber );
 	console.log(gameHandler.usernames);
-	if ( gameHandler.usernames.length == 2 )
-	{
-		if(gameHandler.typeOfQuestion==0)
+	if(gameHandler.typeOfQuestion==0)
+		if(gameHandler.inputReq=gameHandler.usernames.length)
 			gameHandler.findTheWinner ( gameHandler.answers ) ;
-		else
+	else
+		if ( gameHandler.usernames.length == 2 )
 			gameHandler.findTheInputWinner (gameHandler.answers);
-	}
 }
 
 function newRoomAdded ( roomID , theme )
