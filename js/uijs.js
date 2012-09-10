@@ -3,6 +3,8 @@ function UIClass() {
     var clickedAnswerAlready = 0;
     var roomModal            = $('#roomModal');
     //IMPORTANT VARS END
+
+    //ROOM SCORE START
     this.newRoom             = addNewRoom;
     this.UIUpdateUsersPresentation = function () {
         var scores         = roomHandler.scores;
@@ -16,8 +18,22 @@ function UIClass() {
                 loginHandler.thisIsUserNo = i;
         }
     };
+    //ROOM SCORE END
+
+    // inputQuestion Start
+    this.UIShowPopUPinputQuestion = function(intrebare)
+    {
+        mapHandler.upperText.attr('text','');
+        var inputmodal=$('#inputQuestionModal');
+        inputmodal.modal('show');
+        inputmodal.find('#inputQuestion').text(intrebare);
+    }
+    // inputQuestion End
+
+
     //4 Answers Pop-UP START
-    this.UIShowPopUp = function (intrebare, answers) {
+    this.UIShowPopUp4question = function (intrebare, answers) {
+        mapHandler.upperText.attr('text','');
         $("#fourQuestionModal").modal('show');
         setUpTimer();
         // $('#pop-up4a').show();
@@ -65,6 +81,12 @@ function UIClass() {
         }
     }
     // 4 Answers Pop-UP END
+
+
+
+
+
+
     //ModalRoom UI START
 
     function UIselectedRoom() {
@@ -182,6 +204,10 @@ function UIClass() {
     function setUpQuestion() {
         for (var i = 1; i < 5; ++i)
             $('#' + i).click(clickedAnswer);
+        $('#inputQuestionForm').bind("submit", function(event) {
+            event.preventDefault();
+            inputEntered();
+        });
     }
     // CONTRUCT FUNCTION END
     //DEMO STUFF STARTS
@@ -192,7 +218,7 @@ function UIClass() {
 
     function spawn() //rigged Question
     {
-        showPopUp('Compozitori: În ce oraş a decedat Camille Saint-Saëns, compozitor francez din epoca romantică?', ["Alger1", "Alger2", "Alger3", "Alger4"]);
+       UIHandler.UIShowPopUPinputQuestion('Compozitori: În ce oraş a decedat Camille Saint-Saëns, compozitor francez din epoca romantică?');
     }
     //DEMO STUFF ENDS
 }

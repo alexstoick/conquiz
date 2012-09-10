@@ -5,8 +5,7 @@
     <title>Project</title>
     <link href="css/bootstrap.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
-
-
+    <link href='https://fonts.googleapis.com/css?family=News+Cycle:400,700' rel='stylesheet' type='text/css'>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
 
     <script src="js/raphael-min.js"></script>
@@ -235,11 +234,11 @@
     <div class="modal fade" id="roomCreationModal">
         <div class="modal-header">
             <a class="close" data-dismiss="modal">&times;</a>
-            <h3 class="" id="themeModal">Creating a new room</h3>
+            <h3>Creating a new room</h3>
         </div>
         <div class="modal-body">
             <form class="form-horizontal">
-              <div class="control-group">
+            <div class="control-group">
                 <label class="control-label" for="themeSelect">Theme:</label>
                 <div class="controls" id="themeSelect">
                   <select id="themeForRoom">
@@ -251,58 +250,72 @@
                   </select>
               </div>
           </div>
-
-      </form>
-  </div>
-  <div class="modal-footer">
-    <a href="#" class="btn" data-dismiss="modal">Close</a>
-    <a href="#" class="btn btn-primary" id="createRoomBtn">Create room !</a>
-</div>
-</div>
-<!-- Room Creation Modal MODAL END  -->
-
-<!-- Question 4 Answers Modal Start -->
-<div class="modal fade" id="fourQuestionModal" data-backdrop="static">
-    <div class="modal-header">
-        <h3 class="" id="question">Room ID</h3>
-    </div>
-    <div class="modal-body">
-        <div class="answer left">
-            <div id="Color1"></div>
-            <div id="Color2"></div>
-            <div id="Color3"></div>
-            <div id="Color4"></div>
-            <p id="1">aaaa</p>
-
+          </form>
         </div>
-        <div class="answer right">
-            <div id="Color1"></div>
-            <div id="Color2"></div>
-            <div id="Color3"></div>
-            <div id="Color4"></div>
-            <p id="2">aaaaa</p>
-        </div>
-        <div class="answer left">
-            <div id="Color1"></div>
-            <div id="Color2"></div>
-            <div id="Color3"></div>
-            <div id="Color4"></div>
-            <p id="3">aaaaaa</p>
-        </div>
-        <div class="answer right">
-            <div id="Color1"></div>
-            <div id="Color2"></div>
-            <div id="Color3"></div>
-            <div id="Color4"></div>
-            <p id="4">bbbbb</p>
-        </div>
-    </div>
     <div class="modal-footer">
-        <a href="#" class="btn btn-primary" id="useHint">Use Hint ( 50/50 )</a>
+        <a href="#" class="btn" data-dismiss="modal">Close</a>
+        <a href="#" class="btn btn-primary" id="createRoomBtn">Create room !</a>
     </div>
+    </div>
+    <!-- Room Creation Modal MODAL END  -->
 
-</div> 
-<!-- Question 4 Answers Modal End   -->
+    <!-- Question 4 Answers Modal Start -->
+    <div class="modal fade" id="fourQuestionModal" data-backdrop="static">
+        <div class="modal-header">
+            <h3 class="" id="question">Room ID</h3>
+        </div>
+        <div class="modal-body">
+            <div class="answer left">
+                <div id="Color1"></div>
+                <div id="Color2"></div>
+                <div id="Color3"></div>
+                <div id="Color4"></div>
+                <p id="1">aaaa</p>
+
+            </div>
+            <div class="answer right">
+                <div id="Color1"></div>
+                <div id="Color2"></div>
+                <div id="Color3"></div>
+                <div id="Color4"></div>
+                <p id="2">aaaaa</p>
+            </div>
+            <div class="answer left">
+                <div id="Color1"></div>
+                <div id="Color2"></div>
+                <div id="Color3"></div>
+                <div id="Color4"></div>
+                <p id="3">aaaaaa</p>
+            </div>
+            <div class="answer right">
+                <div id="Color1"></div>
+                <div id="Color2"></div>
+                <div id="Color3"></div>
+                <div id="Color4"></div>
+                <p id="4">bbbbb</p>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <a href="#" class="btn btn-primary" id="useHint">Use Hint ( 50/50 )</a>
+        </div>
+    </div> 
+    <!-- Question 4 Answers Modal End   -->
+
+    <!-- Question input Modal Start -->
+     <div class="modal fade" id="inputQuestionModal" data-backdrop="static">
+        <div class="modal-header">
+            <h3 id="inputQuestion">Question</h3>
+        </div>
+        <div class="modal-body">
+            <form id="inputQuestionForm" style="text-align:center">
+                <input type="text" id="inputQuestionAnswer" style="width:80%;">
+            </form>
+            <h4 id="statusInputQuestion"></h4>
+        </div>
+        <div class="modal-footer">
+        </div>
+    </div>
+    <!-- Question input Modal end -->
 </body>
 <script src="js/bootstrap.min.js"></script>
 </html>

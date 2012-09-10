@@ -54,7 +54,7 @@ function submitAnswer ( answer , time)
 
 function showPopUp (intrebare,answers) {
 	//trebuie apelat ca sa apara intrebarea
-	UIHandler.UIShowPopUp(intrebare,answers);
+	UIHandler.UIShowPopUp4question(intrebare,answers);
 	gameHandler.answers.length = 0 ;
 	gameHandler.times.length = 0 ;
 	gameHandler.usernames.length = 0 ;
