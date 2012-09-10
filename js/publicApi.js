@@ -67,7 +67,6 @@ function showPopUpInputQuestion (intrebare)
 	gameHandler.usernames.length = 0 ;
 	gameHandler.userNumber.length = 0 ;
 }
-}
 function clickedZone(zoneID){
 	//se apelaza de fiecare data cand se clickuie o zona
 	if(gameHandler.userToSelect==loginHandler.thisIsUserNo && gameHandler.currentlySelecting!=-1){

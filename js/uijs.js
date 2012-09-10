@@ -30,13 +30,14 @@ function UIClass() {
     }
     function inputEntered()
     {
-        inputModal.find('#inputQuestionForm').hide();
-        inputModal.find('#statusInputQuestion').show();
+        inputmodal.find('#inputQuestionForm').hide();
+        inputmodal.find('#statusInputQuestion').show();
     }
     this.UIHidePopUpinputQuestion = function()
     {
-        inputModal.find('#inputQuestionForm').show();
-        inputModal.find('#statusInputQuestion').hide();
+        inputmodal.find('#inputQuestionForm').show();
+        inputmodal.find('#statusInputQuestion').hide();
+        inputmodal.find('table').hide();
         inputmodal.modal('hide');
     }
     // inputQuestion End
@@ -218,6 +219,8 @@ function UIClass() {
             event.preventDefault();
             inputEntered();
         });
+        inputmodal.find('#statusInputQuestion').hide();
+        inputmodal.find('table').hide();
     }
     // CONTRUCT FUNCTION END
     //DEMO STUFF STARTS

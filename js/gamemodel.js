@@ -40,7 +40,7 @@ function GameModel()
 			
 				UIHandler.UIHidePopUp4question();
 				UIHandler.removeGlow(gameHandler.correctAnswer);
-			if(winners.length<=1)
+			if(gameHandler.winners.length<1)
 				gameHandler.StartSelectingZones(gameHandler.winners);
 			else
 			{
