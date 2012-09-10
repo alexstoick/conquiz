@@ -51,6 +51,7 @@ function UIClass() {
     }
     this.UIHidePopUpinputQuestion = function()
     {
+        $('#inputQuestionForm').caretToStart();
         inputmodal.find('#inputQuestionForm').show();
         inputmodal.find('#statusInputQuestion').hide();
         inputmodal.find('table').hide();

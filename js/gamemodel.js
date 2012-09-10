@@ -14,8 +14,15 @@ function GameModel()
 	this.typeOfQuestion=0;
 	this.iAmWinner=0;
 	this.inputReq=0;
+	this.zonesToSelect=[0,0,0,0];
+	function clearZonesToSelect()
+	{
+		for(var i=0;i<4;i++)
+			gameHandler.zonesToSelect[i]=0;
+	}
 	this.findTheWinner = function ( answers )
 	{
+		clearZonesToSelect();
 		gameHandler.winners.length = 0 ;
 		gameHandler.currentlySelecting = 0 ;
 		colorsToBeAdded[0] = [] ;
@@ -28,7 +35,8 @@ function GameModel()
 			if ( answers[i]==gameHandler.correctAnswer )
 			{
 				gameHandler.winners.push(gameHandler.userNumber[i]);
-				roomHandler.scores[i] += scoreGainPerAnswer ;
+				roomHandler.scores[gameHandler.userNumber[i]] += scoreGainPerAnswer ;
+				gameHandler.zonesToSelect[gameHandler.userNumber[i]]=2;
 				if(gameHandler.usernames[i]==loginHandler.username)
 				{
 					gameHandler.iAmWinner=1;
@@ -87,6 +95,7 @@ function GameModel()
 
 	this.findTheInputWinner = function ()
 	{
+		clearZonesToSelect();
 		//sortez dupa raspunsul corect. 
 		//daca exista mai multe raspunsuri corecte - dupa cel mai rapid timp
 
@@ -100,7 +109,8 @@ function GameModel()
 			{ 
 				var mod1 = modul( gameHandler.answers[i] );
 				var mod2 = modul( gameHandler.answers[j] );
-				if ( mod1 < mod2 )
+				console.log(mod1,mod2);
+				if ( mod1 > mod2 )
 				{
 					swap ( i , j ) ;
 				}
@@ -109,14 +119,20 @@ function GameModel()
 						swap(i,j);					
 			}
 		}
-
+		gameHandler.zonesToSelect[gameHandler.userNumber[0]]=2;
+		gameHandler.zonesToSelect[gameHandler.userNumber[1]]=1;
+		gameHandler.winners[0]=[gameHandler.userNumber[0]];
+		gameHandler.winners[1]=[gameHandler.userNumber[1]];
 		// answer  -- gameHandler.times ; gameHandler.usernames; gameHandler.userNumber
 
 		UIHandler.UIUpdateInputResults(gameHandler.usernames,gameHandler.times,gameHandler.answers,gameHandler.userNumber);
 
 		setTimeout ( function () 
-			{ UIHandler.UIHidePopUpinputQuestion () ; gameStateReady () ; } 
-			, 15000 ) ;
+			{ 
+				UIHandler.UIHidePopUpinputQuestion () ; 
+				gameHandler.StartSelectingZones () ; 
+			} 
+			, 5000 ) ;
 
 	}
 	
@@ -134,16 +150,20 @@ function GameModel()
 		gameHandler.userToSelect=gameHandler.winners[gameHandler.currentlySelecting];
 	};
 	this.nextUserToSelectZone = function () {
-		gameHandler.currentlySelecting ++ ;
-		if ( gameHandler.winners.length == gameHandler.currentlySelecting )
+		gameHandler.zonesToSelect[gameHandler.winners[gameHandler.currentlySelecting]]--;
+		if(gameHandler.zonesToSelect[gameHandler.winners[gameHandler.currentlySelecting]]==0)
 		{
-			gameHandler.currentlySelecting=-1;
-			gameStateReady ( ) ;
-		}
-		else
-		{
-			mapHandler.upperText.attr('text','Currently Selecting:'+connectedUsers[gameHandler.winners[gameHandler.currentlySelecting]]);
-			gameHandler.userToSelect=gameHandler.winners[gameHandler.currentlySelecting];
+			gameHandler.currentlySelecting ++ ;
+			if ( gameHandler.winners.length == gameHandler.currentlySelecting )
+			{
+				gameHandler.currentlySelecting=-1;
+				gameStateReady ( ) ;
+			}
+			else
+			{
+				mapHandler.upperText.attr('text','Currently Selecting:'+connectedUsers[gameHandler.winners[gameHandler.currentlySelecting]]);
+				gameHandler.userToSelect=gameHandler.winners[gameHandler.currentlySelecting];
+			}
 		}
 	};
 }
