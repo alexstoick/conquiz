@@ -38,6 +38,7 @@ function connect( helloMessage )
         socket.on ( 'userDisconnected' , function ( user ) { removeUser ( user ) ; } ) ;
 
         socket.on ( 'showQuestion' , function ( ) { showQuestion () ; } ) ;
+        socket.on ( 'showInputQuestion' , function ( ) { showInputQuestion () ; } ) ;
 
         socket.on ( 'usersForSpecificRoom' , function ( conn , room , theme ) { receivedUsers ( conn , room , theme ) ; } ) ;
 
@@ -78,7 +79,12 @@ function showQuestion ( )
     }, 1000);
 
 }
-
+function showInputQuestion()
+{
+    setTimeout(function(){
+        showInputQuestion('Compozitori: În ce oraş a decedat Camille Saint-Saëns, compozitor francez din epoca romantică?');
+    },1000);
+}
 function sendTestMessage ( )
 {
     socket.send ( 'abc' ) ;

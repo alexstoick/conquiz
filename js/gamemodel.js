@@ -37,9 +37,15 @@ function GameModel()
 		console.log(gameHandler.winners);
 		UIHandler.addGlow(this.correctAnswer);
 		setTimeout(function(){
-			UIHandler.UIHidePopUp4question();
-			UIHandler.removeGlow(gameHandler.correctAnswer);
-			gameHandler.StartSelectingZones(gameHandler.winners);
+			
+				UIHandler.UIHidePopUp4question();
+				UIHandler.removeGlow(gameHandler.correctAnswer);
+			if(winners.length<=1)
+				gameHandler.StartSelectingZones(gameHandler.winners);
+			else
+			{
+				reqDepartajare();
+			}
 		},2000);
 	};
 

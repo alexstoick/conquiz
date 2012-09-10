@@ -62,6 +62,11 @@ function showPopUp4Question (intrebare,answers) {
 function showPopUpInputQuestion (intrebare)
 {
 	UIHandler.UIShowPopUPinputQuestion(intrebare);
+	gameHandler.answers.length = 0 ;
+	gameHandler.times.length = 0 ;
+	gameHandler.usernames.length = 0 ;
+	gameHandler.userNumber.length = 0 ;
+}
 }
 function clickedZone(zoneID){
 	//se apelaza de fiecare data cand se clickuie o zona
@@ -129,7 +134,10 @@ function gameStateReady ( )
 {
 	socket.emit ( 'showQuestion' ) ;
 }
-
+function reqDepartajare()
+{
+	socket.emit('reqDepartajare');
+}
 function updateMap ( id , player )
 {
     var fillColor = "#000000" ;
