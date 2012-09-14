@@ -19,9 +19,13 @@ function clearLog()
 }
 
 var socket = null;
+var attemptingToConnect = false ;
 
 function connect( helloMessage )
 {
+    if ( attemptingToConnect )
+        return ;
+    attemptingToConnect = true ;
     log('Connecting to local server...');
     if (socket === null)
     {
@@ -42,7 +46,7 @@ function connect( helloMessage )
 
         socket.on ( 'usersForSpecificRoom' , function ( conn , room , theme ) { receivedUsers ( conn , room , theme ) ; } ) ;
 
-        socket.on ( 'roomNumber' , function ( rooms ) { log ( "received Rooms" ) ; roomsAvailable = rooms ; UIHandler.roomSetUp () ; }) ;
+        socket.on ( 'roomNumber' , function ( rooms ) { log ( "Received Rooms" ) ; roomsAvailable = rooms ; UIHandler.roomSetUp () ; }) ;
 
         socket.on ( 'addRoom' , function ( room ) {  UIHandler.newRoom ( room ) ; roomsAvailable = room ; } ) ;
 

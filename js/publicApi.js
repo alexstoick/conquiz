@@ -28,6 +28,7 @@ function setPaper ( paper )
 function loggedIn ( user )
 {
 	loginHandler.username = user ;
+	log ( "from logged in " ) ;
 	connect ( ) ; //from javaUtils
 	//GET No of avaialble ROOMS
 
