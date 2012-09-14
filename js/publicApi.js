@@ -6,7 +6,10 @@ var roomHandler ;
 var mapHandler ;
 var gameHandler;
 var currentActivty       = $('#currentActivity');
-var currentMission       = $('#currentMission');
+var currentMission 		 = $( '#currentMission' ) ;
+var foundMission = false ;
+var freeZones = 2 ;
+
 $(document).ready(function() {
 	UIHandler = new UIClass() ;
 	loginHandler = new LoginClass ( ) ;
@@ -64,7 +67,6 @@ function showPopUp4Question (intrebare,answers) {
 }
 function showPopUpInputQuestion (intrebare)
 {
-	console.log ( "13221" ) ;
 	UIHandler.UIShowPopUPinputQuestion(intrebare);
 	gameHandler.answers.length = 0 ;
 	gameHandler.times.length = 0 ;
@@ -74,6 +76,10 @@ function showPopUpInputQuestion (intrebare)
 }
 function clickedZone(zoneID){
 	//se apelaza de fiecare data cand se clickuie o zona
+	console.log ( "apelat clickedzone") ;
+	if ( mapHandler.zoneIsUsed[zoneID] )
+		currentMission.text ('Select another zone - this is already owned by a player' );
+
 	if(gameHandler.userToSelect==loginHandler.thisIsUserNo && gameHandler.currentlySelecting!=-1){
 		sendMapUpdate(zoneID);
 	}
@@ -152,17 +158,28 @@ function reqDepartajare()
 }
 function updateMap ( id , player )
 {
+	if ( ! foundMission )
+	{
+		currentMission 		 = $( '#currentMission' ) ;
+		foundMission = true ;
+	}
+
     var fillColor = "#000000" ;
     var i ;
     var players = roomHandler.GET_connectedUsers() ;
-
+    console.log ( "updatat map" + id + " 		" + player ) ;
     for ( i = 0 ; i < 4 ; ++ i )
         if ( player == players[i] )
             fillColor = colors[i] ;
     if ( mapHandler.zoneIsUsed[id] )
-		mapHandler.upperText.attr('text','Select another zone - this is already owned by a player' );
+	{
+		$( currentMission ).text ( 'Select another zone - this is already owned by a player' );
+		console.log ( "owned" ) ;
+	}
    else
    {
+   		$( currentMission ).text ( '' );
+   		-- freeZones ;
 		mapHandler.paper.getById ( id ).attr ( {fill:fillColor} ) ;
 		gameHandler.nextUserToSelectZone () ;
 		mapHandler.zoneIsUsed[id] = true ;
@@ -171,6 +188,7 @@ function updateMap ( id , player )
 
 function warReady()
 {
-	currentMission.text('War Time!')
+	console.log ( "1321" ) ;
+	currentMission.text('War Time!');
 	currentActivty.text('De implementat aici');
 }
