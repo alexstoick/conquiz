@@ -166,3 +166,8 @@ function updateMap ( id , player )
 		mapHandler.zoneIsUsed[id] = true ;
 	}
 }
+
+function warReady()
+{
+	console.log('War Ready');
+}

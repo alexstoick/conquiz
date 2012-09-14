@@ -16,7 +16,7 @@
     <script src="js/room.js"></script>
     <script src="js/gamemodel.js"></script>
     <script src="js/javaUtils.js"></script>
-    <script src="js/caret.js"></script>
+
     <script src="/socket.io/socket.io.js"></script>
 </head>
 <body>
@@ -303,7 +303,7 @@
         </div>
         <div class="modal-body">
             <form id="inputQuestionForm" style="text-align:center">
-                <input type="text" id="inputQuestionAnswer" style="width:80%;">
+                <input type="number" id="inputQuestionAnswer" style="width:80%; text-align:center" >
             </form>
             <h4 id="statusInputQuestion" style="text-align:center">Waiting for other players to answer</h4>
             <table class="table">
@@ -328,11 +328,6 @@
                     <tr>
                         <td>3</td>
                         <td><img src="http://placehold.it/25x25">user3</td>
-                        <td>Answer:time</td>
-                    </tr>
-                    <tr>
-                        <td>4</td>
-                        <td><img src="http://placehold.it/25x25">user4</td>
                         <td>Answer:time</td>
                     </tr>
                 </tbody>

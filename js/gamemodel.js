@@ -15,6 +15,7 @@ function GameModel()
 	this.iAmWinner=0;
 	this.inputReq=0;
 	this.zonesToSelect=[0,0,0,0];
+	var freezones=14;
 	function clearZonesToSelect()
 	{
 		for(var i=0;i<4;i++)
@@ -151,9 +152,15 @@ function GameModel()
 	};
 	this.nextUserToSelectZone = function () {
 		gameHandler.zonesToSelect[gameHandler.winners[gameHandler.currentlySelecting]]--;
+		freezones--;
 		if(gameHandler.zonesToSelect[gameHandler.winners[gameHandler.currentlySelecting]]==0)
 		{
 			gameHandler.currentlySelecting ++ ;
+			if(freezones==0)
+			{
+				warReady();
+				return ;
+			}
 			if ( gameHandler.winners.length == gameHandler.currentlySelecting )
 			{
 				gameHandler.currentlySelecting=-1;
@@ -165,5 +172,6 @@ function GameModel()
 				gameHandler.userToSelect=gameHandler.winners[gameHandler.currentlySelecting];
 			}
 		}
+
 	};
 }
