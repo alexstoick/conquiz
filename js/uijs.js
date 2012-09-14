@@ -10,7 +10,7 @@ function UIClass() {
     this.UIUpdateUsersPresentation = function () {
         var scores         = roomHandler.scores;
         var connectedUsers = roomHandler.GET_connectedUsers();
-        for (var i = 0; i < 4; i++) {
+        for (var i = 0; i < 3; i++) {
             if (connectedUsers[i] !== 0) 
                 $('.casuta:eq(' + i + ')').text(connectedUsers[i] + ' : ' + scores[i]);
             else 
@@ -69,7 +69,7 @@ function UIClass() {
             currentTR.find('td:eq(1)').text(usernames[i]);
             currentTR.find('td:eq(2)').text(answer[i]+' in '+times[i]);
         }
-        for(var i=times.length;i<4;i++)
+        for(var i=times.length;i<3;i++)
         {
             resultTable.find('tr:eq('+i+')').hide();
         }
@@ -154,7 +154,7 @@ function UIClass() {
             selectedRoom(roomID);
             roomModal.modal('hide');
         });
-        roomModal.find("#connectedUsers").text('Connected Users:' + (users.length) + '/4');
+        roomModal.find("#connectedUsers").text('Connected Users:' + (users.length) + '/3');
         if (users.length != 0) {
             var tbody = roomModal.find('.tbodyModal');
             console.log('tbody is ' + $(tbody));
@@ -212,7 +212,7 @@ function UIClass() {
             $(this).find('div').toggle();
         });
 
-        for (var i = 0; i < 4; i++)
+        for (var i = 0; i < 3; i++)
         $('.casuta:eq(' + i + ')').css({
             'background-color': colors[i]
         });
