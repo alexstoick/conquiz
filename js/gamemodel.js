@@ -147,7 +147,8 @@ function GameModel()
 			return ;
 		}
 		connectedUsers = roomHandler.GET_connectedUsers();
-		mapHandler.upperText.attr('text','Currently Selecting:'+connectedUsers[gameHandler.winners[gameHandler.currentlySelecting]]);
+
+		$(currentActivity).text('Currently Selecting:'+connectedUsers[gameHandler.winners[gameHandler.currentlySelecting]]);
 		gameHandler.userToSelect=gameHandler.winners[gameHandler.currentlySelecting];
 	};
 	this.nextUserToSelectZone = function () {
@@ -168,7 +169,7 @@ function GameModel()
 			}
 			else
 			{
-				mapHandler.upperText.attr('text','Currently Selecting:'+connectedUsers[gameHandler.winners[gameHandler.currentlySelecting]]);
+				$(currentActivity).text('Currently Selecting:'+connectedUsers[gameHandler.winners[gameHandler.currentlySelecting]]);
 				gameHandler.userToSelect=gameHandler.winners[gameHandler.currentlySelecting];
 			}
 		}

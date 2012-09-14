@@ -5,6 +5,8 @@ var loginHandler ;
 var roomHandler ;
 var mapHandler ;
 var gameHandler;
+var currentActivty       = $('#currentActivity');
+var currentMission       = $('#currentMission');
 $(document).ready(function() {
 	UIHandler = new UIClass() ;
 	loginHandler = new LoginClass ( ) ;
@@ -18,10 +20,9 @@ $(document).ready(function() {
 	$('.roomSelect').hide();
 });
 
-function setPaper ( paper , upperText)
+function setPaper ( paper )
 {
 	mapHandler.paper = paper ;
-	mapHandler.upperText=upperText;
 }
 
 function loggedIn ( user )
@@ -169,5 +170,6 @@ function updateMap ( id , player )
 
 function warReady()
 {
-	console.log('War Ready');
+	currentMission.text('War Time!')
+	currentActivty.text('De implementat aici');
 }

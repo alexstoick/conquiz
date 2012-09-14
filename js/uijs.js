@@ -30,7 +30,7 @@ function UIClass() {
         {
             console.log ( "intra" ) ;
             $('#inputQuestionAnswer').val('').focus();
-            mapHandler.upperText.attr('text','');
+            $(currentActivity).text('Question time!');
             inputmodal.find('#inputQuestion').text(intrebare);
             setUpTimer();
         }
@@ -79,7 +79,7 @@ function UIClass() {
 
     //4 Answers Pop-UP START
     this.UIShowPopUp4question = function (intrebare, answers) {
-        mapHandler.upperText.attr('text','');
+        $(currentActivity).text('Quesiton Time!')
         $("#fourQuestionModal").modal('show');
         setUpTimer();
         // $('#pop-up4a').show();
