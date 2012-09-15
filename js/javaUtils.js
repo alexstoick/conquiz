@@ -61,12 +61,13 @@ function connect( helloMessage )
 function connected ( )
 {
     status('Connected');
-    socket.emit ( 'noRoom' , loginHandler.username ) ;
+    socket.emit ( 'noRoom' , loginHandler.username , loginHandler.profilePIC ) ;
     socket.emit ( 'requestRoomNumber') ;
 }
 
 function receivedUsers ( users , roomId , theme )
 {
+    console.log ( users ) ;
     updateUsersTooltipForRoom ( roomId , users , theme ) ;
 }
 

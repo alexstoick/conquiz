@@ -45,6 +45,7 @@ function loggedIn2 ( user , picURL )
     $("#addQuestion").show();
     $('.roomSelect').show();
 	loginHandler.username = user ;
+	loginHandler.profilePIC = picURL ;
 	connect ( ) ; //from javaUtils
 }
 
@@ -55,7 +56,6 @@ function submitAnswer ( answer , time)
 }
 
 function showPopUp4Question (intrebare,answers) {
-	console.log ( "abcsa321" ) ; 
 	//trebuie apelat ca sa apara intrebarea
 	UIHandler.UIShowPopUp4question(intrebare,answers);
 	gameHandler.answers.length = 0 ;

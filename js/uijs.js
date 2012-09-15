@@ -12,7 +12,7 @@ function UIClass() {
         var connectedUsers = roomHandler.GET_connectedUsers();
         for (var i = 0; i < 3; i++) {
             if (connectedUsers[i] !== 0) 
-                $('.casuta:eq(' + i + ')').text(connectedUsers[i] + ' : ' + scores[i]);
+                $('.casuta:eq(' + i + ')').text(connectedUsers[i][0] + ' : ' + scores[i]);
             else 
                 $('.casuta:eq(' + i + ')').text('no user connected');
             if (connectedUsers[i] == loginHandler.username) 
@@ -154,6 +154,14 @@ function UIClass() {
             selectedRoom(roomID);
             roomModal.modal('hide');
         });
+
+        for ( i = 0 ; i < users.length ; ++ i )
+            if ( ! users[i][0] ) 
+            {
+                users.length = i ;
+                break;
+            }
+
         roomModal.find("#connectedUsers").text('Connected Users:' + (users.length) + '/3');
         if (users.length != 0) {
             var tbody = roomModal.find('.tbodyModal');
@@ -165,8 +173,14 @@ function UIClass() {
                     //AICi e de munca cu issue #43
                     if (j == 1) {
                         var currentTD = currentTR.find('td:eq(' + j + ')');
-                        currentTD.text(users[i]);
+                        currentTD.text(users[i][0]);
                     }
+                    else
+                        if ( j == 0 )
+                        {
+                            currentTD = currentTR.find ( 'td:eq(' + j + ')' ) ;
+                            currentTD.html ( "<img src='https://graph.facebook.com/" + users[i][1] + "/picture' height='25px' width='25px'>" ) ;
+                        }
                 }
                 console.log('currentTR is ' + currentTR);
             }

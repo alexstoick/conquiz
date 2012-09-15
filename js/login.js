@@ -7,6 +7,7 @@ function LoginClass ( ){
     this.username = user ;
     var thisIsUserNo=-1;
     this.thisIsUserNo=thisIsUserNo=-1;;
+    this.profilePIC = "" ;
     //Private properties
 
     //Constructor
