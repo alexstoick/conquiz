@@ -22,12 +22,10 @@ function RoomClass ()
 
 	this.removeUser = function (user)
     {
-        console.log('removing');
 
         var userNo = 5;
         for (var i = 0; i < connectedUsers.length; i++)
         {
-            console.log(connectedUsers[i], user);
             if (connectedUsers[i] == user) userNo = i;
         }
         connectedUsers[userNo] = 0;

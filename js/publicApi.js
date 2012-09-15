@@ -76,7 +76,6 @@ function showPopUpInputQuestion (intrebare)
 }
 function clickedZone(zoneID){
 	//se apelaza de fiecare data cand se clickuie o zona
-	console.log ( "apelat clickedzone") ;
 	if ( mapHandler.zoneIsUsed[zoneID] )
 		currentMission.text ('Select another zone - this is already owned by a player' );
 
@@ -96,16 +95,13 @@ function addAnswerToArray ( username , answer , time )
 	gameHandler.times.push ( time ) ;
 	gameHandler.answers.push ( answer ) ;
 	gameHandler.userNumber.push ( thisIsUserNumber );
-	console.log(gameHandler.usernames);
 	if(gameHandler.typeOfQuestion==0)
 	{
-		console.log ( gameHandler.inputReq + "		" + gameHandler.usernames.length ) ;
 		if( 2 == gameHandler.usernames.length)
 			gameHandler.findTheWinner ( gameHandler.answers ) ;
 	}
 	else
 	{
-		console.log ( "abc" ) ;
 		if ( gameHandler.usernames.length == 2 )
 			gameHandler.findTheInputWinner ( );
 	}
@@ -167,14 +163,12 @@ function updateMap ( id , player )
     var fillColor = "#000000" ;
     var i ;
     var players = roomHandler.GET_connectedUsers() ;
-    console.log ( "updatat map" + id + " 		" + player ) ;
     for ( i = 0 ; i < 4 ; ++ i )
         if ( player == players[i] )
             fillColor = colors[i] ;
     if ( mapHandler.zoneIsUsed[id] )
 	{
 		$( currentMission ).text ( 'Select another zone - this is already owned by a player' );
-		console.log ( "owned" ) ;
 	}
    else
    {
@@ -188,7 +182,6 @@ function updateMap ( id , player )
 
 function warReady()
 {
-	console.log ( "1321" ) ;
 	currentMission.text('War Time!');
 	currentActivty.text('De implementat aici');
 }

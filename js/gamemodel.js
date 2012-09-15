@@ -49,7 +49,6 @@ function GameModel()
 		for(i=1;i<5;i++)
 			if( colorsToBeAdded[i].length!==0 )
 				UIHandler.colorAnswer(colorsToBeAdded[i],i);
-		console.log(gameHandler.winners);
 		UIHandler.addGlow(this.correctAnswer);
 		setTimeout(function(){
 			
@@ -60,7 +59,6 @@ function GameModel()
 			else
 			{
 				reqDepartajare();
-				console.log ( gameHandler.iAmWinner ) ;
 			}
 		},2000);
 	};
@@ -109,7 +107,6 @@ function GameModel()
 			{ 
 				var mod1 = modul( gameHandler.answers[i] );
 				var mod2 = modul( gameHandler.answers[j] );
-				console.log(mod1,mod2);
 				if ( mod1 > mod2 )
 				{
 					swap ( i , j ) ;

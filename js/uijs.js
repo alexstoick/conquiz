@@ -25,10 +25,8 @@ function UIClass() {
     this.UIShowPopUPinputQuestion = function(intrebare)
     {
         inputmodal.modal('show');
-        console.log ( gameHandler.iAmWinner == 1 ) ;
         if( gameHandler.iAmWinner == 1 )
         {
-            console.log ( "intra" ) ;
             $('#inputQuestionAnswer').val('').focus();
             $(currentActivity).text('Question time!');
             inputmodal.find('#inputQuestion').text(intrebare);
@@ -57,7 +55,6 @@ function UIClass() {
     }
     this.UIUpdateInputResults = function(usernames,times,answer,userNO)
     {
-        console.log(times.length);
         inputmodal.find('#statusInputQuestion').hide();
         var resultTable=inputmodal.find('table');
         resultTable.show();
@@ -110,7 +107,6 @@ function UIClass() {
     }
     this.removeGlow = function (answerNumber) {
         $('#' + answerNumber).parent().removeClass('glow');
-        console.log('removed glow from ' + answerNumber);
     }
 
     function UIClickedAnswer(answerClicked) {
@@ -165,7 +161,6 @@ function UIClass() {
         roomModal.find("#connectedUsers").text('Connected Users:' + (users.length) + '/3');
         if (users.length != 0) {
             var tbody = roomModal.find('.tbodyModal');
-            console.log('tbody is ' + $(tbody));
             var currentTR;
             for (var i = 0; i < users.length; i++) {
                 currentTR = tbody.find('tr:eq(' + i + ')').show();
@@ -182,7 +177,6 @@ function UIClass() {
                             currentTD.html ( "<img src='https://graph.facebook.com/" + users[i][1] + "/picture' height='25px' width='25px'>" ) ;
                         }
                 }
-                console.log('currentTR is ' + currentTR);
             }
             for (var i = users.length; i < 4; i++) {
                 currentTR = tbody.find('tr:eq(' + i + ')').hide();
@@ -241,11 +235,9 @@ function UIClass() {
     function addTime() {
         timer += 10;
         if (timer >= 10000) {
-            console.log("~Passed time");
             clearInterval(interval);
             submitAnswer(0, 10000);
         }
-        console.log("Timer is: " + timer);
     }
 
     function setUpTimer() {
