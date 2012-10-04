@@ -8,7 +8,7 @@ var gameHandler;
 var currentActivty       = $('#currentActivity');
 var currentMission 		 = $( '#currentMission' ) ;
 var foundMission = false ;
-var freeZones = 2 ;
+var freeZones = 14 ; //VERY IMPORTANT
 
 $(document).ready(function() {
 	UIHandler = new UIClass() ;
@@ -89,7 +89,7 @@ function addAnswerToArray ( username , answer , time )
 	var thisIsUserNumber;
 	var connectedUsers=roomHandler.GET_connectedUsers();
 	for(var i=0;i<4;i++)
-		if(connectedUsers[i]==username)
+		if(connectedUsers[i][0]==username)
 			thisIsUserNumber=i;
 	gameHandler.usernames.push ( username ) ;
 	gameHandler.times.push ( time ) ;
@@ -164,7 +164,7 @@ function updateMap ( id , player )
     var i ;
     var players = roomHandler.GET_connectedUsers() ;
     for ( i = 0 ; i < 4 ; ++ i )
-        if ( player == players[i] )
+        if ( player == players[i][0] )
             fillColor = colors[i] ;
     if ( mapHandler.zoneIsUsed[id] )
 	{

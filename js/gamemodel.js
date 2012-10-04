@@ -144,12 +144,13 @@ function GameModel()
 		}
 		connectedUsers = roomHandler.GET_connectedUsers();
 
-		$(currentActivity).text('Currently Selecting:'+connectedUsers[gameHandler.winners[gameHandler.currentlySelecting]]);
+		$(currentActivity).text('Currently Selecting:'+connectedUsers[gameHandler.winners[gameHandler.currentlySelecting]][0]);
 		gameHandler.userToSelect=gameHandler.winners[gameHandler.currentlySelecting];
 	};
 	this.nextUserToSelectZone = function () {
 		if ( freeZones == 0 )
 		{
+			console.log ( "called war" ) ;
 			warReady ( ) ; //call to publicAPI
 			return ;
 		}
@@ -165,7 +166,7 @@ function GameModel()
 			}
 			else
 			{
-				$(currentActivity).text('Currently Selecting:'+connectedUsers[gameHandler.winners[gameHandler.currentlySelecting]]);
+				$(currentActivity).text('Currently Selecting:'+connectedUsers[gameHandler.winners[gameHandler.currentlySelecting]][0]);
 				gameHandler.userToSelect=gameHandler.winners[gameHandler.currentlySelecting];
 			}
 		}

@@ -17,7 +17,7 @@ function UIClass() {
                 $('.casuta:eq(' + i + ')').text('no user connected');
             if (connectedUsers[i][0] == loginHandler.username) 
             {
-                console.log ( loginHandler.thisIsUserNo ) ;
+                loginHandler.thisIsUserNo = i;
             }
         }
     };

@@ -67,7 +67,7 @@ function connected ( )
 
 function receivedUsers ( users , roomId , theme )
 {
-    console.log ( users ) ;
+    console.log ( users[0] ,users[1],users[2] ) ;
     updateUsersTooltipForRoom ( roomId , users , theme ) ;
 }
 
