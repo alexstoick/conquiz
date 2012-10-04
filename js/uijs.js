@@ -15,8 +15,10 @@ function UIClass() {
                 $('.casuta:eq(' + i + ')').text(connectedUsers[i][0] + ' : ' + scores[i]);
             else 
                 $('.casuta:eq(' + i + ')').text('no user connected');
-            if (connectedUsers[i] == loginHandler.username) 
-                loginHandler.thisIsUserNo = i;
+            if (connectedUsers[i][0] == loginHandler.username) 
+            {
+                console.log ( loginHandler.thisIsUserNo ) ;
+            }
         }
     };
     //ROOM SCORE END
