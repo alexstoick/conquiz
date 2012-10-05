@@ -186,4 +186,5 @@ function warReady()
 {
 	currentMission.text('War Time!');
 	currentActivty.text('De implementat aici');
+	warHandler.startWar ( ) ;
 }
