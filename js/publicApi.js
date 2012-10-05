@@ -16,6 +16,8 @@ $(document).ready(function() {
 	roomHandler = new RoomClass ( ) ;
 	mapHandler = new MapClass ( ) ;
 	gameHandler = new GameModel ();
+	warHandler = new WarClass ( ) ;
+	warHandler.construct ( ) ;
 	mapHandler.construct ( ) ;
 	UIHandler.construct ( ) ;
 	roomHandler.construct ( ) ;
