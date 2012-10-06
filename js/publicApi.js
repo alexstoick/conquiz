@@ -8,7 +8,8 @@ var gameHandler;
 var currentActivty       = $('#currentActivity');
 var currentMission 		 = $( '#currentMission' ) ;
 var foundMission = false ;
-var freeZones = 14 ; //VERY IMPORTANT
+var freeZones = 2 ; //VERY IMPORTANT
+var warPhase = false ;
 
 $(document).ready(function() {
 	UIHandler = new UIClass() ;
@@ -78,8 +79,23 @@ function showPopUpInputQuestion (intrebare)
 }
 function clickedZone(zoneID){
 	//se apelaza de fiecare data cand se clickuie o zona
+
+	if ( warPhase )
+	{
+		//Check if is the users turn to select
+		if ( loginHandler.thisIsUserNo == warHandler.currentlySelecting )
+		{
+			console.log ( "this is the user that should select a zone to attack" ) ;
+			if ( mapHandler.zoneIsOwnedBy[zoneID] != loginHandler.username )
+			{
+				//let him attack it
+				warHandler.attackZone ( zoneID , loginHandler.username ) ;
+			}
+		}
+	}
+
 	if ( mapHandler.zoneIsUsed[zoneID] )
-		currentMission.text ('Select another zone - this is already owned by a player' );
+		currentMission.text ('Select another zone - this is already owned by ' + mapHandler.zoneIsOwnedBy[zoneID] );
 
 	if(gameHandler.userToSelect==loginHandler.thisIsUserNo && gameHandler.currentlySelecting!=-1){
 		sendMapUpdate(zoneID);
@@ -170,7 +186,7 @@ function updateMap ( id , player )
             fillColor = colors[i] ;
     if ( mapHandler.zoneIsUsed[id] )
 	{
-		$( currentMission ).text ( 'Select another zone - this is already owned by a player' );
+		$( currentMission ).text ( 'Select another zone - this is already owned by ' + mapHandler.zoneIsOwnedBy[id] );
 	}
    else
    {
@@ -179,6 +195,7 @@ function updateMap ( id , player )
 		mapHandler.paper.getById ( id ).attr ( {fill:fillColor} ) ;
 		gameHandler.nextUserToSelectZone () ;
 		mapHandler.zoneIsUsed[id] = true ;
+		mapHandler.zoneIsOwnedBy[id] = player ;
 	}
 }
 
@@ -187,4 +204,5 @@ function warReady()
 	currentMission.text('War Time!');
 	currentActivty.text('De implementat aici');
 	warHandler.startWar ( ) ;
+	warPhase = true ;
 }

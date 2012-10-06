@@ -89,9 +89,11 @@ function UIClass() {
         }
         clickedAnswerAlready = 0;
     };
+
     this.UIHidePopUp4question = function () {
         $("#fourQuestionModal").modal('hide');
     };
+
     this.colorAnswer = function (colors, answerNumber) {
         var width     = 100 / colors.length;
         var answerDiv = $('.answer:eq(' + (answerNumber - 1) + ')');
@@ -104,17 +106,19 @@ function UIClass() {
         for (i = colors.length + 1; i <= 4; i++)
         answerDiv.find('#Color' + i).hide();
     };
+
     this.addGlow = function (answerNumber) {
         $('#' + answerNumber).parent().addClass('glow');
-    }
+    };
+
     this.removeGlow = function (answerNumber) {
         $('#' + answerNumber).parent().removeClass('glow');
-    }
+    };
 
     function UIClickedAnswer(answerClicked) {
         interval = clearInterval(interval);
         UIHandler.colorAnswer([colors[loginHandler.thisIsUserNo]], answerClicked);
-    }
+    };
 
     function clickedAnswer() {
         if (clickedAnswerAlready == 0) {
@@ -227,6 +231,7 @@ function UIClass() {
             'background-color': colors[i]
         });
     };
+
     this.UIAddFreeUsers = function () {
 
     }
@@ -248,6 +253,7 @@ function UIClass() {
         interval = setInterval(addTime, 10);
     }
     //TIMER FUNCTIONS END
+    
     // CONSTRUCT FUNCTIONS START
     this.construct = function () {
         setUpQuestion();

@@ -130,7 +130,6 @@ function GameModel()
 				gameHandler.StartSelectingZones () ; 
 			} 
 			, 5000 ) ;
-
 	}
 	
 	this.StartSelectingZones = function ()
@@ -147,10 +146,12 @@ function GameModel()
 		$(currentActivity).text('Currently Selecting:'+connectedUsers[gameHandler.winners[gameHandler.currentlySelecting]][0]);
 		gameHandler.userToSelect=gameHandler.winners[gameHandler.currentlySelecting];
 	};
+	
 	this.nextUserToSelectZone = function () {
 		if ( freeZones == 0 )
 		{
 			console.log ( "called war" ) ;
+			gameHandler.currentlySelecting = -1 ;
 			warReady ( ) ; //call to publicAPI
 			return ;
 		}

@@ -5,6 +5,7 @@ function MapClass ()
     var paper ;
     this.paper = paper ;
     this.zoneIsUsed = [] ;
+    this.zoneIsOwnedBy = [] ;
     //Private properties
 
     var zones = [];
@@ -16,7 +17,10 @@ function MapClass ()
     function initZone ( )
     {
         for ( var i = 0 ; i < 14 ; ++ i )
+        {
             mapHandler.zoneIsUsed[i] = false ;
+            mapHandler.zoneIsOwnedBy[i] = '' ;
+        }
     }
 
 
