@@ -53,6 +53,8 @@ function connect( helloMessage )
         socket.on ( 'getFreeUsers', function ( users) {  UIHandler.UIAddFreeUsers(users) ; } ) ;
 
         socket.on ( 'answer' , function ( username , answer , time) { /*call to publicAPI */addAnswerToArray ( username , answer , time ) ; } ) ;
+
+        socket.on ( 'showWarQuestion' , function () { console.log ( "showingWarQuestion!" ) ; showQuestion () ; } ) ;
     }
     socket.socket.connect();
 }

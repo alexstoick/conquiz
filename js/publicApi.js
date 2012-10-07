@@ -206,3 +206,8 @@ function warReady()
 	warHandler.startWar ( ) ;
 	warPhase = true ;
 }
+
+function sendQuestionToUser ( attacker , holder , zoneID )
+{
+	socket.emit ( 'showWarQuestion' , attacker , holder, zoneID ) ;
+}

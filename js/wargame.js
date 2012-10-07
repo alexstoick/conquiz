@@ -30,6 +30,8 @@ function WarClass ( )
 
 		var holder = mapHandler.zoneIsOwnedBy [ zoneID ] ;
 
+		sendQuestionToUser ( attacker , holder , zoneID ) ;
+
 		console.log ( "will attack zone:" + zoneID ) ;
 	} ;
 }
