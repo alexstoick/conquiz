@@ -42,6 +42,7 @@ function connect( helloMessage )
         socket.on ( 'userDisconnected' , function ( user ) { removeUser ( user ) ; } ) ;
 
         socket.on ( 'showQuestion' , function ( ) { showQuestion () ; } ) ;
+
         socket.on ( 'showInputQuestion' , function ( ) { showInputQuestion () ; } ) ;
 
         socket.on ( 'usersForSpecificRoom' , function ( conn , room , theme ) { receivedUsers ( conn , room , theme ) ; } ) ;
@@ -54,7 +55,9 @@ function connect( helloMessage )
 
         socket.on ( 'answer' , function ( username , answer , time) { /*call to publicAPI */addAnswerToArray ( username , answer , time ) ; } ) ;
 
-        socket.on ( 'showWarQuestion' , function () { console.log ( "showingWarQuestion!" ) ; showQuestion () ; } ) ;
+        socket.on ( 'showWarQuestion' , function () { console.log ( "showingWarQuestion!" ) ; warPhase = 2 ;showQuestion () ; } ) ;
+
+        socket.on ( 'updateWarMap' , function ( id , fillColor , newHolder ) { updateZoneHolder ( id , fillColor , newHolder ) ; })
     }
     socket.socket.connect();
 }
@@ -114,4 +117,9 @@ function connectToRoom ( )
 function sendMapUpdate ( id )
 {
     socket.emit ( 'updateMap' , id , loginHandler.username ) ;
+}
+
+function sendMapUpdate_war ( id , fillColor , new_holder )
+{
+    socket.emit ( 'updateWarMap' , id , fillColor , new_holder ) ;
 }

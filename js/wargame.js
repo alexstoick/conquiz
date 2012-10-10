@@ -1,10 +1,13 @@
 function WarClass ( )
 {
 
-	this.construct = function () { console.log ( "created war class" ) ; } ;
+	this.construct = function () { } ;
 
 	var listOfUsers = roomHandler.GET_connectedUsers () ;
 	this.currentlySelecting = 0 ;
+	this.attacker = "" ;
+	this.holder = "" ;
+	this.zoneID = -1 ;
 
 	this.startWar = function ( ) {
 
@@ -13,7 +16,7 @@ function WarClass ( )
 		var currentlySelecting = warHandler.currentlySelecting ;
 
 		$(currentActivity).text('The user ' + listOfUsers[currentlySelecting][0] + ' has to select a zone to attack' ) ;
-		
+		warPhase = 1 ;
 
 		//2. After the zone is selected find the player and show him the question - the other player will have to be shown a 
 		//waiting for other players.
@@ -31,7 +34,35 @@ function WarClass ( )
 		var holder = mapHandler.zoneIsOwnedBy [ zoneID ] ;
 
 		sendQuestionToUser ( attacker , holder , zoneID ) ;
-
+		warHandler.attacker = attacker ;
+		warHandler.holder = holder ;
+		warHandler.zoneID = zoneID ;
+		//setting warPhase to 2 in javaUtils
 		console.log ( "will attack zone:" + zoneID ) ;
 	} ;
+	this.changeHands = function ( winner ) {
+
+		if ( winner )
+		{
+		    var fillColor = "#000000" ;
+		    var i ;
+		    var players = roomHandler.GET_connectedUsers() ;
+		    for ( i = 0 ; i < 4 ; ++ i )
+		        if ( warHandler.attacker == players[i][0] )
+		            fillColor = colors[i] ;
+
+		    sendMapUpdate_war ( warHandler.zoneID , fillColor , warHandler.attacker ) ;
+
+			mapHandler.paper.getById ( warHandler.zoneID ).attr ( {fill:fillColor} ) ;
+		}
+
+		warHandler.currentlySelecting ++ ;
+		if ( warHandler.currentlySelecting == 2 )
+			warHandler.currentlySelecting = 0 ;
+		warHandler.startWar ( ) ;
+	}
 }
+
+//warphase = 0 when no war
+//warphase = 1 when the question has to be shown
+//warphase = 2 when the question is shown and the decision has to be made.

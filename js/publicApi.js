@@ -9,7 +9,7 @@ var currentActivty       = $('#currentActivity');
 var currentMission 		 = $( '#currentMission' ) ;
 var foundMission = false ;
 var freeZones = 2 ; //VERY IMPORTANT
-var warPhase = false ;
+var warPhase = 0 ;
 
 $(document).ready(function() {
 	UIHandler = new UIClass() ;
@@ -80,7 +80,7 @@ function showPopUpInputQuestion (intrebare)
 function clickedZone(zoneID){
 	//se apelaza de fiecare data cand se clickuie o zona
 
-	if ( warPhase )
+	if ( warPhase == 1 )
 	{
 		//Check if is the users turn to select
 		if ( loginHandler.thisIsUserNo == warHandler.currentlySelecting )
@@ -204,10 +204,17 @@ function warReady()
 	currentMission.text('War Time!');
 	currentActivty.text('De implementat aici');
 	warHandler.startWar ( ) ;
-	warPhase = true ;
+	warPhase = 1 ;
 }
 
 function sendQuestionToUser ( attacker , holder , zoneID )
 {
 	socket.emit ( 'showWarQuestion' , attacker , holder, zoneID ) ;
+}
+
+function updateZoneHolder ( id , fillColor , new_holder )
+{
+	console.log ( "abc" ) ;
+	mapHandler.paper.getById ( id ).attr ( {fill:fillColor} ) ;
+	mapHandler.zoneIsOwnedBy[id] = new_holder ;
 }

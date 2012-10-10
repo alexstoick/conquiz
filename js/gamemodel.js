@@ -54,12 +54,31 @@ function GameModel()
 			
 				UIHandler.UIHidePopUp4question();
 				UIHandler.removeGlow(gameHandler.correctAnswer);
-			if(gameHandler.winners.length<=1)
-				gameHandler.StartSelectingZones(gameHandler.winners);
-			else
+
+			if ( warPhase == 2 )
 			{
-				reqDepartajare();
+				console.log ( "winners length:" + gameHandler.winners.length ) ;
+				if ( gameHandler.winners.length == 1 )
+				{
+					console.log ( "got winner for war phase" + connectedUsers[gameHandler.winners[0]][0] ) ;
+
+					if (  connectedUsers[gameHandler.winners[0]][0] == warHandler.attacker )
+						warHandler.changeHands ( true ) ;
+				}
+				else
+				{
+					warHandler.changeHands ( false ) ;
+					return ;
+				}
+
 			}
+			else
+				if(gameHandler.winners.length<=1)
+					gameHandler.StartSelectingZones(gameHandler.winners);
+				else
+				{
+					reqDepartajare();
+				}
 		},2000);
 	};
 
