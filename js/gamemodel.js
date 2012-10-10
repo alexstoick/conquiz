@@ -64,13 +64,11 @@ function GameModel()
 
 					if (  connectedUsers[gameHandler.winners[0]][0] == warHandler.attacker )
 						warHandler.changeHands ( true ) ;
+					else
+						warHandler.changeHands ( false ) ;
 				}
 				else
-				{
 					warHandler.changeHands ( false ) ;
-					return ;
-				}
-
 			}
 			else
 				if(gameHandler.winners.length<=1)
