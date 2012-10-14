@@ -218,3 +218,7 @@ function updateZoneHolder ( id , fillColor , new_holder )
 	mapHandler.paper.getById ( id ).attr ( {fill:fillColor} ) ;
 	mapHandler.zoneIsOwnedBy[id] = new_holder ;
 }
+function finishGame()
+{
+	UIHandler.ShowFinalScore();
+}

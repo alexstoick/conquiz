@@ -8,7 +8,7 @@ function WarClass ( )
 	this.attacker = "" ;
 	this.holder = "" ;
 	this.zoneID = -1 ;
-
+	this.rounds=0;
 	this.startWar = function ( ) {
 
 		//1. Will have to say who is currently next to select a zone to attack
@@ -58,8 +58,17 @@ function WarClass ( )
 
 		warHandler.currentlySelecting ++ ;
 		if ( warHandler.currentlySelecting == 2 )
+		{
+			warHandler.rounds++;
 			warHandler.currentlySelecting = 0 ;
-		warHandler.startWar ( ) ;
+		}
+		if(warHandler.rounds<3)
+			warHandler.startWar ( ) ;
+		else
+		{
+			$("#currentActivity").text('Game Over');
+			$('#currentMission').text('');
+		}
 	}
 }
 
