@@ -41,9 +41,9 @@ function connect( helloMessage )
 
         socket.on ( 'userDisconnected' , function ( user ) { removeUser ( user ) ; } ) ;
 
-        socket.on ( 'showQuestion' , function ( ) { showQuestion () ; } ) ;
+        socket.on ( 'showQuestion' , function (question,answer1,answer2,answer3,answer4,correctAnswer) { showQuestion (question,answer1,answer2,answer3,answer4,correctAnswer) ; } ) ;
 
-        socket.on ( 'showInputQuestion' , function ( ) { showInputQuestion () ; } ) ;
+        socket.on ( 'showInputQuestion' , function (  ) { showInputQuestion () ; } ) ;
 
         socket.on ( 'usersForSpecificRoom' , function ( conn , room , theme ) { receivedUsers ( conn , room , theme ) ; } ) ;
 
@@ -81,11 +81,12 @@ function getUsersFromServer ( roomId  )
     socket.emit ( 'requestUsers' , roomId ) ;
 }
 
-function showQuestion ( )
+function showQuestion (question,answer1,answer2,answer3,answer4,correctAnswer)
 {
     //call to public API
+    log(correctAnswer);
     setTimeout(function(){
-        showPopUp4Question ( 'Compozitori: În ce oraş a decedat Camille Saint-Saëns, compozitor francez din epoca romantică?', ["1", "2", "3", "4"] ) ;
+        showPopUp4Question ( question , [answer1,answer2,answer3,answer4] , correctAnswer) ;
     }, 1000);
 
 }

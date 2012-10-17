@@ -77,7 +77,8 @@ function UIClass() {
 
 
     //4 Answers Pop-UP START
-    this.UIShowPopUp4question = function (intrebare, answers) {
+    this.UIShowPopUp4question = function (intrebare, answers, correctAnswer) {
+        console.log(correctAnswer);
         $(currentActivity).text('Quesiton Time!')
         $("#fourQuestionModal").modal('show');
         setUpTimer();
@@ -87,6 +88,7 @@ function UIClass() {
             $('#' + i).text(answers[i - 1]);
             UIHandler.colorAnswer(['#63AA9C'], i);
         }
+        gameHandler.correctAnswer=correctAnswer;
         clickedAnswerAlready = 0;
     };
 
@@ -108,6 +110,7 @@ function UIClass() {
     };
 
     this.addGlow = function (answerNumber) {
+        console.log(answerNumber);
         $('#' + answerNumber).parent().addClass('glow');
     };
 
@@ -145,9 +148,10 @@ function UIClass() {
         roomModal.modal('show');
         getUsersFromRoom(roomID);
     }
+    var teme=[0,'Biologie'];
     this.UIAddUsersForRoomTooltip = function (roomID, users, theme) {
         roomModal.find('#roomNumberModal').text('Room ' + roomID);
-        roomModal.find('#themeModal').text('Theme: ' + theme);
+        roomModal.find('#themeModal').text('Theme: ' + teme[theme]);
 
         var connectButton = roomModal.find('#connectToRoom');
         connectButton.unbind('click');
@@ -204,6 +208,7 @@ function UIClass() {
 
     function createNewRoom(roomNumber) {
         var theme = document.getElementById("themeForRoom").value;
+        console.log(theme);
         addNewRoom(roomNumber);
         $('#roomCreationModal').modal('hide');
         newRoomAdded(roomsAvailable, theme); //call to publicAPI
