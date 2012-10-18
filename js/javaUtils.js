@@ -43,7 +43,7 @@ function connect( helloMessage )
 
         socket.on ( 'showQuestion' , function (question,answer1,answer2,answer3,answer4,correctAnswer) { showQuestion (question,answer1,answer2,answer3,answer4,correctAnswer) ; } ) ;
 
-        socket.on ( 'showInputQuestion' , function (  ) { showInputQuestion () ; } ) ;
+        socket.on ( 'showInputQuestion' , function ( question,correctAnswer ) { showInputQuestion (question,correctAnswer) ; } ) ;
 
         socket.on ( 'usersForSpecificRoom' , function ( conn , room , theme ) { receivedUsers ( conn , room , theme ) ; } ) ;
 
@@ -90,11 +90,11 @@ function showQuestion (question,answer1,answer2,answer3,answer4,correctAnswer)
     }, 1000);
 
 }
-function showInputQuestion()
+function showInputQuestion(question,correctAnswer)
 {
     console.log ( "am primit" ) ;
     setTimeout(function(){
-        showPopUpInputQuestion('Compozitori: În ce oraş a decedat Camille Saint-Saëns, compozitor francez din epoca romantică?' );
+        showPopUpInputQuestion(question,correctAnswer);
     },1000);
 }
 function sendTestMessage ( )

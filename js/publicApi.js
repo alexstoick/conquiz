@@ -68,9 +68,9 @@ function showPopUp4Question (intrebare,answers,correctAnswer) {
 	gameHandler.typeOfQuestion=0;
 	gameHandler.iAmWinner=0;
 }
-function showPopUpInputQuestion (intrebare)
+function showPopUpInputQuestion (intrebare,correctAnswer)
 {
-	UIHandler.UIShowPopUPinputQuestion(intrebare);
+	UIHandler.UIShowPopUPinputQuestion(intrebare,correctAnswer);
 	gameHandler.answers.length = 0 ;
 	gameHandler.times.length = 0 ;
 	gameHandler.usernames.length = 0 ;

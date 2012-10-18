@@ -24,9 +24,10 @@ function UIClass() {
     //ROOM SCORE END
 
     // inputQuestion Start
-    this.UIShowPopUPinputQuestion = function(intrebare)
+    this.UIShowPopUPinputQuestion = function(intrebare,correctAnswer)
     {
         inputmodal.modal('show');
+        gameHandler.correctAnswerForInput=correctAnswer;
         if( gameHandler.iAmWinner == 1 )
         {
             $('#inputQuestionAnswer').val('').focus();
