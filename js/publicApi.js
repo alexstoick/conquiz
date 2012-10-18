@@ -58,9 +58,9 @@ function submitAnswer ( answer , time)
 	socket.emit ( 'answer' , roomHandler.chosenRoom , loginHandler.username , answer , time ) ;
 }
 
-function showPopUp4Question (intrebare,answers) {
+function showPopUp4Question (intrebare,answers,correctAnswer) {
 	//trebuie apelat ca sa apara intrebarea
-	UIHandler.UIShowPopUp4question(intrebare,answers);
+	UIHandler.UIShowPopUp4question(intrebare,answers,correctAnswer);
 	gameHandler.answers.length = 0 ;
 	gameHandler.times.length = 0 ;
 	gameHandler.usernames.length = 0 ;

@@ -84,7 +84,7 @@ function getUsersFromServer ( roomId  )
 function showQuestion (question,answer1,answer2,answer3,answer4,correctAnswer)
 {
     //call to public API
-    log(correctAnswer);
+    console.log(correctAnswer);
     setTimeout(function(){
         showPopUp4Question ( question , [answer1,answer2,answer3,answer4] , correctAnswer) ;
     }, 1000);
