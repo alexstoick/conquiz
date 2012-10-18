@@ -27,6 +27,7 @@ function UIClass() {
     this.UIShowPopUPinputQuestion = function(intrebare,correctAnswer)
     {
         inputmodal.modal('show');
+        $('#warCorrectAnswer').hide();
         gameHandler.correctAnswerForInput=correctAnswer;
         if( gameHandler.iAmWinner == 1 )
         {
@@ -73,6 +74,8 @@ function UIClass() {
         {
             resultTable.find('tr:eq('+i+')').hide();
         }
+        $('#warCorrectAnswer').show().text('Correct Answer was:'+gameHandler.correctAnswerForInput);
+
     }
     // inputQuestion End
 

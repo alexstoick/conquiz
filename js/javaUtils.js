@@ -92,7 +92,7 @@ function showQuestion (question,answer1,answer2,answer3,answer4,correctAnswer)
 }
 function showInputQuestion(question,correctAnswer)
 {
-    console.log ( "am primit" ) ;
+    console.log(correctAnswer);
     setTimeout(function(){
         showPopUpInputQuestion(question,correctAnswer);
     },1000);
