@@ -2,7 +2,7 @@
 <html xmlns:fb="https://www.facebook.com/2008/fbml">
 <head>
     <meta charset="utf-8">
-    <title>Project</title>
+    <title>Learn Through Challenges</title>
     <link href="css/bootstrap.css" rel="stylesheet">
     <link href="css/style.css" rel="stylesheet">
     <link href='https://fonts.googleapis.com/css?family=News+Cycle:400,700' rel='stylesheet' type='text/css'>
@@ -40,7 +40,6 @@
                         <ul class="dropdown-menu" role="menu" aria-labelledby="dLabel" style="padding:15px" >
                             <form id="loginForm">
                                 <input type="text" placeholder="Username" id="usernameForm">
-                                <input type="text" placeholder="Password">
                                 <button type="submit" class="btn btn-inverse" id="submitUsername">Sign in</button>
                             </form>
                             
@@ -124,9 +123,9 @@
                                 }
 
                                 </script>
-                                <button id="fb-auth">Login</button>
+                                Click the button to login with Facebook
+                                <button id="fb-auth">Login with Facebook</button>
                                 <div id="loader" style="display:none">
-                                    <img src="img/ajax-loader.gif" alt="loading" />
                                 </div>
                                 <br />
                                 <div id="user-info"></div>
@@ -149,9 +148,6 @@
                 <tr class="addNewRoom">
                     <td><strong>Click to add a new Room</strong></td>
                 </tr>
-                <tr class="unconnectedUsers">
-                    <td><strong>Unconnected Users</strong></td>
-                </tr>
             </tbody>
         </table>
         <div class="row" id="activiyAndMission">
@@ -170,18 +166,17 @@
                     <tr>
                         <td class="casuta">username</td>
                         <td class="casuta">username</td>
-                        <td class="casuta">username</td>
                     </tr> 
                 </thead>
             </table>
         </div>
-        <button type="button" id="addQuestion">Clickme!</button>
+        <!-- <button type="button" id="addQuestion">Clickme!</button> -->
         
         <div class="shouldBeHiddenUntilLogin">
             <button type="button" id="javaTest" onclick="connect()">Connect</button>
             <button type="button" id="javaTest2" onclick="sendTestMessage()">Test message</button>
         </div>
-        <pre id="log">Log:<br /></pre> 
+        <pre id="log" style="display:none">Log:<br /></pre> 
         
     </div>
 
@@ -201,24 +196,16 @@
                     <tr>
                         <td>ProfilePic</td>
                         <td>Username</td>
-                        <td>Country</td>
                     </tr>
                 </thead>
                 <tbody class="tbodyModal">
                     <tr>
                         <td></td>
                         <td>user1</td>
-                        <td>Romania</td>
                     </tr>
                     <tr>
                         <td></td>
                         <td>user2</td>
-                        <td>Bulgaria</td>
-                    </tr>
-                    <tr>
-                        <td></td>
-                        <td>user3</td>
-                        <td>Spain</td>
                     </tr>
                 </tbody>
             </table>

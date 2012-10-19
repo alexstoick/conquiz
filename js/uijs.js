@@ -152,7 +152,7 @@ function UIClass() {
         roomModal.modal('show');
         getUsersFromRoom(roomID);
     }
-    var teme=[0,'Biologie'];
+    var teme=[0,'Biology','Physics','English','French','Computer Science'];
     this.UIAddUsersForRoomTooltip = function (roomID, users, theme) {
         roomModal.find('#roomNumberModal').text('Room ' + roomID);
         roomModal.find('#themeModal').text('Theme: ' + teme[theme]);
@@ -172,7 +172,7 @@ function UIClass() {
                 break;
             }
 
-        roomModal.find("#connectedUsers").text('Connected Users:' + (users.length) + '/3');
+        roomModal.find("#connectedUsers").text('Connected Users:' + (users.length) + '/2');
         if (users.length != 0) {
             var tbody = roomModal.find('.tbodyModal');
             var currentTR;
