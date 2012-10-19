@@ -55,7 +55,7 @@ function connect( helloMessage )
 
         socket.on ( 'answer' , function ( username , answer , time) { /*call to publicAPI */addAnswerToArray ( username , answer , time ) ; } ) ;
 
-        socket.on ( 'showWarQuestion' , function () { console.log ( "showingWarQuestion!" ) ; warPhase = 2 ;showQuestion () ; } ) ;
+        socket.on ( 'showWarQuestion' , function (question,answer1,answer2,answer3,answer4,correctAnswer) { console.log ( "showingWarQuestion!" ) ; warPhase = 2 ;showQuestion (question,answer1,answer2,answer3,answer4,correctAnswer) ; } ) ;
 
         socket.on ( 'updateWarMap' , function ( id , fillColor , newHolder ) { updateZoneHolder ( id , fillColor , newHolder ) ; })
     }

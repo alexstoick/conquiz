@@ -8,7 +8,7 @@ var gameHandler;
 var currentActivty       = $('#currentActivity');
 var currentMission 		 = $( '#currentMission' ) ;
 var foundMission = false ;
-var freeZones = 14 ; //VERY IMPORTANT
+var freeZones = 2 ; //VERY IMPORTANT
 var warPhase = 0 ;
 
 $(document).ready(function() {
