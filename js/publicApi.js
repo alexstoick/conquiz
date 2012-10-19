@@ -128,7 +128,7 @@ function addAnswerToArray ( username , answer , time )
 	}
 	else
 	{
-		if ( gameHandler.usernames.length == 3 ) //aici e buba
+		if ( gameHandler.usernames.length == gameHandler.numberOfUsersForInputSelect ) //aici e buba
 			gameHandler.findTheInputWinner ( );
 	}
 }

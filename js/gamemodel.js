@@ -15,6 +15,7 @@ function GameModel()
 	this.iAmWinner=0;
 	this.inputReq=0;
 	this.zonesToSelect=[0,0,0,0];
+	this.numberOfUsersForInputSelect = 0 ;
 	function clearZonesToSelect()
 	{
 		for(var i=0;i<4;i++)
@@ -75,6 +76,7 @@ function GameModel()
 					gameHandler.StartSelectingZones(gameHandler.winners);
 				else
 				{
+					gameHandler.numberOfUsersForInputSelect = gameHandler.winners.length ;
 					reqDepartajare();
 				}
 		},2000);
