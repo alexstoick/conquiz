@@ -120,7 +120,7 @@ function addAnswerToArray ( username , answer , time )
 		if ( warPhase == 2 )
 		{
 			if ( 2 == gameHandler.usernames.length )
-				gameHandler.findTheWinner ( gameHandler.ansers) ;
+				gameHandler.findTheWinner ( gameHandler.answers) ;
 		}
 		else
 			if( 3 == gameHandler.usernames.length)

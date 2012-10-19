@@ -77,6 +77,7 @@ function GameModel()
 				else
 				{
 					gameHandler.numberOfUsersForInputSelect = gameHandler.winners.length ;
+					gameHandler.winners.length = 0 ;
 					reqDepartajare();
 				}
 		},2000);
