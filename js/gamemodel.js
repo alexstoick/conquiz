@@ -133,6 +133,8 @@ function GameModel()
 						swap(i,j);					
 			}
 		}
+		roomHandler.scores[gameHandler.userNumber[0]] += 150 ;
+		roomHandler.scores[gameHandler.userNumber[1]] += 50 ;
 		gameHandler.zonesToSelect[gameHandler.userNumber[0]]=2;
 		gameHandler.zonesToSelect[gameHandler.userNumber[1]]=1;
 		gameHandler.winners[0]=[gameHandler.userNumber[0]];
@@ -140,6 +142,7 @@ function GameModel()
 		// answer  -- gameHandler.times ; gameHandler.usernames; gameHandler.userNumber
 
 		UIHandler.UIUpdateInputResults(gameHandler.usernames,gameHandler.times,gameHandler.answers,gameHandler.userNumber);
+		UIHandler.UIUpdateUsersPresentation() ;
 
 		setTimeout ( function () 
 			{ 
