@@ -90,8 +90,10 @@ function clickedZone(zoneID){
 			{
 				//let him attack it
 				warHandler.attackZone ( zoneID , loginHandler.username ) ;
+				return ;
 			}
 		}
+		return ;
 	}
 
 	if ( mapHandler.zoneIsUsed[zoneID] )
@@ -191,11 +193,11 @@ function updateMap ( id , player )
    else
    {
    		$( currentMission ).text ( '' );
-   		-- freeZones ;
 		mapHandler.paper.getById ( id ).attr ( {fill:fillColor} ) ;
-		gameHandler.nextUserToSelectZone () ;
 		mapHandler.zoneIsUsed[id] = true ;
 		mapHandler.zoneIsOwnedBy[id] = player ;
+		-- freeZones ;
+		gameHandler.nextUserToSelectZone () ;
 	}
 }
 

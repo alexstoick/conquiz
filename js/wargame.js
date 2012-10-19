@@ -16,7 +16,28 @@ function WarClass ( )
 		var currentlySelecting = warHandler.currentlySelecting ;
 
 		$(currentActivity).text('The user ' + listOfUsers[currentlySelecting][0] + ' has to select a zone to attack' ) ;
-		warPhase = 1 ;
+
+		//check if a user has all zones --> game over
+
+		var won = true ;
+		var userToCheck = mapHandler.zoneIsOwnedBy[1] ;
+		
+		for ( i = 1 ; i <= 14 ; ++ i )
+		{
+			console.log ( i + " _ " + mapHandler.zoneIsOwnedBy[i] ) ;
+			if ( userToCheck != mapHandler.zoneIsOwnedBy[i] )
+				won = false ;
+		}
+
+		if ( won )
+		{	
+			warPhase = 5 ;
+			$("#currentActivity").text('Game Over');
+			$('#currentMission').text('');
+			return ;
+		}	
+		else
+			warPhase = 1 ;
 
 		//2. After the zone is selected find the player and show him the question - the other player will have to be shown a 
 		//waiting for other players.
