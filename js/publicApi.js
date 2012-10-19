@@ -8,7 +8,7 @@ var gameHandler;
 var currentActivty       = $('#currentActivity');
 var currentMission 		 = $( '#currentMission' ) ;
 var foundMission = false ;
-var freeZones = 2 ; //VERY IMPORTANT
+var freeZones = 14 ; //VERY IMPORTANT
 var warPhase = 0 ;
 
 $(document).ready(function() {
@@ -117,12 +117,18 @@ function addAnswerToArray ( username , answer , time )
 	gameHandler.userNumber.push ( thisIsUserNumber );
 	if(gameHandler.typeOfQuestion==0)
 	{
-		if( 2 == gameHandler.usernames.length)
-			gameHandler.findTheWinner ( gameHandler.answers ) ;
+		if ( warPhase == 2 )
+		{
+			if ( 2 == gameHandler.usernames.length )
+				gameHandler.findTheWinner ( gameHandler.ansers) ;
+		}
+		else
+			if( 3 == gameHandler.usernames.length)
+				gameHandler.findTheWinner ( gameHandler.answers ) ;
 	}
 	else
 	{
-		if ( gameHandler.usernames.length == 2 )
+		if ( gameHandler.usernames.length == 3 ) //aici e buba
 			gameHandler.findTheInputWinner ( );
 	}
 }
