@@ -15,7 +15,7 @@ function WarClass ( )
 
 		var currentlySelecting = warHandler.currentlySelecting ;
 
-		$(currentActivity).text('The user ' + listOfUsers[currentlySelecting][0] + ' has to select a zone to attack' ) ;
+		$(currentActivity).text('The user ' + listOfUsers[currentlySelecting][0] + ' has to select a zone to challenge his/her competitor for' ) ;
 
 		//check if a user has all zones --> game over
 

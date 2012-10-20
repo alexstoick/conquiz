@@ -203,8 +203,7 @@ function updateMap ( id , player )
 
 function warReady()
 {
-	currentMission.text('War Time!');
-	currentActivty.text('De implementat aici');
+	currentMission.text('Challenge Time!');
 	warHandler.startWar ( ) ;
 	warPhase = 1 ;
 }
