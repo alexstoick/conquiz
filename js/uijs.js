@@ -83,7 +83,7 @@ function UIClass() {
     //4 Answers Pop-UP START
     this.UIShowPopUp4question = function (intrebare, answers, correctAnswer) {
         console.log(correctAnswer);
-        $(currentActivity).text('Quesiton Time!')
+        $(currentActivity).text('Question Time!')
         $("#fourQuestionModal").modal('show');
         setUpTimer();
         // $('#pop-up4a').show();
